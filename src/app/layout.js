@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/MyNavbar";
+import Footer from "@/components/Footer";
+import MyNavbar from "@/components/MyNavbar";
 // import { Inter as FontSans } from "next/font/google"
 // import Header from "@/components/header";
 
@@ -20,8 +21,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar/>
+        <MyNavbar/>
         {children}
+        <Footer/>
         </body>
     </html>
   );
