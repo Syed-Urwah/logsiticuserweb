@@ -1,25 +1,16 @@
-import React from "react";
+"use client";
+
+import { Button, Dropdown, Navbar } from "flowbite-react";
 import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
-export default function Header() {
+export default function Newheader() {
   return (
-    <header className="bg-indigo-500 h-12">
-      <div className="flex justify-around">
-        <div>
-          <a href="#">
-            <Image
-              src="/images/logo.png"
-              alt="Vercel Logo"
-              width={100}
-              height={30}
-              className="pt-2"
-              priority
-            />
-          </a>
-        </div>
-
-        <div>
-          <a href="#" className="flex mt-3">
+    <div>
+      <div className="flex justify-evenly items-start pt-1 bg-indigo-500 lg:h-14 h-14 w-screen">
+        <div className="max-sm:hidden">
+          <Link href="#" className="flex mt-3 text-white">
             <img
               src="/images/location.png"
               alt="Vercel Logo"
@@ -27,50 +18,109 @@ export default function Header() {
             />
             <p
               style={{
-                fontFamily: "Montserrat",
-                fontWeight: 500,
-                fontSize: 16,
+                fontFamily: "Scada",
+                fontWeight: 600,
+                fontSize: 17,
               }}
             >
               xyz road, Riyadh, Saudia Arabia
             </p>
-          </a>
+          </Link>
         </div>
 
-        <div>
-          <a href="#" className="flex mt-3">
+        <div className="max-sm:ms-[80px]">
+          <Link href="#" className="flex mt-3 text-white">
             <img src="/images/phone.png" alt="phone" className="h-5 me-3" />
             <p
               style={{
-                fontFamily: "Montserrat",
-                fontWeight: 500,
-                fontSize: 16,
+                fontFamily: "Scada",
+                fontWeight: 600,
+                fontSize: 17,
               }}
             >
               0335-3915158
             </p>
-          </a>
+          </Link>
         </div>
 
-        <div className="flex mt-3">
-          <a href="#">
+        <div className="flex mt-3 text-white items-center me-10">
+          <Link href="#">
             <img src="/images/notifi.png" alt="phone" className="h-5 me-14" />
-          </a>
-          <a href="#">
+          </Link>
+          <Link href="#">
             <p
               style={{
-                fontFamily: "Montserrat",
+                fontFamily: "Scada",
                 fontWeight: 600,
-                fontSize: 15,
+                fontSize: 17,
               }}
             >
               CALL US NOW
             </p>
-          </a>
+          </Link>
         </div>
       </div>
+      <Navbar
+        fluid
+        rounded
+        className="mt-[-55px]"
+        style={{ backgroundColor: "transparent" }}
+      >
+        <Navbar.Brand as={Link} href="#">
+          <div className="lg:ms-10 md:ms-10 max-sm:ms-[10px]">
+            <a href="#">
+              <Image
+                src="/images/logo.png"
+                alt="Vercel Logo"
+                width={100}
+                height={30}
+                className="pt-2"
+                priority
+              />
+            </a>
+          </div>
+        </Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar.Collapse className="lg:mt-12 lg:me-[17%] ">
+          <Navbar.Link href="#" active className="text-base font-semibold">
+            HOME
+          </Navbar.Link>
+          <Navbar.Link
+            as={Link}
+            href="#"
+            className="text-base font-semibold lg:ms-10"
+          >
+            SERVICES
+          </Navbar.Link>
+          <Navbar.Link
+            href="#"
+            className="text-base font-semibold lg:ms-10 me-10"
+          >
+            APPS
+          </Navbar.Link>
 
-      <nav className="flex"></nav>
-    </header>
+          <Dropdown
+            label="BOOKING"
+            inline
+            className="text-base font-semibold ms11"
+          >
+            <Dropdown.Item>Book a ride</Dropdown.Item>
+            <Dropdown.Item>Order placement</Dropdown.Item>
+          </Dropdown>
+
+          <Navbar.Link
+            href="#"
+            className="text-base font-semibold lg:ms-10 lg:me-10"
+          >
+            TRACKING
+          </Navbar.Link>
+
+          <button className="bg-blue-300 h-[30px] w-[150px] text-white rounded-lg">
+            Register Yourself
+          </button>
+          {/* <Button color="blue">Blue</Button> */}
+        </Navbar.Collapse>
+      </Navbar>
+    </div>
   );
 }

@@ -4,10 +4,14 @@ module.exports = {
   content: [
     './pages/**/*.{js,jsx}',
     './components/**/*.{js,jsx}',
+    "./node_modules/flowbite-react/lib/**/*.js",
     './app/**/*.{js,jsx}',
     './src/**/*.{js,jsx}',
   ],
   prefix: "",
+  plugins: [
+    require("flowbite/plugin")
+  ],
   theme: {
     container: {
       center: true,
