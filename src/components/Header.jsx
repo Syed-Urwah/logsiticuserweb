@@ -1,11 +1,9 @@
-"use client";
 
 import { Button, Dropdown, Navbar } from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
-export default function Newheader() {
+export default function Header() {
   return (
     <div>
       <div className="flex justify-evenly items-start pt-1 bg-indigo-500 lg:h-14 h-14 w-screen">
@@ -68,7 +66,7 @@ export default function Newheader() {
       >
         <Navbar.Brand as={Link} href="#">
           <div className="lg:ms-10 md:ms-10 max-sm:ms-[10px]">
-            <a href="#">
+            <Link href="#">
               <Image
                 src="/images/logo.png"
                 alt="Vercel Logo"
@@ -77,11 +75,11 @@ export default function Newheader() {
                 className="pt-2"
                 priority
               />
-            </a>
+            </Link>
           </div>
         </Navbar.Brand>
         <Navbar.Toggle />
-        <Navbar.Collapse className="lg:mt-12 lg:me-[17%] ">
+        <Navbar.Collapse className="lg:mt-12 lg:me-[17%] bg-red-600">
           <Navbar.Link href="#" active className="text-base font-semibold">
             HOME
           </Navbar.Link>

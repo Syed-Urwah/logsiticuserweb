@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 
 export default function page() {
@@ -12,19 +14,19 @@ export default function page() {
                 <form className="space-y-6" action="#" method="POST">
                     <div className='p-4 bg-slate-200 rounded-md'>
                     <div className="flex items-center w-full mt-4">
-                        <label for="email" className="block text-sm font-medium leading-6 text-gray-900 mr-2 w-1/6"> Enter Email Address</label>
-                        <input id="email" name="email" type="email" autocomplete="email" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2" placeholder='Enter Your Email Address'/>
+                        <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900 mr-2 w-1/6"> Enter Email Address</label>
+                        <input id="email" name="email" type="email" autoComplete="email" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2" placeholder='Enter Your Email Address'/>
                     </div>
 
 
                     <div className="flex items-center w-full mt-4">
-                        <label for="email" className="block text-sm font-medium leading-6 text-gray-900 mr-2 w-1/6"> Enter Password </label>
-                        <input id="email" name="email" type="email" autocomplete="email" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2" placeholder='Enter Your Password '/>
+                        <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900 mr-2 w-1/6"> Enter Password </label>
+                        <input id="email" name="email" type="email" autoComplete="email" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2" placeholder='Enter Your Password '/>
                     </div>
                     </div>
                     <div className="inline-flex items-center">
                         <input type="checkbox" name="remember_pswd" id="remember_pswd" className="form-checkbox" />
-                        <label for="remember_pswd" className="ml-2">Remember Password</label>
+                        <label htmlFor="remember_pswd" className="ml-2">Remember Password</label>
                     </div>
 
                     <div className="justify-center">
