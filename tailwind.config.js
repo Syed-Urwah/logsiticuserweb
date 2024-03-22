@@ -21,6 +21,9 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        'custom-bg': "url('/images/logisic-home.png')",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
