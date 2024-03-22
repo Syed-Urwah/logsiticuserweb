@@ -83,7 +83,7 @@ export default function MyNavbar() {
 
           <Sheet>
             <SheetTrigger className="max-md:mt-[-25px] max-md:me-[10px]">
-              <button
+              <div
                 data-collapse-toggle="navbar-default"
                 type="button"
                 className="inline-flex items-center w-10 h-10 justify-center max-md:mt-[-20px] text-sm text-white rounded-lg md:hidden hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:text-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -106,7 +106,7 @@ export default function MyNavbar() {
                     d="M1 1h15M1 7h15M1 13h15"
                   />
                 </svg>
-              </button>
+              </div>
             </SheetTrigger>
             <SheetContent>
               <SheetHeader>
