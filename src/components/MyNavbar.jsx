@@ -15,7 +15,7 @@ import { Dropdown } from "flowbite-react";
 
 export default function MyNavbar() {
   return (
-    <header className="border-b-[3px] border-solid shadow shadow-gray-300">
+    <header className="border-b-[3px] border-solid shadow shadow-gray-300 w-full">
       <div className="flex justify-evenly max-md:hidden items-start pt-1 bg-indigo-500 lg:h-14 h-14">
         <div className="max-sm:hidden">
           <Link href="#" className="flex mt-3 text-white">

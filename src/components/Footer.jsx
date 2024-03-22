@@ -2,168 +2,168 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer class="bg-indigo-500 dark:bg-gray-900">
-      <div class="mx-auto w-full max-w-screen-xl">
-        <div class="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
+    <footer className="bg-indigo-500 dark:bg-gray-900 w-full">
+      <div className="mx-auto w-full max-w-screen-xl">
+        <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
           <div>
-            <h2 class=" text-lg font-semibold text-white uppercase dark:text-white">
+            <h2 className=" text-lg font-semibold text-white uppercase dark:text-white">
               Got a Project?
             </h2>
-            <ul class="text-white dark:text-gray-400 font-medium">
-              <li class="mb-4 mt-1 ">
-                <a href="#" class=" hover:underline text-[17px] font-medium">
+            <ul className="text-white dark:text-gray-400 font-medium">
+              <li className="mb-4 mt-1 ">
+                <a href="#" className=" hover:underline text-[17px] font-medium">
                   Let’s Talk
                 </a>
               </li>
-              <li class="mb-4">
-                <a href="#" class="hover:underline font-light text-sm">
+              <li className="mb-4">
+                <a href="#" className="hover:underline font-light text-sm">
                   &gt; Tell us everything
                 </a>
               </li>
-              <li class="mb-4">
-                <a href="#" class="hover:underline font-light text-sm">
+              <li className="mb-4">
+                <a href="#" className="hover:underline font-light text-sm">
                   info@iplexsoft.com
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h2 class="mb-2 text-xl font-normal text-white uppercase dark:text-white">
+            <h2 className="mb-2 text-xl font-normal text-white uppercase dark:text-white">
               Services
             </h2>
-            <ul class="text-white list-disc dark:text-gray-400 font-light text-sm">
-              <li class="mb-2">
-                <a href="#" class="hover:underline">
+            <ul className="text-white list-disc dark:text-gray-400 font-light text-sm">
+              <li className="mb-2">
+                <a href="#" className="hover:underline">
                   Digital Marketing
                 </a>
               </li>
-              <li class="mb-2">
-                <a href="#" class="hover:underline">
+              <li className="mb-2">
+                <a href="#" className="hover:underline">
                   Custom Development
                 </a>
               </li>
-              <li class="mb-2">
-                <a href="#" class="hover:underline">
+              <li className="mb-2">
+                <a href="#" className="hover:underline">
                   Product Development
                 </a>
               </li>
-              <li class="mb-2">
-                <a href="#" class="hover:underline">
+              <li className="mb-2">
+                <a href="#" className="hover:underline">
                   ERP Implementation
                 </a>
               </li>
-              <li class="mb-2">
-                <a href="#" class="hover:underline">
+              <li className="mb-2">
+                <a href="#" className="hover:underline">
                   Web Designing
                 </a>
               </li>
-              <li class="mb-2">
-                <a href="#" class="hover:underline">
+              <li className="mb-2">
+                <a href="#" className="hover:underline">
                   Mobile Application
                 </a>
               </li>
-              <li class="mb-2">
-                <a href="#" class="hover:underline">
+              <li className="mb-2">
+                <a href="#" className="hover:underline">
                   E-Commerce
                 </a>
               </li>
-              <li class="mb-2">
-                <a href="#" class="hover:underline">
+              <li className="mb-2">
+                <a href="#" className="hover:underline">
                   DevOps
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h2 class="mb-2 text-xl font-normal text-white uppercase dark:text-white">
+            <h2 className="mb-2 text-xl font-normal text-white uppercase dark:text-white">
               Company
             </h2>
-            <ul class="text-white list-disc dark:text-gray-400 font-light text-sm">
-              <li class="mb-2">
-                <a href="#" class="hover:underline">
+            <ul className="text-white list-disc dark:text-gray-400 font-light text-sm">
+              <li className="mb-2">
+                <a href="#" className="hover:underline">
                   About Company
                 </a>
               </li>
-              <li class="mb-2">
-                <a href="#" class="hover:underline">
+              <li className="mb-2">
+                <a href="#" className="hover:underline">
                   Careers
                 </a>
               </li>
-              <li class="mb-2">
-                <a href="#" class="hover:underline">
+              <li className="mb-2">
+                <a href="#" className="hover:underline">
                   Clients
                 </a>
               </li>
-              <li class="mb-2">
-                <a href="#" class="hover:underline">
+              <li className="mb-2">
+                <a href="#" className="hover:underline">
                   Team
                 </a>
               </li>
-              <li class="mb-2">
-                <a href="#" class="hover:underline">
+              <li className="mb-2">
+                <a href="#" className="hover:underline">
                   Blogs
                 </a>
               </li>
-              <li class="mb-2">
-                <a href="#" class="hover:underline">
+              <li className="mb-2">
+                <a href="#" className="hover:underline">
                   Case Studies
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h2 class="mb-2 text-xl font-semibold text-white uppercase dark:text-white">
+            <h2 className="mb-2 text-xl font-semibold text-white uppercase dark:text-white">
               iPlexSoft Pakistan
             </h2>
-            <ul class="text-white dark:text-gray-400 font-light text-sm">
-              <li class="mb-4">
-                <p class="hover:underline">
+            <ul className="text-white dark:text-gray-400 font-light text-sm">
+              <li className="mb-4">
+                <p className="hover:underline">
                   Office 506, 5th Floor, Park Avenue Shahrah-e-Faisal road
                   Karachi, Pakistan
                 </p>
               </li>
             </ul>
-            <h2 class="mb-2 text-xl font-semibold text-white uppercase dark:text-white">
+            <h2 className="mb-2 text-xl font-semibold text-white uppercase dark:text-white">
               iPlexSoft UK
             </h2>
-            <ul class="text-white dark:text-gray-400 font-light text-sm">
-              <li class="mb-4">
-                <p class="hover:underline">
+            <ul className="text-white dark:text-gray-400 font-light text-sm">
+              <li className="mb-4">
+                <p className="hover:underline">
                   53B County Mall , Crawley West Sussex. UKPost Code : RH10 1 FF
                 </p>
               </li>
             </ul>
-            <h2 class="mb-2 text-xl font-semibold text-white uppercase dark:text-white">
+            <h2 className="mb-2 text-xl font-semibold text-white uppercase dark:text-white">
               iPlexSoft Saudia Arabia
             </h2>
-            <ul class="text-white dark:text-gray-400 font-light text-sm">
-              <li class="mb-4">
-                <p class="hover:underline">
+            <ul className="text-white dark:text-gray-400 font-light text-sm">
+              <li className="mb-4">
+                <p className="hover:underline">
                   Akaria Plaza - Gate D - 6th Floor Olaya, Riyadh
                 </p>
               </li>
             </ul>
-            <h2 class="mb-2 text-xl font-semibold text-white uppercase dark:text-white">
+            <h2 className="mb-2 text-xl font-semibold text-white uppercase dark:text-white">
               iPlexSoft US
             </h2>
-            <ul class="text-white dark:text-gray-400 font-light text-sm">
-              <li class="mb-4">
-                <p class="hover:underline">NJ</p>
+            <ul className="text-white dark:text-gray-400 font-light text-sm">
+              <li className="mb-4">
+                <p className="hover:underline">NJ</p>
               </li>
             </ul>
           </div>
         </div>
-        <div class="px-4 py-6 bg-indigo-500-100 border-solid  border-t dark:bg-gray-700 md:flex md:items-center md:justify-between">
-          <span class="text-sm text-gray-500 dark:text-gray-300 text-center">
+        <div className="px-4 py-6 bg-indigo-500-100 border-solid  border-t dark:bg-gray-700 md:flex md:items-center md:justify-between">
+          <span className="text-sm text-gray-500 dark:text-gray-300 text-center">
             © 2023 iplexsoft. All Rights Reserved. Terms of Use. Privacy Policy
           </span>
-          <div class="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
+          <div className="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
             <a
               href="#"
-              class="text-white hover:text-gray-900 dark:hover:text-white"
+              className="text-white hover:text-gray-900 dark:hover:text-white"
             >
               <svg
-                class="w-4 h-4"
+                className="w-4 h-4"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -175,14 +175,14 @@ export default function Footer() {
                   clip-rule="evenodd"
                 />
               </svg>
-              <span class="sr-only">Facebook page</span>
+              <span className="sr-only">Facebook page</span>
             </a>
             <a
               href="#"
-              class="text-white hover:text-gray-900 dark:hover:text-white"
+              className="text-white hover:text-gray-900 dark:hover:text-white"
             >
               <svg
-                class="w-4 h-4"
+                className="w-4 h-4"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -190,14 +190,14 @@ export default function Footer() {
               >
                 <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z" />
               </svg>
-              <span class="sr-only">Discord community</span>
+              <span className="sr-only">Discord community</span>
             </a>
             <a
               href="#"
-              class="text-white hover:text-gray-900 dark:hover:text-white"
+              className="text-white hover:text-gray-900 dark:hover:text-white"
             >
               <svg
-                class="w-4 h-4"
+                className="w-4 h-4"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -209,14 +209,14 @@ export default function Footer() {
                   clip-rule="evenodd"
                 />
               </svg>
-              <span class="sr-only">Twitter page</span>
+              <span className="sr-only">Twitter page</span>
             </a>
             <a
               href="#"
-              class="text-white hover:text-gray-900 dark:hover:text-white"
+              className="text-white hover:text-gray-900 dark:hover:text-white"
             >
               <svg
-                class="w-4 h-4"
+                className="w-4 h-4"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -228,14 +228,14 @@ export default function Footer() {
                   clip-rule="evenodd"
                 />
               </svg>
-              <span class="sr-only">GitHub account</span>
+              <span className="sr-only">GitHub account</span>
             </a>
             <a
               href="#"
-              class="text-white hover:text-gray-900 dark:hover:text-white"
+              className="text-white hover:text-gray-900 dark:hover:text-white"
             >
               <svg
-                class="w-4 h-4"
+                className="w-4 h-4"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -247,7 +247,7 @@ export default function Footer() {
                   clip-rule="evenodd"
                 />
               </svg>
-              <span class="sr-only">Dribbble account</span>
+              <span className="sr-only">Dribbble account</span>
             </a>
           </div>
         </div>
