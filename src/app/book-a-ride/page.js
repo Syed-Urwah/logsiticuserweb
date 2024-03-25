@@ -1,4 +1,5 @@
 import * as React from "react"
+import "../styles/custom.css";
 
 import { Button } from "@/components/ui/button"
 import {
