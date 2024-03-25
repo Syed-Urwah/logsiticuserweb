@@ -177,7 +177,7 @@ export default function MyNavbar() {
                     <ul className="flex flex-col items-center">
                       <li>
                         <Link
-                          href="#"
+                          href="/home"
                           className="block py-2 px-[150px] text-white md:ms-10 text-base font-semibold bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
                           aria-current="page"
                         >
@@ -207,7 +207,7 @@ export default function MyNavbar() {
                           className="text-base font-semibold ms11"
                         >
                           <Dropdown.Item>
-                            <Link href="#">Book a ride</Link>
+                            <Link href="/book-a-ride">Book a ride</Link>
                           </Dropdown.Item>
                           <Dropdown.Item>
                             <Link href="#">Order placement</Link>
@@ -225,7 +225,7 @@ export default function MyNavbar() {
                       </li>
 
                       <li>
-                        <Link href="#">
+                        <Link href="/register">
                           <button className="bg-blue-300 h-[35px] w-[150px] mt-3 text-white rounded-lg">
                             Register Yourself
                           </button>
@@ -245,7 +245,7 @@ export default function MyNavbar() {
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
                 <Link
-                  href="#"
+                  href="/home"
                   className="block py-2 px-3 text-white lg:ms-10 text-base font-semibold bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
                   aria-current="page"
                 >
@@ -275,7 +275,7 @@ export default function MyNavbar() {
                   className="text-base font-semibold ms11"
                 >
                   <Dropdown.Item>
-                    <Link href="#">Book a ride</Link>
+                    <Link href="/book-a-ride">Book a ride</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <Link href="#">Order placement</Link>
@@ -291,7 +291,7 @@ export default function MyNavbar() {
                 </Link>
               </li>
               <li>
-                <Link href="#">
+                <Link href="/register">
                   <button className="bg-blue-300 ms-10 h-[35px] w-[150px] mt-[-3px] text-white rounded-lg">
                     Register Yourself
                   </button>

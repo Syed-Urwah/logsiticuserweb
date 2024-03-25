@@ -44,7 +44,9 @@ export default function page() {
                     <button type="submit" className='flex lg:w-1/5 md:w-1/5 mx-auto justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Sign in</button>
                 </div>
                 <div className='justify-center'>
+                    <Link href="/register">
                     <button type="submit" className='flex lg:w-1/5 sm:w-1/2 md:w-1/5 mx-auto justify-center rounded-md bg-blue-300 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'> Not have an Account? Create Account</button>
+                    </Link>
                 </div>
             </form>
                 <p className='mt-10 text-center text-sm text-black-500'>Forget Password? 
