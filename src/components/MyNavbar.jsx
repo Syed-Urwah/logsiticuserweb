@@ -16,7 +16,7 @@ import { Dropdown } from "flowbite-react";
 export default function MyNavbar() {
   return (
     <header className="border-b-[3px] border-solid shadow shadow-gray-300 w-full">
-      <div className="flex justify-evenly max-md:hidden items-start pt-1 bg-indigo-500 lg:h-14 h-14">
+      <div className="flex justify-evenly max-md:hidden items-start pt-1 bg-indigo-600 lg:h-14 h-14">
         <div className="max-sm:hidden">
           <Link href="#" className="flex mt-3 text-white">
             <img
@@ -71,8 +71,8 @@ export default function MyNavbar() {
       <nav className="dark:bg-gray-900 max-md:bg-indigo-500 max-md:h-14 lg:mt-[-30px] pb-3 w-full">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
           <Link
-            href="https://flowbite.com/"
-            className="flex items-center space-x-3 rtl:space-x-reverse"
+            href="/"
+            className="flex items-center  rtl:space-x-reverse"
           >
             <img
               src="images/logo.png"
