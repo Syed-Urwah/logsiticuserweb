@@ -27,7 +27,7 @@ export default function page() {
       </div>
       <form className="pt-3 px-2 text-gray-400">
 
-      <Card className="w-full py-6 bg-gray-50">
+      <Card className="w-full py-6 bg-gray-50 rounded-xl">
         <CardContent>
             <div className="grid w-full  items-center gap-4">
 
@@ -89,7 +89,7 @@ export default function page() {
       </Card>
 
       <div className="flex justify-center my-7">
-        <button className="py-3 px-4 rounded-xl bg-indigo-500 text-white">
+        <button className="py-3 px-4 rounded-xl bg-[#6C63FF] text-white">
         Confirm Ride
         </button>
       </div>
