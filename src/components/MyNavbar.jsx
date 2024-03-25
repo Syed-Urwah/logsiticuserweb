@@ -15,7 +15,7 @@ import { Dropdown } from "flowbite-react";
 
 export default function MyNavbar() {
   return (
-    <header className="border-b-[3px] border-solid shadow shadow-gray-300">
+    <header className="border-b-[3px] border-solid shadow shadow-gray-300 w-full">
       <div className="flex justify-evenly max-md:hidden items-start pt-1 bg-indigo-500 lg:h-14 h-14">
         <div className="max-sm:hidden">
           <Link href="#" className="flex mt-3 text-white">
@@ -68,7 +68,7 @@ export default function MyNavbar() {
           </Link>
         </div>
       </div>
-      <nav className="dark:bg-gray-900 max-md:bg-indigo-500 max-md:h-14 lg:mt-[-30px] pb-3 w-screen">
+      <nav className="dark:bg-gray-900 max-md:bg-indigo-500 max-md:h-14 lg:mt-[-30px] pb-3 w-full">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
           <Link
             href="https://flowbite.com/"
@@ -178,7 +178,7 @@ export default function MyNavbar() {
                       <li>
                         <Link
                           href="#"
-                          className="block py-2 px-3 text-white lg:ms-10 text-base font-semibold bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                          className="block py-2 px-3 text-white md:ms-10 text-base font-semibold bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
                           aria-current="page"
                         >
                           HOME
@@ -187,7 +187,7 @@ export default function MyNavbar() {
                       <li>
                         <Link
                           href="#"
-                          className="block py-2 px-3 text-gray-900 lg:ms-10 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                          className="block py-2 px-3 text-gray-900 md:ms-10 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                         >
                           SERVICES
                         </Link>
@@ -195,12 +195,12 @@ export default function MyNavbar() {
                       <li>
                         <Link
                           href="#"
-                          className="block py-2 px-3 text-gray-900 lg:ms-10 me-10 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent text-center ps-12"
+                          className="block py-2 px-3 text-gray-900 md:ms-10 md:me-10 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent text-center ps-12"
                         >
                           APPS
                         </Link>
                       </li>
-                      <li className="block py-2 px-3 text-gray-900 lg:ms-10 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ps-[145px]">
+                      <li className="block py-2 px-3 text-gray-900 md:ms-10 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ps-[145px]">
                         <Dropdown
                           label="BOOKING"
                           inline
@@ -218,7 +218,7 @@ export default function MyNavbar() {
                       <li>
                         <Link
                           href="#"
-                          className="block py-2 px-2 text-gray-900 lg:ms-5 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                          className="block py-2 px-2 text-gray-900 md:ms-5 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                         >
                           TRACKING
                         </Link>
@@ -239,7 +239,7 @@ export default function MyNavbar() {
           </Sheet>
 
           <div
-            className="hidden w-full md:me-[13%] mt-10 md:block md:w-auto"
+            className="hidden w-full md:me-[5%] lg:me-[13%] mt-10 md:block md:w-auto"
             id="navbar-default"
           >
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
