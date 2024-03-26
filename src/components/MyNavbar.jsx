@@ -210,7 +210,7 @@ export default function MyNavbar() {
                             <Link href="/book-a-ride">Book a ride</Link>
                           </Dropdown.Item>
                           <Dropdown.Item>
-                            <Link href="#">Order placement</Link>
+                            <Link href="/order-placement">Order placement</Link>
                           </Dropdown.Item>
                         </Dropdown>
                       </li>
