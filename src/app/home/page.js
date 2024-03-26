@@ -62,31 +62,6 @@ export default function page() {
                 alt="phone"
                 className='h-12'
               />
-<<<<<<< HEAD
-              </div>
-              <h1 className='text-darken mb-3 text-2xl font-large font-semibold font-sans text-indigo-500 lg:px-14'>Real Time Cargo Tracking</h1>
-            </div>
-            <div className='rounded-xl bg-white p-6 text-center shadow-xl ring-indigo-300 ring-1 ring-inset shadow-indigo-300/50'>
-              <div className='mx-auto flex h-24 w-24 -translate-y-16 transform items-center justify-center rounded-full bg-gray-100 shadow-lg shadow-indigo-400/100'>
-                <img
-                  src="/images/safety.jpeg"
-                  alt="phone"
-                  className='h-12'
-                />
-              </div>
-              <h1 className='text-darken mb-3 text-2xl font-large font-semibold font-sans text-indigo-500 lg:px-14'>Safety & Security Services</h1>
-            </div>
-            <div className='rounded-xl bg-white p-6 text-center shadow-xl ring-indigo-300 ring-1 ring-inset shadow-indigo-300/50'>
-              <div className='mx-auto flex h-24 w-24 -translate-y-16 transform items-center justify-center rounded-full bg-gray-100 shadow-lg shadow-indigo-400/100'>
-                <img 
-                  src="/images/time.jpeg"
-                  alt="phone"
-                  className='h-12'
-                />
-              </div>
-              <h1 className='text-darken mb-3 text-2xl font-large font-semibold font-sans text-indigo-500 lg:px-14'>On Time Delivery</h1>
-=======
->>>>>>> e4cb167f44e0d3dbcfbe033d946abe37b6fddd1e
             </div>
             <h1 className='text-darken mb-3 text-2xl font-large font-semibold font-sans text-indigo-500 lg:px-14'>Real Time Cargo Tracking</h1>
           </div>
@@ -159,28 +134,6 @@ export default function page() {
               </div>
             </div>
           </div>
-<<<<<<< HEAD
-          <div className='mt-10 grid grid-cols-3 gap-2'>
-            <div className='mb-4 flex justify-end py-8'>
-              <img
-                src="/images/left-mob.jpeg"
-                className='h-auto w-1/2 rounded-lg'
-                alt="" />
-            </div>
-            <div className='mb-4 flex justify-center py-2'>
-                <img
-                  src="/images/center-mob.jpeg"
-                  className='h-auto w-1/2 rounded-lg'
-                  alt="" 
-                />
-            </div>
-            <div className="mb-4 flex justify-start py-8">
-                <img
-                    src="/images/right-mob.jpeg"
-                    className='h-auto w-1/2 rounded-lg'
-                    alt="" />
-            </div>
-=======
         </div>
         <div className='mt-10 grid grid-cols-3 gap-2'>
           <div className='mb-4 flex justify-end py-8'>
@@ -201,7 +154,6 @@ export default function page() {
               src="/images/right-mob.jpeg"
               className='h-auto w-1/2 rounded-lg'
               alt="" />
->>>>>>> e4cb167f44e0d3dbcfbe033d946abe37b6fddd1e
           </div>
         </div>
       </div>
