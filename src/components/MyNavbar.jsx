@@ -16,7 +16,7 @@ import { Dropdown } from "flowbite-react";
 export default function MyNavbar() {
   return (
     <header className="border-b-[3px] border-solid shadow shadow-gray-300 w-full">
-      <div className="flex justify-evenly max-md:hidden items-start pt-1 bg-indigo-600 lg:h-14 h-14">
+      <div className="flex justify-evenly max-md:hidden items-start pt-1 bg-[#6C63FF] lg:h-14 h-14">
         <div className="max-sm:hidden">
           <Link href="#" className="flex mt-3 text-white">
             <img
@@ -72,7 +72,7 @@ export default function MyNavbar() {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
           <Link
             href="/"
-            className="flex items-center  rtl:space-x-reverse"
+            className="flex items-center z-10	 space-x-3 rtl:space-x-reverse lg:ms-[-85px]"
           >
             <img
               src="images/logo.png"
@@ -108,7 +108,7 @@ export default function MyNavbar() {
                 </svg>
               </div>
             </SheetTrigger>
-            <SheetContent>
+            <SheetContent className='bg-white'>
               <SheetHeader>
                 <SheetTitle>
                   <div className=" items-center pt-1 bg-indigo-500 rounded-lg  h-[140px] ms-[-10px] mt-[-20px] w-[100%]">
@@ -174,11 +174,11 @@ export default function MyNavbar() {
                 </SheetTitle>
                 <SheetDescription>
                   <div>
-                    <ul>
+                    <ul className="flex flex-col items-center">
                       <li>
                         <Link
-                          href="#"
-                          className="block py-2 px-3 text-white md:ms-10 text-base font-semibold bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                          href="/home"
+                          className="block py-2 px-[150px] text-white md:ms-10 text-base font-semibold bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
                           aria-current="page"
                         >
                           HOME
@@ -187,7 +187,7 @@ export default function MyNavbar() {
                       <li>
                         <Link
                           href="#"
-                          className="block py-2 px-3 text-gray-900 md:ms-10 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                          className="block py-2 px-[150px] text-gray-900 md:ms-10 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                         >
                           SERVICES
                         </Link>
@@ -195,19 +195,19 @@ export default function MyNavbar() {
                       <li>
                         <Link
                           href="#"
-                          className="block py-2 px-3 text-gray-900 md:ms-10 md:me-10 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent text-center ps-12"
+                          className="block py-2 px-[150px] text-gray-900  rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent text-center"
                         >
                           APPS
                         </Link>
                       </li>
-                      <li className="block py-2 px-3 text-gray-900 md:ms-10 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ps-[145px]">
+                      <li className="block py-2 px-[150px] text-gray-900 md:ms-10 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ">
                         <Dropdown
                           label="BOOKING"
                           inline
                           className="text-base font-semibold ms11"
                         >
                           <Dropdown.Item>
-                            <Link href="#">Book a ride</Link>
+                            <Link href="/book-a-ride">Book a ride</Link>
                           </Dropdown.Item>
                           <Dropdown.Item>
                             <Link href="#">Order placement</Link>
@@ -218,14 +218,14 @@ export default function MyNavbar() {
                       <li>
                         <Link
                           href="#"
-                          className="block py-2 px-2 text-gray-900 md:ms-5 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                          className="block py-2 px-[150px] text-gray-900 text-center rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                         >
                           TRACKING
                         </Link>
                       </li>
 
                       <li>
-                        <Link href="#">
+                        <Link href="/register">
                           <button className="bg-blue-300 h-[35px] w-[150px] mt-3 text-white rounded-lg">
                             Register Yourself
                           </button>
@@ -245,7 +245,7 @@ export default function MyNavbar() {
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
                 <Link
-                  href="#"
+                  href="/home"
                   className="block py-2 px-3 text-white lg:ms-10 text-base font-semibold bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
                   aria-current="page"
                 >
@@ -275,7 +275,7 @@ export default function MyNavbar() {
                   className="text-base font-semibold ms11"
                 >
                   <Dropdown.Item>
-                    <Link href="#">Book a ride</Link>
+                    <Link href="/book-a-ride">Book a ride</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <Link href="#">Order placement</Link>
@@ -291,7 +291,7 @@ export default function MyNavbar() {
                 </Link>
               </li>
               <li>
-                <Link href="#">
+                <Link href="/register">
                   <button className="bg-blue-300 ms-10 h-[35px] w-[150px] mt-[-3px] text-white rounded-lg">
                     Register Yourself
                   </button>
