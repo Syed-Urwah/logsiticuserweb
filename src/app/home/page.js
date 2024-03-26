@@ -77,7 +77,7 @@ export default function page() {
             </div>
             <div className='rounded-xl bg-white p-6 text-center shadow-xl ring-indigo-300 ring-1 ring-inset shadow-indigo-300/50'>
               <div className='mx-auto flex h-24 w-24 -translate-y-16 transform items-center justify-center rounded-full bg-gray-100 shadow-lg shadow-indigo-400/100'>
-                <img
+                <img 
                   src="/images/time.jpeg"
                   alt="phone"
                   className='h-12'
@@ -149,7 +149,7 @@ export default function page() {
                   alt="" 
                 />
             </div>
-            <div class="mb-4 flex justify-start py-8">
+            <div className="mb-4 flex justify-start py-8">
                 <img
                     src="/images/right-mob.jpeg"
                     className='h-auto w-1/2 rounded-lg'
