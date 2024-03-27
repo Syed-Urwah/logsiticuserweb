@@ -100,9 +100,9 @@ export default function MyNavbar() {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M1 1h15M1 7h15M1 13h15"
                   />
                 </svg>
@@ -210,7 +210,7 @@ export default function MyNavbar() {
                             <Link href="/book-a-ride">Book a ride</Link>
                           </Dropdown.Item>
                           <Dropdown.Item>
-                            <Link href="#">Order placement</Link>
+                            <Link href="/order-placement">Order placement</Link>
                           </Dropdown.Item>
                         </Dropdown>
                       </li>

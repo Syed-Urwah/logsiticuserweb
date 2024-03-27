@@ -1,0 +1,15 @@
+.line-1 {
+  border-left: 4px solid #8BB7F0;
+  height: 50px;
+  position: relative;
+  top: 45px;
+  right: 22px;
+}
+
+.line-2 {
+  border-left: 4px solid #8BB7F0;
+  height: 50px;
+  position: relative;
+  top: 42px;
+  right: 22px;
+}

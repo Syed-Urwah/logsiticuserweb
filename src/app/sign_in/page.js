@@ -1,11 +1,10 @@
 "use client"
-
 import React from 'react'
 import Link from 'next/link';
 
 export default function page() {
   return (
-    <div>
+    <div> 
         <div className='flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 md:max-w-full sm:max-w-full'>
             <div className='mx-auto w-full sm:max-w-sm lg:max-w-full mb-5'>
                 <h2 className='mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>Sign In</h2>
@@ -29,7 +28,6 @@ export default function page() {
                         </div>
                         <div className='p-4 w-[600px] md:ms-1 pr-4'>
                             <input id="email" name="email" type="email" autoComplete="email" required className='w-full rounded-md outline-none border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2' placeholder='Enter Your Password'/>
-
                         </div>
                     </div>
                 </div>

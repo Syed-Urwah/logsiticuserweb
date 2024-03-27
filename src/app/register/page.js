@@ -10,7 +10,7 @@ export default function page() {
         <div className="mx-auto w-full sm:max-w-sm lg:max-w-full mb-5">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Registration</h2>
         </div>
-
+ 
         <form className='space-y-8' action="#" method="POST">
                 <div className='w-full mx-auto bg-slate-200 rounded-xl shadow-0 py-5 md:px-10 overflow-hidden md:max-w-2xl lg:max-w-5xl'>
                     <div className='md:flex md:justify-start'>
