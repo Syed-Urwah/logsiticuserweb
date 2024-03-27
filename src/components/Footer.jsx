@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
           <div>
             <div>
-              <img src="/images/footer-logo.png" className="w-[50%] h-[145px]" />
+              <img src="/images/footer-logo.png" className="w-[50%]" />
             </div>
             <h2 className=" text-lg mt-5 font-semibold text-white uppercase dark:text-white">
               Got a Project?
