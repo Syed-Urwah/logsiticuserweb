@@ -1,12 +1,9 @@
 "use client";
-
 import Link from "next/link";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -108,22 +105,22 @@ export default function MyNavbar() {
                 </svg>
               </div>
             </SheetTrigger>
-            <SheetContent className='bg-white'>
+            <SheetContent className="bg-white">
               <SheetHeader>
                 <SheetTitle>
-                  <div className=" items-center pt-1 bg-indigo-500 rounded-lg  h-[140px] ms-[-10px] mt-[-20px] w-[100%]">
+                  <div className=" items-center py-2 mb-3 bg-indigo-500 rounded-lg ms-[-25px] mt-[-24px] w-[120%]">
                     <div>
-                      <Link href="#" className="flex mt-3 text-white">
+                      <Link href="#" className="flex items-center mt-2 text-white">
                         <img
                           src="/images/location.png"
                           alt="Vercel Logo"
-                          className="h-5 me-3 max-sm:ms-4"
+                          className="h-4 me-3 max-sm:ms-4"
                         />
                         <p
                           style={{
                             fontFamily: "Scada",
-                            fontWeight: 600,
-                            fontSize: 17,
+                            fontWeight: 500,
+                            fontSize: 15,
                           }}
                         >
                           xyz road, Riyadh, Saudia Arabia
@@ -132,17 +129,17 @@ export default function MyNavbar() {
                     </div>
 
                     <div>
-                      <Link href="#" className="flex mt-3 text-white">
+                      <Link href="#" className="flex items-center mt-2 text-white">
                         <img
                           src="/images/phone.png"
                           alt="phone"
-                          className="h-5 me-3 max-sm:ms-4"
+                          className="h-4 me-3 max-sm:ms-4"
                         />
                         <p
                           style={{
                             fontFamily: "Scada",
-                            fontWeight: 600,
-                            fontSize: 17,
+                            fontWeight: 500,
+                            fontSize: 15,
                           }}
                         >
                           0335-3915158
@@ -150,20 +147,20 @@ export default function MyNavbar() {
                       </Link>
                     </div>
 
-                    <div className="flex mt-3 text-white items-center me-10">
+                    <div className="flex  mt-2 text-white items-center me-10">
                       <Link href="#">
                         <img
                           src="/images/notifi.png"
                           alt="phone"
-                          className="h-5 lg:me-14 max-sm:me-2 max-sm:ms-4"
+                          className="h-4 lg:me-14 max-sm:me-2 max-sm:ms-4"
                         />
                       </Link>
                       <Link href="#">
                         <p
                           style={{
                             fontFamily: "Scada",
-                            fontWeight: 600,
-                            fontSize: 17,
+                            fontWeight: 500,
+                            fontSize: 15,
                           }}
                         >
                           CALL US NOW
@@ -174,7 +171,7 @@ export default function MyNavbar() {
                 </SheetTitle>
                 <SheetDescription>
                   <div>
-                    <ul className="flex flex-col items-center">
+                    <ul className="flex flex-col">
                       <li>
                         <Link
                           href="/home"
@@ -184,13 +181,25 @@ export default function MyNavbar() {
                           HOME
                         </Link>
                       </li>
-                      <li>
-                        <Link
-                          href="/services"
-                          className="block py-2 px-[150px] text-gray-900 md:ms-10 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                      <li className="block py-2 px-[150px] text-gray-900 md:ms-10 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ">
+                        <Dropdown
+                          label="SERVICES"
+                          inline
+                          className="text-base font-semibold ms11"
                         >
-                          SERVICES
-                        </Link>
+                          <Dropdown.Item>
+                            <Link href="#">Ride</Link>
+                          </Dropdown.Item>
+                          <Dropdown.Item>
+                            <Link href="#">Goods</Link>
+                          </Dropdown.Item>
+                          <Dropdown.Item>
+                            <Link href="#">Fargile Items</Link>
+                          </Dropdown.Item>
+                          <Dropdown.Item>
+                            <Link href="#">Documents</Link>
+                          </Dropdown.Item>
+                        </Dropdown>
                       </li>
                       <li>
                         <Link
@@ -217,7 +226,7 @@ export default function MyNavbar() {
 
                       <li>
                         <Link
-                          href="#"
+                          href="/track-shipment "
                           className="block py-2 px-[150px] text-gray-900 text-center rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                         >
                           TRACKING
@@ -246,24 +255,45 @@ export default function MyNavbar() {
               <li>
                 <Link
                   href="/home"
-                  className="block py-2 px-3 text-white lg:ms-10 text-base font-semibold bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                  className="block py-2 px-3 me-4 text-white lg:ms-10 text-base font-semibold bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
                   aria-current="page"
                 >
                   HOME
                 </Link>
               </li>
-              <li>
+
+              <li className="text-base font-semibold">
+                <Dropdown
+                  label="SERVICES"
+                  inline
+                  className="text-base font-semibold ms11"
+                >
+                  <Dropdown.Item>
+                    <Link href="#">Ride</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link href="#">Goods</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link href="#">Fargile Items</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link href="#">Documents</Link>
+                  </Dropdown.Item>
+                </Dropdown>
+              </li>
+              {/* <li>
                 <Link
                   href="/services"
                   className="block py-2 px-3 text-gray-900 lg:ms-10 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
                   SERVICES
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   href="#"
-                  className="block py-2 px-3 text-gray-900 lg:ms-10 me-10 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className="block py-2 px-3 text-gray-900 lg:ms-5 me-8 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
                   APPS
                 </Link>
@@ -278,13 +308,13 @@ export default function MyNavbar() {
                     <Link href="/book-a-ride">Book a ride</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link href="#">Order placement</Link>
+                    <Link href="/order-placement">Order placement</Link>
                   </Dropdown.Item>
                 </Dropdown>
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/track-shipment"
                   className="block py-2 px-2 text-gray-900 lg:ms-5 rounded text-base font-semibold hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
                   TRACKING
