@@ -15,7 +15,7 @@ export default function page() {
             <div className='sm:container mt-20'>
               <button
                 type="button"
-                className='relative object-cover ml-20 w-1/3 min-h-40 rounded-xl border-2 uppercase text-2xl px-7 pb-[8px] pt-[10px] font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
+                className='relative object-cover ml-20 lg:ml-2 w-1/3 h-40 lg:w-[314px] lg:h-[166px] lg:rounded-3xl rounded-xl border-2 lg:border-0 uppercase text-lg lg:text-4xl px-7 pb-[8px] pt-[10px] font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
                 style={{ backgroundImage: "url('/images/ride.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
                 data-twe-ripple-init
                 data-twe-ripple-color="light">
@@ -23,7 +23,7 @@ export default function page() {
               </button>
               <button
                 type="button"
-                className='relative object-cover ml-20 w-1/3 min-h-40 rounded-xl border-2 uppercase text-2xl px-7 pb-[8px] pt-[10px] font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
+                className='relative object-cover ml-20 w-1/3 h-40 lg:w-[314px] lg:h-[166px] lg:rounded-3xl rounded-xl border-2 lg:border-0 uppercase text-lg lg:text-4xl px-7 pb-[8px] pt-[10px] font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
                 style={{ backgroundImage: "url('/images/goods.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
                 data-twe-ripple-init
                 data-twe-ripple-color="light">
@@ -33,7 +33,7 @@ export default function page() {
             <div className='sm:container mt-5 '>
               <button
                 type="button"
-                className='relative object-cover ml-20 w-1/3 min-h-40 rounded-xl border-2 uppercase text-lg lg:text-2xl px-3 pb-[8px] pt-[10px] font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
+                className='relative object-cover ml-20 lg:ml-2 w-1/3 h-40 lg:w-[314px] lg:h-[166px] lg:rounded-3xl rounded-xl border-2 lg:border-0 uppercase text-lg lg:text-4xl px-3 pb-[8px] pt-[10px] font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
                 style={{ backgroundImage: "url('/images/fragile.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
                 data-twe-ripple-init
                 data-twe-ripple-color="light">
@@ -41,7 +41,7 @@ export default function page() {
               </button>
               <button
                 type="button"
-                className='relative object-cover ml-20 w-1/3 min-h-40 rounded-xl border-2 uppercase text-lg lg:text-2xl px-7 pb-[8px] pt-[10px]  font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
+                className='relative object-cover ml-20 w-1/3 h-40 lg:w-[314px] lg:h-[166px] lg:rounded-3xl rounded-xl border-2 lg:border-0 uppercase text-lg lg:text-4xl px-7 pb-[8px] pt-[10px]  font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
                 style={{ backgroundImage: "url('/images/doc.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
                 data-twe-ripple-init
                 data-twe-ripple-color="light">
