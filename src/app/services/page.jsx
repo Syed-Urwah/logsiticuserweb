@@ -3,12 +3,13 @@ import Image from 'next/image'
 const page = () => {
   return (
     <div className=''>
+
       <div className="bg-[#F3F4F9] px-5 sm:px-10 md:px-20 py-8">
         <h1 className="text-3xl lg:text-4xl font-bold w-[90%] sm:w-[70%] lg:w-[50%] text-center mx-auto">Simplifying Goods <br /> Management with Apaale</h1>
         <p className="py-5 text-justify">Goods must flow efficiently in today's linked world if firms are to prosper. Effective logistics management may make or break a business, whether it comes to distributing completed goods or raw materials for production. Leading provider of logistics software solutions, Apaale, provides cutting-edge technologies to expedite the procedure and provide more effective inventory management for companies.</p>
       </div>
+      {/* logistic management */}
       <div className="flex flex-col md:flex-row justify-between gap-5 mt-10 px-5 sm:px-10 md:px-20 py-4 ">
-
         <div className="w-full md:w-[47%] min-h-[54vh]">
           <h2 className=" text-3xl md:text-3xl font-bold">What is the Management of Logistics?</h2>
           <div>
