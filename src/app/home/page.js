@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image';
+import CallUs from '@/components/CallUs';
 
 export default function page() {
   return (
@@ -8,7 +9,7 @@ export default function page() {
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className='flex items-center justify-center'>
           <div className='inline-block text-white uppercase align-top font-sans mt-16 opacity-75'>
-            <label className='mb-4 tracking-widest font-semibold text-sm lg:text-xl ps-10 lg:ps-6'>Logistics assists you in achieving your business objectives.</label>
+            <label className='mb-4 lg:tracking-widest font-semibold text-sm lg:text-xl ps-10 lg:ps-6'>Logistics assists you in achieving your business objectives.</label>
             <h4 className='mb-6 font-semibold text-4xl mx-auto lg:text-7xl mt-4 ps-24 lg:ps-11'>Offering top-tier</h4>
             <h4 className='mb-6 font-semibold text-4xl mx-auto lg:text-7xl ps-24 lg:ps-14'>freight services.</h4>
             <div className='sm:container mt-20'>
@@ -109,7 +110,7 @@ export default function page() {
           </div>
         </div>
       </div>
-      <div className='h-full w-full min-h-screen pt-12 p-20 bg-gray-100'>
+      <div className='h-full w-full min-h-screen pt-12 p-20 bg-[#F3F4F9]'>
         <div className='grid grid-cols-2 gap-5 lg:px-32'>
           <div className='lg:px-20'>
             <h2 className='tracking-widest font-semibold text-lg font-sans uppercase text-indigo-500'>Select a required service</h2>
@@ -224,10 +225,10 @@ export default function page() {
           </div>
         </div>
       </div>
-      <div className='h-full w-full pt-12 p-20 bg-gray-100'>
+      <div className='h-full w-full pt-12 p-20 bg-[#F3F4F9]'>
         <div className='grid grid-cols-2 gap-5 lg:px-32'>
           <div className='lg:px-20 flex justify-center items-center'>
-            <img src="/images/man.jpeg" alt="alternate text" className='h-96' />
+            <img src="/images/man.jpeg" alt="alternate text" className='h-full' />
 
 
           </div>
@@ -239,6 +240,11 @@ export default function page() {
               <li>Store to Store</li>
               <li>Door to Door</li>
               <li>Store to Door Short & Long term Warehouse Storage Facility at Affordable rates</li>
+              <div className="flex justify-center py-5">
+        <button className="py-2 px-4 rounded bg-[#6C63FF] text-white">
+        View Order
+        </button>
+      </div>
             </div>
             <div className='bg-white p-3 border-2 ring-gray-200 px-4 h-1/2 mt-8'>
               <h2 className='tracking-widest font-semibold text-lg font-sans uppercase text-indigo-500 p-3'>No Interchange of LCL cargo on trucks during the delivery Process</h2>
@@ -266,22 +272,7 @@ export default function page() {
           </div>
         </div>
       </div>
-      <div className='bg-gray-100'>
-        <header className='text-center mx-auto mb-2 lg:px-20 py-6'>
-          <h3 className='tracking-normal font-bold text-xl mt-4 font-sans text-black-500'>Still have questions about our Intracity Services?</h3>
-        </header>
-        <div className='grid grid-cols-3 gap-2'>
-          <div className='mb-4 flex justify-end py-8'>
-
-          </div>
-          <div className='mb-4 flex justify-center py-2'>
-            <button type="submit" className='flex lg:w-1/2 md:w-full mx-auto justify-center rounded-md bg-indigo-600 px-3 py-3 text-sm font-sans font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Call Us Now</button>
-          </div>
-          <div className='mb-4 flex justify-start py-8'>
-
-          </div>
-        </div>
-      </div>
+      <CallUs/>
     </div>
   )
 }
