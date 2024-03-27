@@ -161,6 +161,7 @@ export default function page() {
       <header className='text-center mx-auto mb-12 lg:px-20 mt-5'>
         <h2 className='tracking-normal font-bold text-3xl mt-4 font-sans uppercase text-black-500'>Our Services Type</h2>
       </header>
+
       <div className='h-full w-5/6 mx-auto pt-12 p-20 mb-5'>
         <div className='grid gap-14 md:grid-cols-3 md:gap-5'>
           <div className='rounded-xl bg-white p-6 text-center shadow-xl ring-indigo-300 ring-1  ring-inset shadow-indigo-300/50'>
@@ -198,6 +199,7 @@ export default function page() {
             <p className='indent-8 tracking-wide -translate-y-6'>We Match LCL Cargo at affordable rates on long hual, book your sizeable load/cargo in sharing mode (LCL) in 17ft or 20Ft containers, Safety guaranteed.</p>
           </div>
         </div>
+
         <div className='grid gap-14 md:grid-cols-2 md:gap-5 mt-16 lg:px-40'>
           <div className='rounded-xl bg-white p-6 text-center shadow-xl ring-indigo-300 ring-1  ring-inset shadow-indigo-300/50'>
             <div className='mx-auto flex h-24 w-24 -translate-y-16 transform items-center justify-center rounded-full bg-gray-100 shadow-lg shadow-indigo-400/100'>
