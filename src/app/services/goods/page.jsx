@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-const page = () => {
+const ServicesGoods = () => {
   return (
     <div className=''>
 
@@ -145,4 +145,4 @@ const page = () => {
   )
 }
 
-export default page
+export default ServicesGoods
