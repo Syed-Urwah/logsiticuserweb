@@ -1,3 +1,4 @@
+import { Link } from "lucide-react";
 import React from "react";
 
 export default function Footer() {
@@ -6,158 +7,136 @@ export default function Footer() {
       <div className="mx-auto w-full max-w-screen-xl">
         <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
           <div>
-            <h2 className=" text-lg font-semibold text-white uppercase dark:text-white">
+            <div>
+              <img src="/images/footer-logo.png" className="w-[50%]" />
+            </div>
+            <h2 className=" text-lg mt-5 font-semibold text-white uppercase dark:text-white">
               Got a Project?
             </h2>
             <ul className="text-white dark:text-gray-400 font-medium">
               <li className="mb-4 mt-1 ">
-                <a href="#" className=" hover:underline text-[17px] font-medium">
+                <a
+                  href="#"
+                  className=" hover:underline text-[17px] font-medium"
+                >
                   Let’s Talk
                 </a>
               </li>
-              <li className="mb-4">
+              {/* <li className="mb-4">
                 <a href="#" className="hover:underline font-light text-sm">
                   &gt; Tell us everything
                 </a>
-              </li>
+              </li> */}
               <li className="mb-4">
-                <a href="#" className="hover:underline font-light text-sm">
+                <a href="#" className="underline font-light text-sm">
                   info@iplexsoft.com
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h2 className="mb-2 text-xl font-normal text-white uppercase dark:text-white">
+            <h2 className="mb-2 text-2xl font-normal text-white uppercase dark:text-white">
               Services
             </h2>
-            <ul className="text-white list-disc dark:text-gray-400 font-light text-sm">
-              <li className="mb-2">
+            <ul className="text-white list-disc ms-5 dark:text-gray-400 font-light text-sm">
+              <li className="mb-2 mt-3">
                 <a href="#" className="hover:underline">
-                  Digital Marketing
+                  Ride
                 </a>
               </li>
               <li className="mb-2">
                 <a href="#" className="hover:underline">
-                  Custom Development
+                  Goods
                 </a>
               </li>
               <li className="mb-2">
                 <a href="#" className="hover:underline">
-                  Product Development
+                  Fargile Items
                 </a>
               </li>
               <li className="mb-2">
                 <a href="#" className="hover:underline">
-                  ERP Implementation
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="hover:underline">
-                  Web Designing
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="hover:underline">
-                  Mobile Application
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="hover:underline">
-                  E-Commerce
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="hover:underline">
-                  DevOps
+                  Documents
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h2 className="mb-2 text-xl font-normal text-white uppercase dark:text-white">
-              Company
+            <h2 className="mb-2 text-2xl font-normal text-white uppercase dark:text-white">
+              Quick Links
             </h2>
-            <ul className="text-white list-disc dark:text-gray-400 font-light text-sm">
+            <ul className="text-white ms-5 list-disc dark:text-gray-400 font-light text-sm">
+              <li className="mb-2 mt-3">
+                <a href="/home" className="hover:underline">
+                  Home
+                </a>
+              </li>
               <li className="mb-2">
-                <a href="#" className="hover:underline">
-                  About Company
+                <a href="/book-a-ride" className="hover:underline">
+                  Book A Ride
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="/order-placement" className="hover:underline">
+                  Order Placement
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="/track-shipment" className="hover:underline">
+                  Tracking
                 </a>
               </li>
               <li className="mb-2">
                 <a href="#" className="hover:underline">
-                  Careers
+                  Terms Of Services
                 </a>
               </li>
               <li className="mb-2">
                 <a href="#" className="hover:underline">
-                  Clients
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="hover:underline">
-                  Team
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="hover:underline">
-                  Blogs
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="hover:underline">
-                  Case Studies
+                  Privacy Policy
                 </a>
               </li>
             </ul>
           </div>
           <div>
             <h2 className="mb-2 text-xl font-semibold text-white uppercase dark:text-white">
-              iPlexSoft Pakistan
+              Social Media Links
             </h2>
-            <ul className="text-white dark:text-gray-400 font-light text-sm">
+            <div className="flex mt-5 items-center">
+              <span className="ms-3">
+                <a href="#">
+                  <img src="/images/icon.png" alt="" />
+                </a>
+              </span>
+              <span className="ms-7">
+                <a href="#">
+                  <img src="/images/fb.png" alt="" />
+                </a>
+              </span>
+              <span className="ms-7">
+                <a href="#">
+                  <img src="/images/linkedIn.png" alt="" />
+                </a>
+              </span>
+            </div>
+
+            <h2 className="mb-2 mt-14 ms-3 text-xl font-semibold text-white uppercase dark:text-white">
+              Apaale Pakistan
+            </h2>
+            <ul className="text-white ms-3 dark:text-gray-400 font-light text-sm">
               <li className="mb-4">
                 <p className="hover:underline">
-                  Office 506, 5th Floor, Park Avenue Shahrah-e-Faisal road
-                  Karachi, Pakistan
+                  Office 506, 5th Floor, XYZ Building Riyadh, Saudi Arabia.
                 </p>
-              </li>
-            </ul>
-            <h2 className="mb-2 text-xl font-semibold text-white uppercase dark:text-white">
-              iPlexSoft UK
-            </h2>
-            <ul className="text-white dark:text-gray-400 font-light text-sm">
-              <li className="mb-4">
-                <p className="hover:underline">
-                  53B County Mall , Crawley West Sussex. UKPost Code : RH10 1 FF
-                </p>
-              </li>
-            </ul>
-            <h2 className="mb-2 text-xl font-semibold text-white uppercase dark:text-white">
-              iPlexSoft Saudia Arabia
-            </h2>
-            <ul className="text-white dark:text-gray-400 font-light text-sm">
-              <li className="mb-4">
-                <p className="hover:underline">
-                  Akaria Plaza - Gate D - 6th Floor Olaya, Riyadh
-                </p>
-              </li>
-            </ul>
-            <h2 className="mb-2 text-xl font-semibold text-white uppercase dark:text-white">
-              iPlexSoft US
-            </h2>
-            <ul className="text-white dark:text-gray-400 font-light text-sm">
-              <li className="mb-4">
-                <p className="hover:underline">NJ</p>
               </li>
             </ul>
           </div>
         </div>
-        <div className="px-4 py-6 bg-indigo-500-100 border-solid  border-t dark:bg-gray-700 md:flex md:items-center md:justify-between">
-          <span className="text-sm text-gray-500 dark:text-gray-300 text-center">
-            © 2023 iplexsoft. All Rights Reserved. Terms of Use. Privacy Policy
+        <div className="px-4 py-6 bg-indigo-500-100 border-solid  border-t dark:bg-gray-700 md:flex md:items-center md:justify-center">
+          <span className="text-sm text-white dark:text-gray-300 text-center">
+            © 2023 Apaale. All Rights Reserved. Terms of Use. Privacy Policy
           </span>
-          <div className="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
+          {/* <div className="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
             <a
               href="#"
               className="text-white hover:text-gray-900 dark:hover:text-white"
@@ -249,7 +228,7 @@ export default function Footer() {
               </svg>
               <span className="sr-only">Dribbble account</span>
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
