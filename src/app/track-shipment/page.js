@@ -1,4 +1,4 @@
-import { Image } from 'lucide-react'
+import { Car, Image } from 'lucide-react'
 import React from 'react';
 import "../styles/custom.css";
 import { Input } from "@/components/ui/input"
@@ -15,6 +15,8 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
+import Map from '@/components/Map';
+import Stars from '@/components/Rating';
 
 
 export default function page() {
@@ -25,7 +27,7 @@ export default function page() {
                     <h1 className='text-center text-xl font-bold mb-5'>Track Shipment</h1>
                 </div>
                 <div className='bg-gray-100 px-5 rounded-xl'>
-                    <div id='map'></div>
+                    <Map />
                     <div className='flex flex-col md:px-7 ' >
                         <div className='flex items-center my-4'>
                             <span className='z-10'><img src="images/delivery.png" /></span>
@@ -111,6 +113,8 @@ export default function page() {
                             </div>
                         </div>
 
+                        
+                        <Stars iconSize={50} defaultRating={3.5} />
 
                         <div className="flex justify-center">
                             <button type="submit" className="py-3 px-4 rounded bg-[#6C63FF] text-white text-sm font-sans font-semibold leading-6">
