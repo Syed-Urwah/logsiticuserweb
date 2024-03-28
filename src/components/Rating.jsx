@@ -4,7 +4,7 @@ import { useState } from "react";
 const DEFAULT_COUNT = 5;
 const DEFAULT_ICON = "★";
 const DEFAULT_UNSELECTED_COLOR = "grey";
-const DEFAULT_COLOR = "yellow";
+const DEFAULT_COLOR = "#6C63FF";
 
 export default function Stars({ count, defaultRating, icon, color, iconSize }) {
   const [rating, setRating] = useState(defaultRating);
