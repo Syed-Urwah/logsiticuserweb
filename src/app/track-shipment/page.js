@@ -1,64 +1,133 @@
-import { Image } from 'lucide-react'
+import { Car, Image } from 'lucide-react'
 import React from 'react';
 import "../styles/custom.css";
-import CallUs from '@/components/CallUs';
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import CallUs from '@/components/CallUs'
+import "../styles/custom.css";
+import { Button } from "@/components/ui/button"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import Map from '@/components/Map';
+import Stars from '@/components/Rating';
 
 
 export default function page() {
     return (
         <div>
-        <div className='2xl:px-[320px] max-md:px-[20px] md:px-[120px] py-12'>
-            <div>
-                <h1 className='text-center text-xl font-bold mb-5'>Track Shipment</h1>
-            </div>
-            <div className='bg-gray-100 px-5 rounded-xl'>
-                <div id='map'></div>
-                <div className='flex flex-col md:px-7 ' >
-                    <div className='flex items-center my-4'>
-                        <span className='z-10'><img src="images/delivery.png" /></span>
-                        <div className='line-1'></div>
-                        <div className='ms-5 text-[#6C63FF] font-medium'>Antony driver takes the trip</div>
-                        <div className='text-gray-400 flex ms-5 text-[12px] '>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
-                            </svg>
-                            <p>2020/03/21 - 09:00</p>
-
-                        </div>
-                    </div>
-                    <div className='flex items-center my-4'>
-                        <span className='z-10'><img src="images/driver-finished.png" /></span>
-                        <div className='line-1'></div>
-                        <div className='ms-5 text-[#6C63FF] font-medium'>Driver finished taking goods</div>
-                        <div className='text-gray-400 flex ms-5 text-[12px]'>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
-                            </svg>
-                            <p>2020/03/21 - 09:10</p>
-
-                        </div>
-                    </div>
-                    <div className='flex items-center my-4'>
-                        <span className='z-10'><img src="images/onthejourney.png" /></span>
-                        <div className='line-1'></div>
-                        <div className='ms-5 text-[#6C63FF] font-medium'>On the journey</div>
-                        
-                    </div>
-                    <div className='flex items-center my-4'>
-                        <span className='z-10'><img src="images/delivery-complete.png" /></span>
-                        <div className='ms-5 text-[#B7B4B4] font-medium'>Delivery completed</div>
-                        
-                    </div>
-                    
+            <div className='2xl:px-[320px] max-md:px-[20px] md:px-[120px] py-12'>
+                <div>
+                    <h1 className='text-center text-xl font-bold mb-5'>Track Shipment</h1>
                 </div>
-            </div>
+                <div className='bg-gray-100 px-5 rounded-xl'>
+                    <Map />
+                    <div className='flex flex-col md:px-7 ' >
+                        <div className='flex items-center my-4'>
+                            <span className='z-10'><img src="images/delivery.png" /></span>
+                            <div className='line-1'></div>
+                            <div className='ms-5 text-[#6C63FF] font-medium'>Antony driver takes the trip</div>
+                            <div className='text-gray-400 flex ms-5 text-[12px] '>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                                </svg>
+                                <p>2020/03/21 - 09:00</p>
 
-            <div className='flex justify-center mt-5'>
-                <button className='py-3 px-8 rounded-xl bg-[#6C63FF] text-white'>Done</button>
-            </div>
+                            </div>
+                        </div>
+                        <div className='flex items-center my-4'>
+                            <span className='z-10'><img src="images/driver-finished.png" /></span>
+                            <div className='line-1'></div>
+                            <div className='ms-5 text-[#6C63FF] font-medium'>Driver finished taking goods</div>
+                            <div className='text-gray-400 flex ms-5 text-[12px]'>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                                </svg>
+                                <p>2020/03/21 - 09:10</p>
 
-        </div>
-            <CallUs/>
+                            </div>
+                        </div>
+                        <div className='flex items-center my-4'>
+                            <span className='z-10'><img src="images/onthejourney.png" /></span>
+                            <div className='line-1'></div>
+                            <div className='ms-5 text-[#6C63FF] font-medium'>On the journey</div>
+
+                        </div>
+                        <div className='flex items-center my-4'>
+                            <span className='z-10'><img src="images/delivery-complete.png" /></span>
+                            <div className='ms-5 text-[#B7B4B4] font-medium'>Delivery completed</div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <Dialog>
+                    <DialogTrigger asChild>
+
+                        <div className='flex justify-center mt-5'>
+                            <button className='py-3 px-8 rounded-xl bg-[#6C63FF] text-white'>Done</button>
+                        </div>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px] bg-white">
+                        <DialogHeader>
+                            <DialogTitle className='flex justify-center text-gray-400'>Order # 30528</DialogTitle>
+                        </DialogHeader>
+
+                        <div className='flex gap-3 bg-gray-300 px-2 py-3 w-full'>
+                            <div className='flex flex-col justify-center items-center'>
+                                <img src="/images/circle.png" className="w-4 h-4 ms-[2px] z-10" />
+                                <span className='text-xl my-[-4px]'>|</span>
+                                <img src="/images/tracking.png" className='w-5 h-5 z-10	' />
+                            </div>
+                            <div className='flex flex-col font-semibold'>
+                                <span className='ms-2 mb-1'>Origin Location</span>
+                                <span className='border-b-[2px] border-black w-[320px] max-sm:w-[400px]'></span>
+                                <span className='ms-2 mt-1'>Destination Location</span>
+                            </div>
+                        </div>
+
+                        <div className='flex flex-col'>
+                            <div className='flex justify-between'>
+                                <span>Sub-Total</span>
+                                <span>295 SAR</span>
+                            </div>
+                            <div className='flex justify-between'>
+                                <span>Platform Fee</span>
+                                <span>25 SAR</span>
+                            </div>
+                        </div>
+
+                        <div className='border-b-[2px] border-[#83b2f0]'></div>
+
+                        <div className='flex flex-col'>
+                            <div className='flex justify-between font-semibold'>
+                                <span>Cash Payable</span>
+                                <span>320 SAR</span>
+                            </div>
+                        </div>
+
+                        
+                        <Stars iconSize={50} defaultRating={3.5} />
+
+                        <div className="flex justify-center">
+                            <button type="submit" className="py-3 px-4 rounded bg-[#6C63FF] text-white text-sm font-sans font-semibold leading-6">
+                                Go Now
+                            </button>
+                        </div>
+
+                    </DialogContent>
+                </Dialog>
+
+
+            </div>
+            <CallUs />
         </div>
     )
 }
