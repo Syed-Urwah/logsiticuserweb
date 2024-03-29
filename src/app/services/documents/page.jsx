@@ -2,12 +2,12 @@ import React from 'react'
 
 const ServicesDocuments = () => {
     return (
-        <div>
-            <div className="bg-[#F3F4F9] px-5 sm:px-10 md:px-20 py-8">
-                <h1 className="text-[25px] text-2xl md:text-4xl lg:text-[45px] leading-snug font-extrabold w-[90%] text-center mx-auto">
+        <div className='ma-w-[1200px]'>
+            <div className="bg-[#F3F4F9] px-5 sm:px-10 md:px-20 py-8 pt-14">
+                <h1 className="text-[25px]  text-2xl md:text-4xl lg:text-[45px] !leading-tight font-bold w-[90%] text-center mx-auto">
                     Apaale: Your One-Stop Shop for <br />Secure & Speedy Logistics Documents
                 </h1>
-                <p className="py-5 text-[19px] text-justify">
+                <p className="py-5 text-[17px] md:text-[19px] text-justify">
                     In the broad realm of logistics, where products are moved between countries and continents, Documentation is essential to maintaining efficient operations. Leading logistics software company Apaale provides solutions that simplify this procedure, enabling companies to more easily handle their shipments.
                 </p>
             </div>
@@ -16,7 +16,7 @@ const ServicesDocuments = () => {
                 <div className="w-full md:w-[47%] min-h-[54vh]">
                     <h2 className=" text-2xl md:text-3xl font-bold">Logistic Documents: <br />what are they?</h2>
                     <div>
-                        <p className='text-justify text-[19px] mt-5'>
+                        <p className='text-justify text-[17px] md:text-[19px] mt-5'>
                             The paperwork related to the transportation of commodities from one location to another is known as logistical documentation. They provide several vital functions, including financial transactions, regulatory compliance, and easing the movement of commodities throughout the supply chain. Stakeholders can track and control shipments with the assistance of this information trail provided by these documents.
                         </p>
                     </div>
@@ -26,8 +26,8 @@ const ServicesDocuments = () => {
 
             <div className="px-5 sm:px-10 md:px-20 bg-[#F3F4F9] py-12">
                 <h3 className='text-center font-bold text-2xl sm:text-3xl'>Use of Documentation</h3>
-                <p className='text-lg md:text-[19px] text-justify mt-5'>The goods document maps travels as well as numerous pickups and stops and is vital to printing and transferring planning outcomes. Logistics documentation can be generated mechanically or manually. In Customizing for Transportation Management (TM), you specify the kind of goods document. It includes all of the goods document's crucial control parameters.</p>
-                <p className='text-lg md:text-[19px] text-justify mt-4'>In the goods document, you can manually set statuses such as "Transportation Completed." In this instance, every bill of lading included in the goods document has its status automatically set. After that, these print automatically. </p>
+                <p className='text-[17px] md:text-[19px] text-justify mt-5'>The goods document maps travels as well as numerous pickups and stops and is vital to printing and transferring planning outcomes. Logistics documentation can be generated mechanically or manually. In Customizing for Transportation Management (TM), you specify the kind of goods document. It includes all of the goods document's crucial control parameters.</p>
+                <p className='text-[17px] md:text-[19px] text-justify mt-4'>In the goods document, you can manually set statuses such as "Transportation Completed." In this instance, every bill of lading included in the goods document has its status automatically set. After that, these print automatically. </p>
             </div>
 
             {/* types of logistics documentation  */}
