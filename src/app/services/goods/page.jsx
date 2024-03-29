@@ -5,22 +5,23 @@ const ServicesGoods = () => {
     <div className=''>
 
       <div className="bg-[#F3F4F9] px-5 sm:px-10 md:px-20 py-8">
-        <h1 className="text-3xl lg:text-4xl font-bold w-[90%] sm:w-[70%] lg:w-[50%] text-center mx-auto">Simplifying Goods <br /> Management with Apaale</h1>
-        <p className="py-5 text-justify">Goods must flow efficiently in today's linked world if firms are to prosper. Effective logistics management may make or break a business, whether it comes to distributing completed goods or raw materials for production. Leading provider of logistics software solutions, Apaale, provides cutting-edge technologies to expedite the procedure and provide more effective inventory management for companies.</p>
+        <h1 className="text-4xl lg:text-5xl !leading-tight md:!leading-snug font-bold w-[90%] sm:w-[70%] lg:w-[50%] text-center mx-auto">Simplifying Goods <br /> Management with Apaale</h1>
+        <p className="py-5 text-lg text-justify">Goods must flow efficiently in today's linked world if firms are to prosper. Effective logistics management may make or break a business, whether it comes to distributing completed goods or raw materials for production. Leading provider of logistics software solutions, Apaale, provides cutting-edge technologies to expedite the procedure and provide more effective inventory management for companies.</p>
       </div>
-      
+
       <div className="flex flex-col md:flex-row justify-between gap-5 mt-10 px-5 sm:px-10 md:px-20 py-4 ">
         <div className="w-full md:w-[47%] min-h-[54vh]">
-          <h2 className=" text-3xl md:text-3xl font-bold">What is the Management of Logistics?</h2>
+          <h2 className=" text-2xl md:text-3xl font-bold">What is the Management of Logistics?</h2>
           <div>
-            <p className='text-justify py-5'>The process of organizing, carrying out, and managing the flow of products, services, and information between the point of origin and the site of consumption is known as logistics management. It entails integrating many tasks, such as material handling, packaging, transportation, inventory control, warehousing, and security.</p>
-            <p className='text-justify'>Getting items to the right location, at the right time, and in the appropriate condition is the aim of Apaale logistics management, which also aims to maximize efficiency and minimize costs. To strike the ideal balance between cost-effectiveness and client service, the supply chain must be optimized.</p>
+            <p className='text-justify text-[19px] py-5'>The process of organizing, carrying out, and managing the flow of products, services, and information between the point of origin and the site of consumption is known as logistics management. It entails integrating many tasks, such as material handling, packaging, transportation, inventory control, warehousing, and security.</p>
+            <p className='text-justify text-[19px]'>Getting items to the right location, at the right time, and in the appropriate condition is the aim of Apaale logistics management, which also aims to maximize efficiency and minimize costs. To strike the ideal balance between cost-effectiveness and client service, the supply chain must be optimized.</p>
           </div>
         </div>
 
         <div className="w-full md:w-[47%] bg-slate-200 rounded-xl min-h-[54vh]"></div>
       </div>
 
+      {/* principal element in logistics */}
       <div className="mt-12 md:mt-20 px-5 sm:px-10 md:px-20 py-12 bg-[#F3F4F9]">
 
         <div className="">
@@ -65,7 +66,7 @@ const ServicesGoods = () => {
           </div>
         </div>
       </div>
-      <div className="border-b-2 w-[90%] mx-auto"/>
+      <div className="border-b-2 w-[90%] mx-auto" />
 
       <div className="px-5 sm:px-10 md:px-20 py-16">
         <div className="pb-8">
@@ -96,14 +97,14 @@ const ServicesGoods = () => {
             <h3 className='text-2xl text-center font-semibold'>Increased Efficiency and Productivity</h3>
             <p className='text-justify pt-4'> The goal of logistics is to increase productivity and streamline processes without compromising profit margins. Our delivery productivity is guaranteed without sacrificing the timely delivery of goods by cutting down on resource waste. Apaale logistics management can guarantee that delivery productivity is not impacted by meeting quality requirements and minimizing failures, faults, and deviations.</p>
           </div>
-        
+
         </div>
       </div>
 
       <div className="px-5 sm:px-10 md:px-20 bg-[#F3F4F9] py-16">
         <p className='text-justify text-lg sm:text-xl'>Effective logistics products management is crucial for business success in the cutthroat industry of today. Businesses may overcome the difficulties involved in logistics products management with the help of Apaale's cutting-edge software solutions, which help them maximize productivity, cut expenses, and boost customer happiness.  </p>
       </div>
-      
+
       <header className='text-center mx-auto mb-2 lg:px-20 mt-5'>
         <h2 className='tracking-normal font-bold text-3xl mt-4 font-sans uppercase text-black-500'>Customers</h2>
       </header>
@@ -135,9 +136,7 @@ const ServicesGoods = () => {
           <div className='mb-4 flex justify-center py-2'>
             <button type="submit" className='flex lg:w-1/2 md:w-full mx-auto justify-center rounded-md bg-indigo-600 px-3 py-3 text-sm font-sans font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Call Us Now</button>
           </div>
-          <div className='mb-4 flex justify-start py-8'>
-
-          </div>
+          <div className='mb-4 flex justify-start py-8'></div>
         </div>
       </div>
 

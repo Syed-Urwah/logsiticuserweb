@@ -269,16 +269,16 @@ export default function MyNavbar() {
                   className="text-base font-semibold ms11"
                 >
                   <Dropdown.Item>
-                    <Link href="#">Ride</Link>
+                    <Link href="/services/rides">Ride</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link href="#">Goods</Link>
+                    <Link href="/services/goods">Goods</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link href="#">Fargile Items</Link>
+                    <Link href="/services/fragileItems">Fargile Items</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link href="#">Documents</Link>
+                    <Link href="/services/documents">Documents</Link>
                   </Dropdown.Item>
                 </Dropdown>
               </li>
