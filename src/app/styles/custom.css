@@ -13,3 +13,10 @@
   top: 42px;
   right: 22px;
 }
+.line-3 {
+  border-left: 2px dashed gray;
+  height: 41px;
+  position: relative;
+  top: 36px;
+  right: 13px;
+}

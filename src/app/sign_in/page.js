@@ -5,9 +5,9 @@ import Link from 'next/link';
 export default function page() {
   return (
     <div> 
-        <div className='flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 md:max-w-full sm:max-w-full'>
+        <div className='flex min-h-full flex-col justify-center px-6 py-5 lg:px-8 md:max-w-full sm:max-w-full'>
             <div className='mx-auto w-full sm:max-w-sm lg:max-w-full mb-5'>
-                <h2 className='mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>Sign In</h2>
+                <h2 className='mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>Sign In</h2>
             </div>
             <form className='space-y-6' action="#" method="POST">
                 <div className='w-full mx-auto bg-[#F3F4F9] rounded-xl py-5 md:px-10 shadow-0 overflow-hidden md:max-w-2xl lg:max-w-5xl'>
