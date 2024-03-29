@@ -18,14 +18,14 @@ export default function page() {
             <div className='lg:flex ms-6'>
                 <label htmlFor="email" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-4'> Types Of Goods</label>
                 <div className="p-4 w-full lg:w-4/12 lg:ms-4">
-                    <select id="currency" name="currency" class="leading-9 w-full h-full outline-none rounded border-0 py-2.5 text-gray-900 shadow-sm bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 md:leading-6 pl-2' placeholder='Enter Your Email Address">
+                    <select id="currency" name="currency" className="leading-9 w-full h-full outline-none rounded border-0 py-2.5 text-gray-900 shadow-sm bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 md:leading-6 pl-2' placeholder='Enter Your Email Address">
                         <option>Non-Frozen</option>
                         <option>Frozen</option>
                     </select>
                 </div>
                 <label htmlFor="email" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-4 lg:ml-11'> Temperature</label>
                 <div className="p-4 w-full lg:w-4/12">
-                    <select id="currency" name="currency" class=" w-full h-full outline-none rounded border-0 py-1.5 text-gray-900 shadow-sm bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2' placeholder='Enter Your Email Address">
+                    <select id="currency" name="currency" className=" w-full h-full outline-none rounded border-0 py-1.5 text-gray-900 shadow-sm bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2' placeholder='Enter Your Email Address">
                         <option>A</option>
                         <option>C</option>
                     </select>
@@ -34,7 +34,7 @@ export default function page() {
             <div className='lg:flex ms-6'>
                 <label htmlFor="email" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-4'> Type of vehicle</label>
                 <div className="p-4 w-full lg:w-4/12 lg:ms-4">
-                    <select id="currency" name="currency" class="lg:ml-2 w-full h-full outline-none rounded border-0 py-2.5 text-gray-900 shadow-sm bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2' placeholder='Enter Your Email Address">
+                    <select id="currency" name="currency" className="lg:ml-2 w-full h-full outline-none rounded border-0 py-2.5 text-gray-900 shadow-sm bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2' placeholder='Enter Your Email Address">
                         <option>Cargo Van</option>
                         <option>Cargo Truck</option>
                     </select>
@@ -83,13 +83,13 @@ export default function page() {
             </div>
             <div className='lg:flex ms-6'>
                 <label htmlFor="email" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-4 lg:ml-6'> Volume of Good</label>
-                <div class="relative p-4 w-full lg:w-4/12 flex w-full lg:ml-3">
-                    <span class="flex items-center whitespace-nowrap text-gray-400 rounded-s border bg-white border-e-0 border-solid border-blue-300 px-3 text-center text-base font-normal leading-[1.6] text-surface dark:border-white/10 dark:text-white">KG</span>
-                    <input type="text" class="lg:w-1/2 relative m-0 block flex-auto border rounded-e border-solid border-blue-300 bg-white bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"/>
+                <div className="relative p-4 w-full lg:w-4/12 flex w-full lg:ml-3">
+                    <span className="flex items-center whitespace-nowrap text-gray-400 rounded-s border bg-white border-e-0 border-solid border-blue-300 px-3 text-center text-base font-normal leading-[1.6] text-surface dark:border-white/10 dark:text-white">KG</span>
+                    <input type="text" className="lg:w-1/2 relative m-0 block flex-auto border rounded-e border-solid border-blue-300 bg-white bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"/>
                 </div>
                 <label htmlFor="email" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-5 lg:ml-9'>No of Vehicle</label>
                 <div className="p-4 w-full lg:w-4/12 lg:ml-1">
-                    <select id="currency" name="currency" class=" w-full h-full outline-none rounded border-0 py-2.5 text-gray-900 shadow-sm bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2' placeholder='Enter Your Email Address">
+                    <select id="currency" name="currency" className=" w-full h-full outline-none rounded border-0 py-2.5 text-gray-900 shadow-sm bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2' placeholder='Enter Your Email Address">
                         <option>100</option>
                         <option>200</option>
                     </select>

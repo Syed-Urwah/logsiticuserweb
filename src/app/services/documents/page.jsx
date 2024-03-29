@@ -24,7 +24,7 @@ const ServicesDocuments = () => {
                 <div className="w-full md:w-[47%] bg-slate-200 rounded-xl min-h-[54vh]"></div>
             </div>
 
-            <div className="px-5 sm:px-10 md:px-20 bg-[#F3F4F9] py-12">
+            <div className="px-5 sm:px-10 md:px-20 bg-[#F3F4F9] py-16">
                 <h3 className='text-center font-bold text-2xl sm:text-3xl'>Use of Documentation</h3>
                 <p className='text-[17px] md:text-[19px] text-justify mt-5'>The goods document maps travels as well as numerous pickups and stops and is vital to printing and transferring planning outcomes. Logistics documentation can be generated mechanically or manually. In Customizing for Transportation Management (TM), you specify the kind of goods document. It includes all of the goods document's crucial control parameters.</p>
                 <p className='text-[17px] md:text-[19px] text-justify mt-4'>In the goods document, you can manually set statuses such as "Transportation Completed." In this instance, every bill of lading included in the goods document has its status automatically set. After that, these print automatically. </p>
@@ -61,7 +61,7 @@ const ServicesDocuments = () => {
             </div>
 
             {/* Benefits of Apaale's */}
-            <div className="px-5 sm:px-10 md:px-20 py-16">
+            <div className="px-5 sm:px-10 md:px-20 py-16 bg-[#F3F4F9]">
                 <div className="pb-8">
                     <h2 className='text-3xl font-bold text-center'>The Benefit of Apaale</h2>
                     <p className='text-center text-[19px] py-6'>What distinguishes Apaale from its rivals is as follows:</p>
@@ -69,28 +69,29 @@ const ServicesDocuments = () => {
 
                 <div className="flex flex-col md:flex-row justify-between items-center md:items-stretch gap-8 lg:gap-5 lg:flex-wrap ">
 
-                    <div className="w-full md:w-[30%] p-4 max-w-[400px] border border-indigo-200 shadow-lg shadow-indigo-300/70 rounded-xl">
+                    <div className="w-full md:w-[30%] p-4 max-w-[400px] border bg-white border-indigo-200 shadow-lg shadow-indigo-300/70 rounded-xl">
                         <h3 className='text-xl text-[#6C63FF] text-center font-semibold'>Unrivalled Dependability <br /> and Speed</h3>
                         <p className='text-justify pt-2'>Every time, we deliver your documents to their proper location on schedule.</p>
                     </div>
 
-                    <div className=" w-full md:w-[30%] max-w-[400px] p-4 border border-indigo-200 shadow-lg shadow-indigo-300/70 rounded-xl">
+                    <div className=" w-full md:w-[30%] max-w-[400px] p-4 bg-white border border-indigo-200 shadow-lg shadow-indigo-300/70 rounded-xl">
                         <h3 className='text-xl text-center text-[#6C63FF] font-semibold'>Extensive Security <br /> Measures</h3>
                         <p className='text-justify pt-2'> The protection and security of your private papers are
                             our top priorities.</p>
                     </div>
 
-                    <div className="w-full md:w-[30%] max-w-[400px] p-4 border border-indigo-200 shadow-lg shadow-indigo-300/70 rounded-xl">
+                    <div className="w-full md:w-[30%] max-w-[400px] p-4 bg-white border border-indigo-200 shadow-lg shadow-indigo-300/70 rounded-xl">
                         <h3 className='text-xl text-[#6C63FF] text-center font-semibold'>Scalable <br /> Solutions</h3>
                         <p className='text-justify pt-2'> We offer a wide range of services to meet the demands and sizes of enterprises.</p>
                     </div>
                 </div>
                 <div className="flex flex-col pt-6 md:pt-12 md:flex-row justify-center items-center md:items-stretch gap-5 lg:gap-12 lg:flex-wrap ">
-                    <div className="w-full md:w-[40%] lg:w-[30%] max-w-[400px] p-4 border border-indigo-200 shadow-lg shadow-indigo-300/70 rounded-xl">
+                    <div className="w-full md:w-[40%] bg-white lg:w-[30%] max-w-[400px] p-4 border border-indigo-200 shadow-lg shadow-indigo-300/70 rounded-xl">
                         <h3 className='text-xl text-[#6C63FF] text-center font-semibold'>Unwavering Customer <br /> Service</h3>
                         <p className='text-justify pt-2'>Delivering a smooth and customized experience is our main priority.</p>
                     </div>
-                    <div className=" w-full md:w-[40%] lg:w-[30%] max-w-[400px] p-4 border border-indigo-200 shadow-lg shadow-indigo-300/70 rounded-xl">
+
+                    <div className=" w-full md:w-[40%] bg-white lg:w-[30%] max-w-[400px] p-4 border border-indigo-200 shadow-lg shadow-indigo-300/70 rounded-xl">
                         <h3 className='text-xl text-[#6C63FF] text-center font-semibold'>Tech-Driven <br /> Efficiency</h3>
                         <p className='text-justify pt-'> We've streamlined the document freight process with our mobile app and web portal.</p>
                     </div>
@@ -105,7 +106,7 @@ const ServicesDocuments = () => {
                     <p className='text-center text-[19px] py-6'>A whole suite of logistics software from Apaale centralizes and automates document management procedures. This is how it makes managing logistical paperwork easier:</p>
                 </div>
 
-                <div className="grid grid-cols-1 place-items-center md:grid-cols-2 gap-8">
+                {/* <div className="grid grid-cols-1 place-items-center md:grid-cols-2 gap-8">
 
                     <div className="md:max-w-full p-5 max-w-[500px] border border-indigo-200 shadow-lg shadow-indigo-300/70 rounded-xl">
                         <h3 className='text-2xl text-center font-semibold'>Integration</h3>
@@ -125,14 +126,47 @@ const ServicesDocuments = () => {
                         <h3 className='text-2xl text-center font-semibold'>Visibility</h3>
                         <p className='text-justify pt-4'>Stakeholders may make proactive decisions and solve problems by using Apaale's platform to get real-time visibility into the status of shipments and related documentation.</p>
                     </div>
+                </div> */}
+
+                <div className="grid grid-cols-1 place-items-center md:place-items-stretch md:grid-cols-2 gap-8">
+
+                    <div className="md:max-w-full p-5 max-w-[500px] border min-h-[180px] border-indigo-200 shadow-lg shadow-indigo-300/70 rounded-xl">
+                        <h3 className='text-2xl text-center font-semibold'>Integration</h3>
+                        <p className='text-justify pt-4'>
+                            Data may be exchanged automatically across a variety of systems, such as supply chain management software and ERP, thanks to Apaale's platform's smooth integration.
+                        </p>
+                    </div>
+
+                    <div className=" max-w-[500px] md:max-w-full p-5 min-h-[180px] border border-indigo-200 shadow-lg shadow-indigo-300/70 rounded-xl">
+                        <h3 className='text-2xl text-center font-semibold'>Automation</h3>
+                        <p className='text-justify pt-4'>
+                            Apaale minimizes mistakes and boosts productivity by automating workflows and document creation, which cuts down on the time and effort needed to handle logistical paperwork.
+                        </p>
+                    </div>
                 </div>
-               
+                <div className="grid grid-cols-1 md:grid-cols-2 place-items-center md:place-items-stretch gap-8 mt-8">
+
+                    <div className="max-w-[500px] md:max-w-full min-h-[180px] p-5 border border-indigo-200 shadow-lg shadow-indigo-300/70 rounded-xl">
+                        <h3 className='text-2xl text-center font-semibold'>Complaince</h3>
+                        <p className='text-justify pt-4'>
+                            Apaale updates its software often to guarantee adherence to changing regulatory standards, lowering the possibility of fines and delays resulting from non-compliance.
+                        </p>
+                    </div>
+                    <div className=" max-w-[500px] md:max-w-full p-5 min-h-[180px] border border-indigo-200 shadow-lg shadow-indigo-300/70 rounded-xl">
+                        <h3 className='text-2xl text-center font-semibold'>Visibility</h3>
+                        <p className='text-justify pt-4'>
+                            Stakeholders may make proactive decisions and solve problems by using Apaale's platform to get real-time visibility into the status of shipments and related documentation.
+                        </p>
+                    </div>
+                </div>
+
+
             </div>
 
 
             <div className="px-5 sm:px-10 md:px-20 bg-[#F3F4F9] py-16">
                 <h3 className='text-center font-bold text-3xl'>Use of Documentation</h3>
-                <p className='text-[19px] text-justify mt-5 '>
+                <p className='text-[17px] md:text-[19px] text-justify mt-5 '>
                     Your friends at Apaale are here to assist our clients at every stage of the shipping process, just as they always have. Because we understand that you have a business to operate, you can rely on Apaale to assist you in finding the finest carriers, shipping costs, and customer support for your truckload and LTL shipping requirements. Talk to us now to find out how we can make your shipping more intelligent.
                 </p>
             </div>

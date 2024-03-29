@@ -150,7 +150,7 @@ export default function page() {
               alt=""
             />
           </div>
-          <div class="mb-4 flex justify-start py-8">
+          <div className="mb-4 flex justify-start py-8">
             <img
               src="/images/right-mob.jpeg"
               className='h-auto w-1/2 rounded-lg'

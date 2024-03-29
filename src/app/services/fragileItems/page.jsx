@@ -9,7 +9,7 @@ const ServicesFragileIems = () => {
                 <p className="py-5 text-[17px] md:text-[19px] text-justify">
                     In our fast-paced world, where we're always encompassed by innovation and fragile contraptions, the significance of taking care of delicate things with care cannot be exaggerated. Misusing can lead to expensive harm and superfluous cerebral pains. At Apaale, we understand the importance of securing delicate things, and we're here to share a few basic tips to guarantee they stay secure and sound.
                 </p>
-            </div>
+            </div> 
 
             <div className="flex flex-col md:flex-row justify-between gap-5 mt-10 px-5 sm:px-10 md:px-20 py-7 pb-14 ">
                 <div className="w-full md:w-[47%] min-h-[54vh]">
