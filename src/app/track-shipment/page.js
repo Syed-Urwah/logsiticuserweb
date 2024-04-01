@@ -6,15 +6,7 @@ import { Label } from "@/components/ui/label"
 import CallUs from '@/components/CallUs'
 import "../styles/custom.css";
 import { Button } from "@/components/ui/button"
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog";
 import Map from '@/components/Map';
 import Stars from '@/components/Rating';
 
