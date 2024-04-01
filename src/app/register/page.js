@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,7 +8,7 @@ export default function page() {
 
   const [user, setUser] = useState({
     username: "",
-    mobile_number: "",
+    mobile_number: "1234697",
     email: "",
     id_card_no: "",
     password: "",
@@ -23,23 +23,22 @@ export default function page() {
 
     try {
         const response = await fetch(url, {
-            method: "POST", // *GET, POST, PUT, DELETE, etc.
-            mode: "no-cors", // no-cors, *cors, same-origin
-            // cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-            // credentials: "same-origin", // include, *same-origin, omit
+            method: "POST",
             headers: {
-              "Accept": "application/json",
-              "Api-Token": "N5ORjSS300F4fcZ3eq69rLShvgwnjchQg7Vmt5N753Sy"
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                // "X-CSRF-TOKEN": csrfToken,
+                "Api-Token": "N5ORjSS300F4fcZ3eq69rLShvgwnjchQg7Vmt5N753Sy"
             },
-            // redirect: "follow", // manual, *follow, error
-            // referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-            body: JSON.stringify(user), // body data type must match "Content-Type" header
-          });
+            body: JSON.stringify(user)
+        });
     
-          console.log(response);
+        const data = await response.json();
+        console.log(data);
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
+    
 
     
   }
