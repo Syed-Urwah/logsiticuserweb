@@ -35,7 +35,7 @@ export default function page() {
                         </span>
                         <div className='line-3'></div>
                         <Label htmlFor="origin" className='text-base mt-3 lg:ms-4 font-medium lg:text-sm text-xs' >Origin</Label>
-                        <Input id="name" required className='ml-11 lg:ml-16 w-9/12 lg:w-11/12 mt-2 lg:mr-20 rounded border-1 py-1.5 text-gray-900 bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:leading-6 pl-2' placeholder="Enter Origin Location" />
+                        <Input id="origin" required className='ml-11 lg:ml-16 w-9/12 lg:w-11/12 mt-2 lg:mr-20 rounded border-1 py-1.5 text-gray-900 bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:leading-6 pl-2' placeholder="Enter Origin Location" />
                     </div>
                     <div className="flex lg:ms-5 mt-4">
                         <span>
@@ -44,8 +44,8 @@ export default function page() {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                             </svg>
                         </span>
-                        <Label htmlFor="origin" className='text-base mt-3 lg:ms-1 font-medium lg:text-sm text-xs' >Destination</Label>
-                        <Input id="name" required className='ml-4 lg:ml-10 w-9/12 lg:w-11/12 mt-2 lg:mr-20 rounded border-1 py-1.5 text-gray-900 bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:leading-6 pl-2' placeholder="Enter Destination Location" />
+                        <Label htmlFor="destination" className='text-base mt-3 lg:ms-1 font-medium lg:text-sm text-xs' >Destination</Label>
+                        <Input id="destination" required className='ml-4 lg:ml-10 w-9/12 lg:w-11/12 mt-2 lg:mr-20 rounded border-1 py-1.5 text-gray-900 bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:leading-6 pl-2' placeholder="Enter Destination Location" />
                     </div>
                     <div className='lg:flex ms-6'>
                         <label htmlFor="vehicle_type" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-4'> Type of vehicle</label>
@@ -62,15 +62,15 @@ export default function page() {
                         <div className="p-4 w-full lg:w-4/12 lg:ml-5">
                             <Input id="goods_type" for="" required className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white ' placeholder="" />
                         </div>
-                        <label htmlFor="temp" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-4 lg:ml-8'> Temperature</label>
+                        <label htmlFor="temperature" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-4 lg:ml-8'> Temperature</label>
                         <div className="p-4 w-full lg:w-4/12 lg:ml-2">
-                            <Input id="temp" for="" required className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white ' placeholder="" />
+                            <Input id="temperature" for="" required className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white ' placeholder="" />
                         </div>
                     </div>
                     <div className='lg:flex ms-6 mt-2'>
-                        <label htmlFor="time_date" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-4'> Loading Time/Date</label>
+                        <label htmlFor="loading-time" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-4'> Loading Time/Date</label>
                         <div className="p-4 w-full lg:w-4/12">
-                            <Input id="time_date" for="" required className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white ' placeholder="" />
+                            <Input id="loading-time" for="" required className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white ' placeholder="" />
                         </div>
                         <label htmlFor="no_of_labours" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-5 lg:ml-9'>No of Labours</label>
                         <div className="p-4 w-full lg:w-4/12 lg:-ml-1">
@@ -88,21 +88,14 @@ export default function page() {
                         </div>
                     </div>
                     <div className='lg:flex ms-10'>
-<<<<<<< HEAD
-                        <label htmlFor="goods_volume" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-4 lg:ml-1'> Volume of Good</label>
-                        <div className="relative p-4 w-full lg:w-4/12 flex w-full lg:ml-4">
-                            <span className="flex items-center whitespace-nowrap text-gray-400 rounded-s border bg-white border-e-0 border-solid border-blue-300 px-3 text-center text-base font-normal leading-[1.6] text-surface dark:border-white/10 dark:text-white">KG</span>
-                            <input type="text" className="lg:w-1/2 relative m-0 block flex-auto border rounded-e border-solid border-blue-300 bg-white bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary" />
-=======
                         <label htmlFor="goods_volume" className='mt-5 block text-sm font-medium leading-6 text-gray-900 lg:ml-1'> Volume of Good</label>
                         <div class="relative p-4 w-full lg:w-4/12 flex w-full lg:ml-4 -ml-4">
                             <span class="flex items-center whitespace-nowrap text-gray-400 rounded-s border bg-white border-e-0 border-solid border-blue-300 px-3 text-center text-base font-normal leading-[1.6] text-surface dark:border-white/10 dark:text-white">KG</span>
                             <input type="text" class="lg:w-1/2 relative m-0 block flex-auto border rounded-e border-solid border-blue-300 bg-white bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary" />
->>>>>>> e565e7e2998d9e14d93c6687cb03ecf3c578bdfa
                         </div>
                         <label htmlFor="amount" className='mt-5 block text-sm font-medium leading-6 text-gray-900 lg:ml-10'>Amount</label>
                         <div className="p-4 w-full lg:w-4/12 lg:ml-9 -ml-4">
-                            <Input id="amounts" for="" required className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white' placeholder="" />
+                            <Input id="amount" for="" required className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white' placeholder="" />
                         </div>
                     </div>
                     <div className="lg:flex ms-6">
@@ -135,7 +128,7 @@ export default function page() {
                         </DialogHeader>
 
                         <div className="grid justify-center items-center">
-                            <Input id="name" required className='w-full flex item-center rounded border-1 border-b-2 border-blue-500/50 py-1.5 text-indigo-500 text-center bg-white font-semibold' placeholder="528116" />
+                            <Input id="name" type='text' required className='w-full flex item-center rounded border-1 border-b-2 border-blue-500/50 py-1.5 text-indigo-500 text-center bg-white font-semibold' placeholder="528116" />
                         </div>
 
 

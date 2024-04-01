@@ -16,25 +16,25 @@ export default function page() {
                             <label htmlFor="email" className='mt-4 block text-sm font-medium leading-6 text-gray-900 mr-2 pl-3'> Enter Email Address</label>
 
                         </div>
-                        <div className="p-4 w-[600px]">
-                            <input id="email" name="email" type="email" autoComplete="email" required className='w-full outline-none rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2' placeholder='Enter Your Email Address'/>
+                        <div className="p-4 md:w-[600px]">
+                            <input id="email" name="email" type="email" required className='w-full outline-none rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2' placeholder='Enter Your Email Address'/>
 
                         </div>
                     </div>
                     <div className='md:flex'>
                         <div className='md:shrink-0'>
-                            <label htmlFor="email" className='mt-4 block text-sm font-medium leading-6 text-gray-900 mr-2 pl-3 pr-6'> Enter Password</label>
+                            <label htmlFor="password" className='mt-4 block text-sm font-medium leading-6 text-gray-900 mr-2 pl-3 pr-6'> Enter Password</label>
 
                         </div>
-                        <div className='p-4 w-[600px] md:ms-1 pr-4'>
-                            <input id="email" name="email" type="email" autoComplete="email" required className='w-full rounded-md outline-none border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2' placeholder='Enter Your Password'/>
+                        <div className='p-4 md:w-[600px] md:ms-1 pr-4'>
+                            <input id="password" name="password" type="password" autoComplete="password" required className='w-full rounded-md outline-none border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2' placeholder='Enter Your Password'/>
                         </div>
                     </div>
                 </div>
                 <div className='w-full mx-auto bg-white md:max-w-2xl lg:max-w-5xl'>
                     <div className='md-flex'>
-                        <input type="checkbox" name="remember_pswd" id="remember_pswd" className='form-checkbox' />
-                        <label htmlFor="remember_pswd" className='ml-2'>Remember Password</label>
+                        <input type="checkbox" name="remember_password" id="remember_password" className='form-checkbox' />
+                        <label htmlFor="remember_password" className='ml-2'>Remember Password</label>
                     </div>
                 </div>
 
@@ -43,7 +43,7 @@ export default function page() {
                 </div>
                 <div className='justify-center'>
                     <Link href="/register">
-                    <button type="submit" className='flex lg:w-1/5 sm:w-1/2 md:w-1/5 mx-auto justify-center rounded bg-[#8BB7F0] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'> Not have an Account? Create Account</button>
+                    <button type="button" className='flex lg:w-1/5 sm:w-1/2 md:w-1/5 mx-auto justify-center rounded bg-[#8BB7F0] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'> Not have an Account? Create Account</button>
                     </Link>
                 </div>
             </form>
