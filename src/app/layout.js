@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import MyNavbar from "@/components/MyNavbar";
+import { Toaster } from "@/components/ui/toaster";
 // import { Inter as FontSans } from "next/font/google"
 // import Header from "@/components/header";
 
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
         <MyNavbar/>
         {children}
         <Footer/>
+        <Toaster />
         </body>
     </html>
   );

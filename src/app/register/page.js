@@ -11,12 +11,14 @@ import {
   AlertDescription,
   AlertTitle,
 } from "@/components/ui/alert"
+import { useToast } from "@/components/ui/use-toast";
+import { Loader2 } from "lucide-react";
 
 export default function page() {
 
-  const [registrationSuccess, setRegistrationSuccess] = useState(false);
+  const { toast } = useToast()
 
-
+  const [loading , setLoading] = useState(false);
   const [user, setUser] = useState({
     username: "",
     mobile_number: "1234697",
@@ -30,32 +32,39 @@ export default function page() {
     e.preventDefault();
     console.log(user)
 
+    setLoading(true)
+
     const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + '/api/customer/register'
 
     try {
       // Create a new FormData object
       var formData = new FormData();
 
-      // Append each key-value pair from the user object to the FormData object
       Object.keys(user).forEach(key => {
         formData.append(key, user[key]);
       });
+
       const response = await fetch(url, {
         method: "POST",
         headers: {
           "Accept": "application/json",
-          "Content-Type": "application/json",
-          // "X-CSRF-TOKEN": csrfToken,
+          // "Content-Type": "application/json",
           "Api-Token": "N5ORjSS300F4fcZ3eq69rLShvgwnjchQg7Vmt5N753Sy"
         },
-        body: JSON.stringify(formData)
+        body: formData
       });
 
       const data = await response.json();
       console.log(data);
 
-      if (response.ok) {
-        setRegistrationSuccess(true);
+      if (data.response.response_id == 1) {
+        
+        toast({
+          title: "Scheduled: Catch up ",
+          description: "Friday, February 10, 2023 at 5:57 PM",
+          variant: "success"
+        })
+
       } else {
         alert("registration Failed");
       }
@@ -64,18 +73,12 @@ export default function page() {
       alert("registration Failed");
     }
 
+    setLoading(false)
+
   }
 
   return (
     <div>
-      {registrationSuccess ? ( // Conditionally render the alert if registration is successful
-        <Alert status="success">
-          <AlertTitle>Registration Successful</AlertTitle>
-          <AlertDescription>
-            Your registration has been successful.
-          </AlertDescription>
-        </Alert>
-      ) : null}
       <div className="flex min-h-full w-full flex-col justify-center px-6 py-12 lg:px-10">
         <div className="mx-auto w-full sm:max-w-sm lg:max-w-full mb-5">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -276,9 +279,15 @@ export default function page() {
           <div className="justify-center">
             <Button
               type="submit"
+              disabled = {loading}
               className="flex lg:w-1/5 md:w-1/5 mx-auto justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
-              Register Now
+              {loading ?
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              :
+              "Register Now"
+            }
+              
             </Button>
           </div>
           <div className="justify-center">
