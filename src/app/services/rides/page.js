@@ -5,7 +5,7 @@ export default function page() {
   return (
     <div>
       <div className='bg-[#F3F4F9]'>
-        <h1 className='flex justify-center pt-8 font-bold lg:text-5xl text-3xl'>Navigating the Roads with Apaale:</h1>
+        <h1 className='flex justify-center md:pt-10 pt-10 font-bold lg:text-5xl text-3xl'>Navigating the Roads with Apaale:</h1>
         <h1 className='flex justify-center pt-4 font-bold lg:text-5xl text-3xl'>A Closer Look at Their Ride Services</h1>
         <p className='mt-8 px-6 xl:px-28 lg:px-20 md:px-16 mb-8 text-justify tracking-wide pb-5'>Ride services, such as those provided by it, have made it simpler than ever to go from point A to point B in today's hectic environment.
           You've probably come across Apaale's slick app or website if you've ever needed a short trip across town or a dependable way to get about
@@ -13,7 +13,7 @@ export default function page() {
           flagging down cabs are long gone. With Apaale, you may call a ride to your doorstep with only a few taps on your smartphone.</p>
       </div>
       <div className='lg:flex md:flex flex-row w-full mb-6 lg:px-0 px-6'>
-        <div className='lg:w-1/2 xl:mt-8 lg:mt-2 xl:px-28 lg:px-20 md:px-10 w-full lg:mt-8 md:full'>
+        <div className='lg:w-1/2 xl:mt-8 xl:px-28 lg:px-20 md:px-10 w-full lg:mt-8 md:full'>
           <h1 className='flex font-bold text-4xl'>Apaale: Logistics</h1>
           <h1 className='flex font-bold text-4xl'>Solution Provider</h1>
           <p className='mt-8 text-justify tracking-wide lg:w-3/2'>Apaale is a leading provider of logistics solutions in addition to transportation services. Apaale is a logistics company that
@@ -32,26 +32,26 @@ export default function page() {
         <div className='h-full xl:w-5/6 mx-auto pt-8 p-20 mb-5'>
           <div className='grid gap-14 md:grid-cols-3 md:gap-5'>
             <div className='rounded-2xl p-6 text-center ring-indigo-300 ring-4 ring-inset'>
-              <h1 className='text-darken mb-3 text-2xl font-large font-semibold font-sans lg:px-14 mb-4'>Standard Vehicle <br /> Trips</h1>
+              <h1 className='text-darken text-2xl font-large font-semibold font-sans lg:px-14 mb-4'>Standard Vehicle <br /> Trips</h1>
               <p className='tracking-wide text-justify pt-4 text-lg'>Providing comfort and dependability for travellers on the go, Apaale's standard vehicle trips address daily commuting demands.</p>
             </div>
             <div className='rounded-2xl p-6 text-center ring-indigo-300 ring-4 ring-inset'>
-              <h1 className=' mb-3 text-2xl font-large font-semibold font-sans lg:px-14 mb-4'>Luxurious Vehicle <br /> Options</h1>
+              <h1 className='text-2xl font-large font-semibold font-sans lg:px-14 mb-4'>Luxurious Vehicle <br /> Options</h1>
               <p className='tracking-wide text-justify pt-4 text-lg'>Apaale offers a selection of luxurious vehicles that are ideal for special events. These options will enhance your trip experience.</p>
             </div>
             <div className='rounded-2xl p-6 text-center ring-indigo-300 ring-4 ring-inset'>
-              <h1 className='text-darken mb-3 text-2xl font-large font-semibold font-sans lg:px-10 mb-4'>Other Modes of <br />Transportation</h1>
+              <h1 className='text-darken text-2xl font-large font-semibold font-sans lg:px-10 mb-4'>Other Modes of <br />Transportation</h1>
               <p className='tracking-wide text-justify pt-4 text-lg'>Apaale expands its services to include short-distance bike rides and electric scooter rentals for urban exploration, and embracing convenient.</p>
             </div>
           </div>
 
           <div className='grid gap-14 md:grid-cols-2 md:gap-5 mt-16 lg:px-48'>
             <div className='rounded-2xl p-6 text-center ring-indigo-300 ring-4 ring-inset'>
-              <h1 className='text-darken mb-3 text-2xl font-large font-semibold font-sans lg:px-14 mb-4'>Group Transportation <br /> Services</h1>
+              <h1 className='text-darken text-2xl font-large font-semibold font-sans lg:px-14 mb-4'>Group Transportation <br /> Services</h1>
               <p className='tracking-wide text-justify pt-4 text-lg'>Apaale offers smooth transportation options for gatherings of all kinds, making sure that everyone gets there on time and together.</p>
             </div>
             <div className='rounded-2xl p-6 text-center ring-indigo-300 ring-4 ring-inset'>
-              <h1 className='text-darken mb-3 text-2xl font-large font-semibold font-sans lg:px-14 mb-4'>Truck  <br /> Services</h1>
+              <h1 className='text-darken text-2xl font-large font-semibold font-sans lg:px-14 mb-4'>Truck  <br /> Services</h1>
               <p className='tracking-wide text-justify pt-4 text-lg'>Apaale provides truck services to companies in need of logistical assistance, enabling the effective transportation of commodities and products between sites. </p>
             </div>
           </div>
@@ -107,7 +107,7 @@ export default function page() {
         </div>
       </div>
 
-      <CallUs/>
+      <CallUs />
     </div>
   )
 }
