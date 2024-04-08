@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-// import { Terminal } from "lucide-react"
 
 import {
   Alert,
@@ -13,6 +12,7 @@ import {
 } from "@/components/ui/alert"
 import { useToast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 export default function page() {
 
@@ -57,20 +57,22 @@ export default function page() {
       const data = await response.json();
       console.log(data);
 
-      if (data.response.response_id == 1) {
+      if (data.response.response_desc == "success") {
         
         toast({
-          title: "Scheduled: Catch up ",
-          description: "Friday, February 10, 2023 at 5:57 PM",
+          title: data.response.response_desc,
+          description: "Registration Successfull!",
           variant: "success"
         })
-
-      } else {
-        alert("registration Failed");
+      }else{
+        toast({
+          title: data.response.response_desc,
+          description: "Registration Failed!",
+          variant: "error"
+        })
       }
     } catch (error) {
       console.log(error);
-      alert("registration Failed");
     }
 
     setLoading(false)
@@ -79,7 +81,8 @@ export default function page() {
 
   return (
     <div>
-      <div className="flex min-h-full w-full flex-col justify-center px-6 py-12 lg:px-10">
+      {/* <button className="bg-green-800">hello</button> */}
+      <div className="flex min-h-full w-full flex-col justify-center px-8 py-12 lg:px-12">
         <div className="mx-auto w-full sm:max-w-sm lg:max-w-full mb-5">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Registration
@@ -88,11 +91,11 @@ export default function page() {
 
         <form onSubmit={handleSubmit} className="space-y-8">
           <div className="w-full mx-auto bg-slate-200 rounded-xl shadow-0 py-5 md:px-10 overflow-hidden md:max-w-2xl lg:max-w-5xl">
-            <div className="md:flex md:justify-start">
+            <div className="md:flex md:justify-evenly">
               <div className="md:shrink-0">
                 <label
                   htmlFor="username"
-                  className="mt-4 block text-sm font-medium uppercase leading-6 text-gray-900 mr-2 pl-3"
+                  className="mt-4 block text-sm font-medium uppercase leading-6 text-gray-900 me-5 max-md:text-center"
                 >
                   ENTER USERNAME
                 </label>
@@ -103,7 +106,7 @@ export default function page() {
                   name="username"
                   type="text"
                   required
-                  className="w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 outline-none focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2"
+                  className="w-full  rounded py-1.5 text-gray-900 md:ms-[12px] shadow-sm border-[#8BB7F0] border-[1px] placeholder:text-gray-400 outline-none focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2"
                   placeholder="Enter Your USERNAME "
                   onChange={(e) => {
                     setUser((prev) => ({
@@ -114,11 +117,11 @@ export default function page() {
                 />
               </div>
             </div>
-            <div className="md:flex md:justify-start">
+            <div className="md:flex md:justify-evenly">
               <div className="md:shrink-0">
                 <label
                   htmlFor="email"
-                  className="mt-4 block text-sm font-medium uppercase leading-6 text-gray-900 mr-2 pl-3"
+                  className="mt-4 block text-sm font-medium uppercase leading-6 text-gray-900 max-md:text-center"
                 >
                   {" "}
                   Enter Email Address
@@ -131,7 +134,7 @@ export default function page() {
                   type="email"
                   autoComplete="email"
                   required
-                  className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 outline-none focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2"
+                  className="w-full rounded py-1.5 text-gray-900 md:ms-[9px] shadow-sm border-[#8BB7F0] border-[1px] placeholder:text-gray-400 outline-none focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2"
                   placeholder="Enter Your Email Address"
                   onChange={(e) => {
                     console.log(e.target.value)
@@ -144,11 +147,11 @@ export default function page() {
               </div>
             </div>
 
-            <div className="md:flex md:justify-start">
+            <div className="md:flex md:justify-evenly">
               <div className="md:shrink-0">
                 <label
                   htmlFor="id_card"
-                  className="mt-4 block text-sm uppercase font-medium leading-6 text-gray-900 mr-2 pl-3"
+                  className="mt-4 block text-sm uppercase font-medium leading-6 text-gray-900 max-md:text-center mr-5"
                 >
                   ID CARD NO.
                 </label>
@@ -160,7 +163,7 @@ export default function page() {
                   type="text"
                   autoComplete="id_card"
                   required
-                  className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 outline-none focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2"
+                  className="w-full rounded py-1.5 text-gray-900 md:ms-[12px] shadow-sm border-[#8BB7F0] border-[1px] placeholder:text-gray-400 outline-none focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2"
                   placeholder="Enter Your Email Address"
                   onChange={(e) => {
                     console.log(e.target.value)
@@ -173,11 +176,11 @@ export default function page() {
               </div>
             </div>
 
-            <div className="md:flex md:justify-start">
+            <div className="md:flex md:justify-evenly">
               <div className="md:shrink-0">
                 <label
                   htmlFor="password"
-                  className="mt-4 block text-sm uppercase font-medium leading-6 text-gray-900 mr-2 pl-3 pr-6"
+                  className="mt-4 block text-sm uppercase font-medium leading-6 text-gray-900 max-md:text-center pr-5"
                 >
                   {" "}
                   Enter Password
@@ -189,7 +192,7 @@ export default function page() {
                   name="password"
                   type="password"
                   required
-                  className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 outline-none focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2"
+                  className="w-full rounded  py-1.5 text-gray-900 md:ms-3 shadow-sm border-[#8BB7F0] border-[1px] placeholder:text-gray-400 outline-none focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2"
                   placeholder="Enter Your Password"
                   onChange={(e) => {
                     console.log(e.target.value)
@@ -202,11 +205,11 @@ export default function page() {
               </div>
             </div>
 
-            <div className="md:flex md:justify-start">
+            <div className="md:flex md:justify-evenly">
               <div className="md:shrink-0">
                 <label
                   htmlFor="mobile_number"
-                  className="mt-4 block text-sm uppercase font-medium leading-6 text-gray-900 mr-2 pl-3"
+                  className="mt-4 block text-sm uppercase font-medium leading-6 text-gray-900 max-md:text-center mr-2 pl-3"
                 >
                   {" "}
                   Enter Mobile Number
@@ -218,8 +221,8 @@ export default function page() {
                   name="mobile_number"
                   type="number"
                   min='1'
-
-                  className="w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 outline-none focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2"
+                  required
+                  className="w-full rounded  py-1.5 px-3 md:ms-[4px] text-gray-900 shadow-sm  border-[#8BB7F0] border-[1px] placeholder:text-gray-400 outline-none focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2"
                   placeholder="Enter Your Email Address"
                   onChange={(e) => {
                     console.log(e.target.value)
@@ -232,23 +235,23 @@ export default function page() {
               </div>
             </div>
 
-            <div className="md:flex md:justify-start">
+            <div className="md:flex md:justify-evenly">
               <div className="md:shrink-0">
                 <label
-                  htmlFor="profile_picture"
-                  className="mt-4 block text-sm uppercase font-medium leading-6 text-gray-900 mr-2 pl-3"
+                  htmlFor="picture"
+                  className="mt-4 block text-sm uppercase font-medium leading-6 text-gray-900 max-md:text-center pl-4"
                 >
                   {" "}
                   Select Profile Picture
                 </label>
               </div>
               <div className="p-4 md:w-[600px]">
-                <input
-                  id="profile_picture"
-                  name="profile_picture"
+                <Input
+                  id="picture"
+                  name="picture"
                   type="file"
                   required
-                  className="w-full rounded-md border-0 py-1.5 bg-white text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 outline-none focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2"
+                  className="w-full rounded py-1.5 bg-white border-[#8BB7F0] border-[1px] text-gray-900 shadow-sm ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 outline-none focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2"
                   placeholder="Enter Your Email Address"
                   onChange={(e) => {
                     console.log(e.target.value)

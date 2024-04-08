@@ -12,14 +12,14 @@ import { Dropdown } from "flowbite-react";
 
 export default function MyNavbar() {
   return (
-    <header className="border-b-[3px] border-solid shadow shadow-gray-300 w-full">
-      <div className="flex justify-evenly max-md:hidden items-start pt-1 bg-[#6C63FF] lg:h-14 h-14">
-        <div className="max-sm:hidden">
+    <header className="border-b-[3px] border-solid shadow shadow-gray-300  w-full">
+      <div className="flex justify-evenly max-md:hidden  items-start pt-1 bg-[#6C63FF] lg:h-14 h-14">
+        <div className="max-sm:hidden ">
           <Link href="#" className="flex mt-3 text-white">
             <img
               src="/images/location.png"
               alt="Vercel Logo"
-              className="h-5 me-3"
+              className="h-5 me-3 "
             />
             <p
               style={{
@@ -108,7 +108,7 @@ export default function MyNavbar() {
             <SheetContent className="bg-white">
               <SheetHeader>
                 <SheetTitle>
-                  <div className=" items-center py-2 mb-3 bg-indigo-500 rounded-lg ms-[-25px] mt-[-24px] w-[120%]">
+                  <div className=" items-center py-2 px-3 mb-3  bg-indigo-500 rounded-lg ms-[-25px] mt-[-24px] w-[120%]">
                     <div>
                       <Link href="#" className="flex items-center mt-2 text-white">
                         <img
@@ -152,7 +152,7 @@ export default function MyNavbar() {
                         <img
                           src="/images/notifi.png"
                           alt="phone"
-                          className="h-4 lg:me-14 max-sm:me-2 max-sm:ms-4"
+                          className="h-4 lg:me-14 max-sm:me-2 mr-3 max-sm:ms-4"
                         />
                       </Link>
                       <Link href="#">
@@ -188,10 +188,10 @@ export default function MyNavbar() {
                           className="text-base font-semibold ms11"
                         >
                           <Dropdown.Item>
-                            <Link href="/services/rides">Ride</Link>
+                            <Link href="/services/rides" className="w-full text-left" >Ride</Link>
                           </Dropdown.Item>
                           <Dropdown.Item>
-                            <Link href="/services/goods">Goods</Link>
+                            <Link href="/services/goods" className="w-full text-left">Goods</Link>
                           </Dropdown.Item>
                           <Dropdown.Item>
                             <Link href="/services/fragileItems">Fargile Items</Link>
@@ -269,16 +269,17 @@ export default function MyNavbar() {
                   className="text-base font-semibold ms11"
                 >
                   <Dropdown.Item>
-                    <Link href="/services/rides">Ride</Link>
+                    <Link href="/services/rides" className="w-full">Ride</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link href="/services/goods">Goods</Link>
+                    <Link href="/services/goods" className="w-full">Goods</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link href="/services/fragileItems">Fargile Items</Link>
+                    <Link href="/services/fragileItems" className="w-full">
+                      Fargile Items</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link href="/services/documents">Documents</Link>
+                    <Link href="/services/documents" className="w-full">Documents</Link>
                   </Dropdown.Item>
                 </Dropdown>
               </li>
