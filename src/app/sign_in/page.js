@@ -1,13 +1,15 @@
-"use client";
-
+"use client"
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useToast } from '@/components/ui/use-toast';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../redux-toolkit/signinSlice';
 
 export default function LoginPage() {
     const router = useRouter();
     const { toast } = useToast();
+    const dispatch = useDispatch();
 
     const [loading, setLoading] = useState(false);
     const [credentials, setCredentials] = useState({
@@ -32,46 +34,25 @@ export default function LoginPage() {
         e.preventDefault();
         setLoading(true);
 
-        const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + '/api/customer/login'
-
         try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    "Accept": "application/json",
-                    "Api-Token": "N5ORjSS300F4fcZ3eq69rLShvgwnjchQg7Vmt5N753Sy"
-                },
-                body: JSON.stringify(credentials),
-            });
-var data = await response.json()
-// console.log(data)
-
-
-            if (data.response.response_id == 0) {
-                setLoading(false);
-                router.push('/home'); // Redirect to home page after successful login
-                // Optionally, you can store user data in local storage or session storage here
-            } else {
-                // Read the response body only once
-                const errorMessage = await response.text();
-                setLoading(false);
-                toast({
-                    title: 'Login Failed',
-                    description: errorMessage || 'Something went wrong',
-                    variant: 'error',
-                });
-            }
-        } catch (error) {
-            console.error('Login error:', error);
+            await dispatch(loginUser(credentials));
             setLoading(false);
             toast({
-                title: 'Error',
-                description: 'An error occurred while logging in',
+                title: 'Success',
+                description: 'Sign In Successful',
+                variant: 'success',
+            });
+            router.push('/home');
+        } catch (error) {
+            setLoading(false);
+            toast({
+                title: 'Login Failed',
+                description: error.message || 'Something went wrong',
                 variant: 'error',
             });
         }
     };
+
 
     return (
         <div>
