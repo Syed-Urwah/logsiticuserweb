@@ -34,8 +34,7 @@ export default function Stars({ count, defaultRating, icon, color, iconSize }) {
 
         return (
           <div
-            className="star"
-            key={index}
+            className="star" key={index}
             style={{
               fontSize: iconSize ? `${iconSize}px` : "14px",
               color: elementColor,
