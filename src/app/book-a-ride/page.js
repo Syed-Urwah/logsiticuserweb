@@ -29,6 +29,7 @@ import {
 import CallUs from "@/components/CallUs";
 import { useToast } from "@/components/ui/use-toast";
 import Map from "@/components/Map";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 export default function page() {
 
@@ -36,8 +37,8 @@ export default function page() {
 
   const [bookaRide, setRide] = useState({
     user_id: "25",
-    user_dropoff_lat: "34.0363243",
-    user_dropoff_lng: "71.528077",
+    // user_dropoff_lat: "34.0363243",
+    // user_dropoff_lng: "71.528077",
     no_of_persons: 0,
     vehicle_type_id: "",
     contact_info: "",
@@ -46,9 +47,13 @@ export default function page() {
     destination: "",
   });
 
-  const [origin ,setOrigin] = useState('')
+  const [origin, setOrigin] = useState('')
   const [pickupLat, setPickupLat] = useState(0)
   const [pickupLng, setPickupLng] = useState(0)
+
+  const [destination, setDestination] = useState('')
+  const [dropoffLat, setDropoffLat] = useState(0)
+  const [dropoffLng, setDropoffLng] = useState(0)
 
   const [vehicleTypes, setVehicleTypes] = useState({
     data: [],
@@ -95,15 +100,24 @@ export default function page() {
     e.preventDefault();
     console.log(bookaRide);
 
-    setRide((prev)=>({
-      ...prev, 
+    setRide((prev) => ({
+      ...prev,
       user_pickup_lat: pickupLat,
       user_pickup_lng: pickupLng
+    }))
+
+    setRide((prev) => ({
+      ...prev,
+      user_dropoff_lat: dropoffLat,
+      user_dropoff_lng: dropoffLng
     }))
 
     const bodyData = bookaRide;
     bodyData.user_pickup_lat = pickupLat;
     bodyData.user_pickup_lng = pickupLng;
+    bodyData.user_dropoff_lat = dropoffLat;
+    bodyData.user_dropoff_lng = dropoffLng;
+
 
 
     const url =
@@ -276,32 +290,41 @@ export default function page() {
                     <Label htmlFor="persons" className="text-base sm:me-6">
                       Origin
                     </Label>
-                    <Dialog>
+                    <Dialog className=" w-[120%]">
                       <DialogTrigger asChild>
-                      <Input
-                      id="origin"
-                      type="text"
-                      readOnly
-                      required
-                      className="  max-lg:ms-7 sm:ms-7 max-sm:ms-2 border-[2px] rounded border-blue-300 "
-                      placeholder="Name of your project"
-                      value={origin}
-                    />
+                        <Input
+                          id="origin"
+                          type="text"
+                          readOnly
+                          required
+                          className="  max-lg:ms-7 sm:ms-7 max-sm:ms-2 border-[2px] rounded border-blue-300 "
+                          placeholder="Name of your project"
+                          value={origin}
+                        />
                       </DialogTrigger>
-                      <DialogContent className="sm:max-w-[425px] bg-black text-white">
+                      <div className="w-[130wv]">
+                      <DialogContent className=" w-[90vw] bg-black text-white">
                         <DialogHeader>
                           <DialogTitle>Edit profile</DialogTitle>
-                          <DialogDescription>
-                            Make changes to your profile here. Click save when you're done.
-                          </DialogDescription>
+                          <Input
+                            id="input"
+                            type="search"
+                            className="border-2 border-red-700 mb-9 z-10 text-black"
+                            placeholder="search origin"
+                          />
                         </DialogHeader>
-                        <Map setOrigin={setOrigin} lat={pickupLat} setLat={setPickupLat} lng={pickupLng} setLng={setPickupLng}/>
+                        <Map setOrigin={setOrigin} lat={pickupLat} setLat={setPickupLat} lng={pickupLng} setLng={setPickupLng} />
                         <DialogFooter>
-                          <Button type="submit">Save changes</Button>
+                          <DialogClose asChild>
+                            <Button type="button" className="bg-white text-black hover:text-white hover:border-white border-2">
+                              Close
+                            </Button>
+                          </DialogClose>
                         </DialogFooter>
                       </DialogContent>
+                      </div>
                     </Dialog>
-                    
+
                   </div>
                   <div className="flex  items-center mt-4  max-sm:flex-col text-nowrap space-y-1.5">
                     <span>
@@ -328,20 +351,38 @@ export default function page() {
                     <Label htmlFor="persons" className="text-base">
                       Destination
                     </Label>
-                    <Input
-                      id="destination"
-                      type="text"
-                      required
-                      className=" max-lg:ms-7 sm:ms-3  max-sm:ms-2 border-[2px] rounded border-blue-300 "
-                      placeholder="Name of your project"
-                      onChange={(e) => {
-                        console.log(e.target.value);
-                        setRide((prev) => ({
-                          ...prev,
-                          destination: e.target.value,
-                        }));
-                      }}
-                    />
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Input
+                          id="destination"
+                          type="text"
+                          readOnly
+                          required
+                          className=" max-lg:ms-7 sm:ms-3  max-sm:ms-2 border-[2px] rounded border-blue-300 "
+                          placeholder="Select Destination"
+                          value={destination}
+                        />
+                      </DialogTrigger>
+                      <DialogContent className=" w-[90vw] bg-black text-white">
+                        <DialogHeader>
+                          <DialogTitle>Destination</DialogTitle>
+                          <Input
+                            id="input"
+                            type="search"
+                            className="border-2 border-red-700 mb-9 z-10 text-black"
+                            placeholder="search origin"
+                          />
+                        </DialogHeader>
+                        <Map setOrigin={setDestination} lat={dropoffLat} setLat={setDropoffLat} lng={dropoffLng} setLng={setDropoffLng} />
+                        <DialogFooter>
+                          <DialogClose asChild>
+                            <Button type="button" className="bg-white text-black hover:text-white hover:border-white border-2">
+                              Close
+                            </Button>
+                          </DialogClose>
+                        </DialogFooter>
+                      </DialogContent>
+                    </Dialog>
                   </div>
                 </div>
               </div>
