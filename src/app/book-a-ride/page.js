@@ -309,7 +309,7 @@ export default function page() {
                           <Input
                             id="input"
                             type="search"
-                            className="border-2 border-red-700 mb-9 z-10 text-black"
+                            className="border-[3px] border-black mb-5 z-10 sm:w-[70%] mt-2 bg-white text-black"
                             placeholder="search origin"
                           />
                         </DialogHeader>
@@ -369,7 +369,7 @@ export default function page() {
                           <Input
                             id="input"
                             type="search"
-                            className="border-2 border-red-700 mb-9 z-10 text-black"
+                            className="border-[3px] border-black mb-5 z-10 sm:w-[70%] mt-2 bg-white text-black"
                             placeholder="search origin"
                           />
                         </DialogHeader>
