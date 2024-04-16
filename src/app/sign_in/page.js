@@ -35,14 +35,24 @@ export default function LoginPage() {
         setLoading(true);
 
         try {
-            await dispatch(loginUser(credentials));
+            const userData = await dispatch(loginUser(credentials));
+            console.log(userData);
+            if (userData.payload.response.response_status == 200) {
+                toast({
+                    title: userData.payload.response.response_desc,
+                    description: 'Sign In Successful',
+                    variant: 'success',
+                });
+                router.push('/');
+
+            }else{
+                toast({
+                    title: 'error',
+                    description: userData.payload.response.response_desc,
+                    variant: 'error',
+                });
+            }
             setLoading(false);
-            toast({
-                title: 'Success',
-                description: 'Sign In Successful',
-                variant: 'success',
-            });
-            router.push('/home');
         } catch (error) {
             setLoading(false);
             toast({

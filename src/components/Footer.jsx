@@ -67,7 +67,7 @@ export default function Footer() {
             </h2>
             <ul className="text-white ms-5 list-disc dark:text-gray-400 font-light text-sm">
               <li className="mb-2 mt-3">
-                <a href="/home" className="hover:underline">
+                <a href="/" className="hover:underline">
                   Home
                 </a>
               </li>

@@ -6,7 +6,8 @@ const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + '/api/customer/login';
 export const loginUser = createAsyncThunk(
     "user/loginUser",
     async (credentials) => {
-        try {
+
+        try{
             const response = await axios.post(url, credentials, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -14,12 +15,17 @@ export const loginUser = createAsyncThunk(
                     "Api-Token": "N5ORjSS300F4fcZ3eq69rLShvgwnjchQg7Vmt5N753Sy"
                 }
             });
-            const userData = response.data.data;
-            localStorage.setItem('user', JSON.stringify(userData));
-            return userData;
-        } catch (error) {
-            throw error;
+            console.log(response);
+                return response.data;
+                
+        }catch (error){
+            return error.response.data
+            console.log(error);
         }
+        
+        
+            
+        
     }
 );
 
@@ -40,7 +46,7 @@ const signinSlice = createSlice({
             })
             .addCase(loginUser.fulfilled, (state, action) => {
                 state.loading = false;
-                state.user = action.payload;
+                state.user = action.payload.result;
                 state.error = null;
             })
             .addCase(loginUser.rejected, (state, action) => {
