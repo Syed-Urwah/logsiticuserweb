@@ -1,12 +1,92 @@
-import React from 'react'
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import CallUs from '@/components/CallUs'
+"use client";
+
+import React from 'react';
+import { useState } from 'react';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import CallUs from '@/components/CallUs';
 import "../styles/custom.css";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "@/components/ui/dialog";
+  import Map from "@/components/Map";
 
 
 
 export default function page() {
+
+    const [orderPlacement, setOrder]= useState({
+        type_of_good_id: "",
+        temperature: "",
+        vehicle_type_id: "",
+        user_dropoff_lat: "34.0363243",
+        user_dropoff_lng: "71.528077",
+        total_km: "",
+        origin: "",
+        destination: "",
+        loading_date_time: "",
+        no_of_labours: "",
+        volume_of_good_kg: "",
+        no_of_vehicles: "",
+        amount: "",
+        photo: "",
+        special_instruction: "",
+        customer_id: "1",
+
+    });
+
+    const [origin ,setOrigin] = useState('')
+    const [pickupLat, setPickupLat] = useState(0)
+    const [pickupLng, setPickupLng] = useState(0)
+
+    const handleOrder = async (e) => {
+        e.preventDefault();
+        console.log(orderPlacement);
+
+        setOrder((prev)=>({
+            ...prev, 
+            user_pickup_lat: pickupLat,
+            user_pickup_lng: pickupLng
+          }))
+      
+          const bodyData = orderPlacement;
+          bodyData.user_pickup_lat = pickupLat;
+          bodyData.user_pickup_lng = pickupLng;
+    
+        const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + '/api/customer/order/search_driver'
+    
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    // "X-CSRF-TOKEN": csrfToken,
+                    "Api-Token": "N5ORjSS300F4fcZ3eq69rLShvgwnjchQg7Vmt5N753Sy"
+                },
+                body: JSON.stringify(bodyData)
+            });
+        
+            const data = await response.json();
+            console.log(data);
+            console.log(bodyData)
+
+        } catch (error) {
+            console.log(error);
+            
+        }
+
+        
+    
+        
+      }
     return (
         <div>
             <div className='flex min-h-full flex-col justify-center px-6 py-5 lg:px-8 md:max-w-full sm:max-w-full'>
@@ -14,35 +94,67 @@ export default function page() {
                     <h2 className='mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>Order Placement </h2>
                 </div>
             </div>
-            <form className='space-y-6 mb-3' action="#" method="POST">
+            <form onSubmit={handleOrder} className='space-y-6 mb-3' action="#" method="POST">
                 <div className='w-full mx-auto bg-[#F3F4F9] rounded-xl py-5 shadow-0 lg:max-w-5xl'>
                     <div className='lg:flex ms-6'>
                         <label htmlFor="goodsType" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-4'> Types Of Goods</label>
                         <div className="p-4 w-full lg:w-4/12 lg:ms-4">
-                            <select id="goodsType" name="goodsType" class="leading-9 w-full h-full outline-none rounded border-0 py-2.5 text-gray-900 shadow-sm bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 md:leading-6 pl-2' placeholder='Enter Your Email Address">
-                                <option>Non-Frozen</option>
-                                <option>Frozen</option>
-                            </select>
+                            <Input id="type_of_good_id" 
+                            required 
+                            className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white  placeholder:text-gray-400' 
+                            placeholder="Types Of Goods" 
+                            onChange={(e) => {
+                                console.log(e.target.value);
+                                setOrder((prev) => ({
+                                  ...prev,
+                                  type_of_good_id: e.target.value,
+                                }));
+                              }}/>
                         </div>
                         <label htmlFor="temperature" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-4 lg:ml-11'> Temperature</label>
                         <div className="p-4 w-full lg:w-4/12">
-                            <select id="temperature" name="temperature" class=" w-full h-full outline-none rounded border-0 py-1.5 text-gray-900 shadow-sm bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2' placeholder='Enter Your Email Address">
-                                <option>A</option>
-                                <option>C</option>
-                            </select>
+                            <Input id="temperature" 
+                            required 
+                            className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white  placeholder:text-gray-400' 
+                            placeholder="Type of vehicle" 
+                            onChange={(e) => {
+                                console.log(e.target.value);
+                                setOrder((prev) => ({
+                                  ...prev,
+                                  temperature: e.target.value,
+                                }));
+                              }}/>
                         </div>
                     </div>
                     <div className='lg:flex ms-6'>
                         <label htmlFor="vehicle_type" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-4'> Type of vehicle</label>
                         <div className="p-4 w-full lg:w-4/12 lg:ms-4">
-                            <select id="vehicle_type" name="vehicle_type" class="lg:ml-2 w-full h-full outline-none rounded border-0 py-2.5 text-gray-900 shadow-sm bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2' placeholder='Enter Your Email Address">
-                                <option>Cargo Van</option>
-                                <option>Cargo Truck</option>
-                            </select>
+                        <Input id="vehicle_type_id" 
+                        required 
+                        className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white  placeholder:text-gray-400' 
+                        placeholder="Type of vehicle" 
+                        onChange={(e) => {
+                            console.log(e.target.value);
+                            setOrder((prev) => ({
+                              ...prev,
+                              vehicle_type_id: e.target.value,
+                            }));
+                          }}/>
                         </div>
                         <label htmlFor="total_km" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-5 lg:ml-12'> Total Km</label>
                         <div className="p-4 w-full lg:w-4/12 lg:ml-7">
-                            <Input id="total_km" for="" required className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white ' placeholder="100" />
+                            <Input id="total_km" 
+                            type="number"
+                            required 
+                            className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white  placeholder:text-gray-400' 
+                            placeholder="100" 
+                            onChange={(e) => {
+                                console.log(e.target.value);
+                                setOrder((prev) => ({
+                                  ...prev,
+                                  total_km: e.target.value,
+                                }));
+                              }}/>
                         </div>
                     </div>
                     <div className="flex lg:ms-5 mt-3">
@@ -53,8 +165,35 @@ export default function page() {
                             </svg>
                         </span>
                         <div className='line-3'></div>
-                        <Label htmlFor="origin" className='text-base mt-3 lg:ms-4 font-medium lg:text-sm text-xs' >Origin</Label>
-                        <Input id="origin" required className='ml-11 lg:ml-16 w-9/12 lg:w-11/12 mt-2 lg:mr-20 rounded border-1 py-1.5 text-gray-900 bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:leading-6 pl-2' placeholder="Enter Origin Location" />
+                        <Label htmlFor="origin" 
+                        className='text-base mt-3 lg:ms-4 font-medium lg:text-sm' >
+                        Origin
+                        </Label>
+                        <Dialog>
+                        <DialogTrigger asChild>
+                        <Input 
+                        id="origin"
+                        type="text"
+                        readOnly 
+                        required 
+                        className='ml-11 lg:ml-16 w-9/12 lg:w-11/12 mt-2 lg:mr-20 rounded border-1 py-1.5 text-gray-900 bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:leading-6 pl-2' 
+                        placeholder="Enter Origin Location" 
+                        value={origin}
+                        />
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-[425px] bg-black text-white">
+                        <DialogHeader>
+                          <DialogTitle>Edit profile</DialogTitle>
+                          <DialogDescription>
+                            Make changes to your profile here. Click save when you're done.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <Map setOrigin={setOrigin} lat={pickupLat} setLat={setPickupLat} lng={pickupLng} setLng={setPickupLng}/>
+                        <DialogFooter>
+                          <Button type="submit">Save changes</Button>
+                        </DialogFooter>
+                      </DialogContent>
+                    </Dialog>
                     </div>
                     <div className="flex lg:ms-5 mt-4">
                         <span>
@@ -63,44 +202,97 @@ export default function page() {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                             </svg>
                         </span>
-                        <Label htmlFor="destination" className='text-base mt-3 lg:ms-1 font-medium lg:text-sm text-xs' >Destination</Label>
-                        <Input id="destination" required className='ml-4 lg:ml-10 w-9/12 lg:w-11/12 mt-2 lg:mr-20 rounded border-1 py-1.5 text-gray-900 bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:leading-6 pl-2' placeholder="Enter Destination Location" />
+                        <Label htmlFor="destination" className='text-base mt-3 lg:ms-1 font-medium lg:text-sm' >Destination</Label>
+                        <Input id="destination" required 
+                        className='ml-4 lg:ml-10 w-9/12 lg:w-11/12 mt-2 lg:mr-20 rounded border-1 py-1.5 text-gray-900 bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:leading-6 pl-2' 
+                        placeholder="Enter Destination Location" 
+                        onChange={(e) => {
+                            console.log(e.target.value);
+                            setOrder((prev) => ({
+                              ...prev,
+                              destination: e.target.value,
+                            }));
+                          }}/>
                     </div>
                     <div className='lg:flex ms-6 mt-2'>
                         <label htmlFor="loading-time" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-4'> Loading Time/Date</label>
                         <div className="p-4 w-full lg:w-4/12">
                             <input
                                 type="datetime-local"
-                                id="loading-time"
-                                name="loading-time"
-                                className="lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white p-2 w-full"
+                                id="loading_date_time"
+                                name="loading_time"
+                                className="lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white p-2 w-full  placeholder:text-gray-400"
                                 placeholder="YYYY-MM-DDTHH:MM"
                                 required
+                                onChange={(e) => {
+                                    console.log(e.target.value);
+                                    setOrder((prev) => ({
+                                      ...prev,
+                                      loading_date_time: e.target.value,
+                                    }));
+                                  }}
                             />
                         </div>
                         <label htmlFor="labours" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-5 lg:ml-9'>No of Labours</label>
                         <div className="p-4 w-full lg:w-4/12">
-                            <Input id="labours" for="" required className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white ' placeholder="100" />
+                            <Input id="no_of_labours" 
+                            type="number"
+                            required 
+                            className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white  placeholder:text-gray-400' 
+                            placeholder="100" 
+                            onChange={(e) => {
+                                console.log(e.target.value);
+                                setOrder((prev) => ({
+                                  ...prev,
+                                  no_of_labours: e.target.value,
+                                }));
+                              }}/>
                         </div>
                     </div>
                     <div className='lg:flex ms-6'>
                         <label htmlFor="goods_volume" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-4 lg:ml-4'> Volume of Good</label>
-                        <div class="relative p-4 w-full lg:w-4/12 flex w-full lg:ml-5">
-                            <span class="flex items-center whitespace-nowrap text-gray-400 rounded-s border bg-white border-e-0 border-solid border-blue-300 px-3 text-center text-base font-normal leading-[1.6] text-surface dark:border-white/10 dark:text-white">KG</span>
-                            <input type="text" id='goods_volume' class="lg:w-1/2 relative m-0 block flex-auto border rounded-e border-solid border-blue-300 bg-white bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary" />
+                        <div className="relative p-4 w-full lg:w-4/12 flex lg:ml-5">
+                            <span className="flex items-center whitespace-nowrap text-gray-400 rounded-s border bg-white border-e-0 border-solid border-blue-300 px-3 text-center text-base font-normal leading-[1.6] text-surface dark:border-white/10 dark:text-white">KG</span>
+                            <input type="text" id='volume_of_good_kg' className="lg:w-1/2 relative m-0 block flex-auto border rounded-e border-solid border-blue-300 bg-white bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary" 
+                             onChange={(e) => {
+                                console.log(e.target.value);
+                                setOrder((prev) => ({
+                                  ...prev,
+                                  volume_of_good_kg: e.target.value,
+                                }));
+                              }}/>
                         </div>
                         <label htmlFor="vehicle_no" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-5 lg:ml-9'>No of Vehicle</label>
                         <div className="p-4 w-full lg:w-4/12 lg:ml-1">
-                            <select id="vehicle_no" name="vehicle_no" class=" w-full h-full outline-none rounded border-0 py-2.5 text-gray-900 shadow-sm bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2' placeholder='Enter Your Email Address">
-                                <option>100</option>
-                                <option>200</option>
-                            </select>
+                        <Input id="no_of_vehicles"
+                        type="number"
+                        required 
+                        className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white  placeholder:text-gray-400' 
+                        placeholder="100" 
+                        onChange={(e) => {
+                            console.log(e.target.value);
+                            setOrder((prev) => ({
+                              ...prev,
+                              no_of_vehicles: e.target.value,
+                            }));
+                          }}/>
                         </div>
                     </div>
                     <div className='lg:flex ms-10 lg:ml-12'>
                         <label htmlFor="amount" className='mt-5 block text-sm font-medium leading-6 text-gray-900 lg:-ml-3'>Amount</label>
                         <div className="p-4 w-full lg:w-4/12 lg:ml-20 -ml-4">
-                            <Input id="amount" for="" required className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white' placeholder="100" />
+                            <Input id="amount" 
+                            type="number"
+                            required 
+                            className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white  placeholder:text-gray-400' 
+                            placeholder="100" 
+                            onChange={(e) => {
+                                console.log(e.target.value);
+                                setOrder((prev) => ({
+                                  ...prev,
+                                  amount: e.target.value,
+                                }));
+                              }}/>
                         </div>
                         <label htmlFor="photo" className='mt-5 block text-sm font-medium leading-6 text-gray-900 lg:ml-12'>
                             Add Photo
@@ -112,13 +304,30 @@ export default function page() {
                                 name="photo"
                                 accept="image/*"
                                 className="lg:ml-1 -ml-4 w-full h-full rounded border-1 py-1.5 text-gray-900 shadow-sm bg-white border-blue-300 ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2 opacity-1"
-                            />
+                                onChange={(e) => {
+                                    console.log(e.target.value);
+                                    setOrder((prev) => ({
+                                      ...prev,
+                                      photo: e.target.value,
+                                    }));
+                                  }}/>
                         </div>
 
                     </div>
                     <div className="lg:flex ms-6">
-                        <Label htmlFor="instructions" className='text-base mt-3 lg:ms-4 ms-5 font-medium text-sm' >Instructions</Label>
-                        <Input id="instructions" type='text' required className='ml-4 lg:ml-16 w-11/12 mt-2 lg:mr-20 rounded border-1 py-1.5 text-gray-900 bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:leading-6 pl-2' placeholder="Special Instructions About Goods (If Any)" />
+                        <Label htmlFor="instructions" className=' mt-3 lg:ms-4 ms-5 font-medium text-sm' >Instructions</Label>
+                        <Input id="special_instruction" 
+                        type='text' 
+                        required 
+                        className='ml-4 lg:ml-16 w-11/12 mt-2 lg:mr-20 rounded border-1 py-1.5 text-gray-900 bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:leading-6 pl-2' 
+                        placeholder="Special Instructions About Goods (If Any)" 
+                        onChange={(e) => {
+                            console.log(e.target.value);
+                            setOrder((prev) => ({
+                              ...prev,
+                              special_instruction: e.target.value,
+                            }));
+                          }}/>
                     </div>
 
                 </div>
