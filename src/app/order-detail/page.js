@@ -26,7 +26,7 @@ export default function page() {
             </div>
             <form className='space-y-6 mb-3' action="#" method="POST">
                 <div className='w-full mx-auto bg-[#F3F4F9] rounded-xl py-5 shadow-0 lg:max-w-5xl'>
-                <div className="flex lg:ms-5 mt-3">
+                    <div className="flex lg:ms-5 mt-3">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="gray" className="w-6 h-6 lg:ms-4 ms-4 mt-3">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -89,9 +89,9 @@ export default function page() {
                     </div>
                     <div className='lg:flex ms-10'>
                         <label htmlFor="goods_volume" className='mt-5 block text-sm font-medium leading-6 text-gray-900 lg:ml-1'> Volume of Good</label>
-                        <div class="relative p-4 w-full lg:w-4/12 flex w-full lg:ml-4 -ml-4">
-                            <span class="flex items-center whitespace-nowrap text-gray-400 rounded-s border bg-white border-e-0 border-solid border-blue-300 px-3 text-center text-base font-normal leading-[1.6] text-surface dark:border-white/10 dark:text-white">KG</span>
-                            <input type="text" class="lg:w-1/2 relative m-0 block flex-auto border rounded-e border-solid border-blue-300 bg-white bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary" />
+                        <div className="relative p-4 w-full lg:w-4/12 flex w-full lg:ml-4 -ml-4">
+                            <span className="flex items-center whitespace-nowrap text-gray-400 rounded-s border bg-white border-e-0 border-solid border-blue-300 px-3 text-center text-base font-normal leading-[1.6] text-surface dark:border-white/10 dark:text-white">KG</span>
+                            <input type="text" className="lg:w-1/2 relative m-0 block flex-auto border rounded-e border-solid border-blue-300 bg-white bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary" />
                         </div>
                         <label htmlFor="amount" className='mt-5 block text-sm font-medium leading-6 text-gray-900 lg:ml-10'>Amount</label>
                         <div className="p-4 w-full lg:w-4/12 lg:ml-9 -ml-4">
@@ -105,10 +105,10 @@ export default function page() {
 
                 </div>
                 {/* <div className="flex justify-center py-7">
-        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" className="py-3 px-4 rounded bg-[#6C63FF] text-white text-sm font-sans font-semibold leading-6">
-        Confirm Order
-        </button>
-      </div> */}
+                 <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" className="py-3 px-4 rounded bg-[#6C63FF] text-white text-sm font-sans font-semibold leading-6">
+                 Confirm Order
+                 </button>
+               </div> */}
                 <Dialog>
                     <DialogTrigger asChild>
                         <div className="flex justify-center py-7">

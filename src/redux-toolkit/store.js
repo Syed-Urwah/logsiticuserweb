@@ -1,4 +1,4 @@
-import userReducer from "./signinSlice";
+import userReducer from "./features/signinSlice";
 
 const { configureStore } = require("@reduxjs/toolkit");
 

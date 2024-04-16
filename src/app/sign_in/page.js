@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useToast } from '@/components/ui/use-toast';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../redux-toolkit/signinSlice';
+import { loginUser } from '../../redux-toolkit/features/signinSlice';
 
 export default function LoginPage() {
     const router = useRouter();

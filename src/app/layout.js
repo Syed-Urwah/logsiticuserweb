@@ -3,7 +3,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import MyNavbar from "@/components/MyNavbar";
 import { Toaster } from "@/components/ui/toaster";
-import { Providers } from "./redux-toolkit/providers";
+import { ReduxProvider } from "../redux-toolkit/providers";
 // import { Inter as FontSans } from "next/font/google"
 // import Header from "@/components/header";
 
@@ -23,13 +23,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>
+        <ReduxProvider>
           <MyNavbar />
           {children}
           <Footer />
           <Toaster />
-        </Providers>
-
+        </ReduxProvider>
       </body>
     </html>
   );
