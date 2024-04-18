@@ -14,13 +14,18 @@ import CallUs from "@/components/CallUs";
 import { useToast } from "@/components/ui/use-toast";
 import Map from "@/components/Map";
 import { DialogClose } from "@radix-ui/react-dialog";
+import { useSelector } from "react-redux";
 
 export default function page() {
 
   const { toast } = useToast()
 
+  const userData = useSelector((state) => state.user.userData)
+  console.log(userData)
+
+
   const [bookaRide, setRide] = useState({
-    user_id: "25",
+    user_id: userData.user.id,
     // user_dropoff_lat: "34.0363243",
     // user_dropoff_lng: "71.528077",
     no_of_persons: 0,

@@ -34,7 +34,7 @@ const signinSlice = createSlice({
     name: "user",
     initialState: {
         loading: false,
-        user: null,
+        userData: null,
         error: null
     },
     reducers: {},
@@ -46,7 +46,7 @@ const signinSlice = createSlice({
             })
             .addCase(loginUser.fulfilled, (state, action) => {
                 state.loading = false;
-                state.user = action.payload.result;
+                state.userData = action.payload.result;
                 state.error = null;
             })
             .addCase(loginUser.rejected, (state, action) => {
