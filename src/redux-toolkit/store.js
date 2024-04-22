@@ -2,7 +2,7 @@ import userReducer from "./features/signinSlice";
 import storage from 'redux-persist/lib/storage';
 const { configureStore } = require("@reduxjs/toolkit");
 import { persistReducer, persistStore } from 'redux-persist';
-import thunk from 'redux-thunk';
+import {thunk} from 'redux-thunk';
 
 
 const persistConfig = {
