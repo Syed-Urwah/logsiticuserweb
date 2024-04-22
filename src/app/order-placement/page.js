@@ -28,8 +28,10 @@ export default function page() {
         type_of_good_id: "",
         temperature: "",
         vehicle_type_id: "",
-        // user_dropoff_lat: "34.0363243",
-        // user_dropoff_lng: "71.528077",
+        // user_pickup_lat: "",
+        // user_pickup_lng: "",
+        // user_dropoff_lat: "",
+        // user_dropoff_lng: "",
         total_km: "",
         origin: "",
         destination: "",
@@ -60,7 +62,7 @@ export default function page() {
       const fetchVehicleType = async () => {
         const url =
           process.env.NEXT_PUBLIC_SERVER_BASE_URL +
-          "/api/setting/vehicle_type/get_by_transportation_type/1";
+          "/api/setting/vehicle_type/get_by_transportation_type/2";
         setVehicleTypes((prev) => ({
           ...prev,
           loading: true,
@@ -153,14 +155,15 @@ export default function page() {
           }))
       
           const bodyData = orderPlacement;
-          bodyData.user_pickup_lat = pickupLat;
-          bodyData.user_pickup_lng = pickupLng;
+          bodyData.user_pickup_lat = "34.0363243";
+          bodyData.user_pickup_lng = "71.6418583";
           bodyData.user_dropoff_lat = dropoffLat;
           bodyData.user_dropoff_lng = dropoffLng;
     
         const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + '/api/customer/order/search_driver'
     
         try {
+          console.log(bodyData);
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -363,7 +366,7 @@ export default function page() {
                             placeholder="search destination"
                           />
                         </DialogHeader>
-                        <Map setOrigin={setDestination} lat={dropoffLat} setLat={setDropoffLat} lng={dropoffLng} setLng={setDropoffLat} />
+                        <Map setOrigin={setDestination} lat={dropoffLat} setLat={setDropoffLat} lng={dropoffLng} setLng={setDropoffLng} />
                         <DialogFooter>
                           <DialogClose asChild>
                             <Button type="button" className="bg-white text-black hover:text-white hover:border-white border-2">
