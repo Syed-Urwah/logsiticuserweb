@@ -45,7 +45,7 @@ export default function page() {
         headers: {
           "Accept": "application/json",
           // "Content-Type": "application/json",
-          "Api-Token": "N5ORjSS300F4fcZ3eq69rLShvgwnjchQg7Vmt5N753Sy"
+          "Api-Token": process.env.NEXT_PUBLIC_API_TOKEN,
         },
         body: formData
       });

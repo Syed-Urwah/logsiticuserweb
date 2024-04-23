@@ -1,20 +1,28 @@
 "use client";
-
 import React, { useEffect, useRef, useState } from "react";
-import { Loader } from "@googlemaps/js-api-loader";
-import { Input } from "@/components/ui/input";
+import { Loader } from "@googlemaps/js-api-loader"; 
 
 export default function Map(props) {
-  const { setOrigin, setLat, setLng } = props;
-  console.log();
+  const { setOrigin, setLat, setLng,currPosition } = props; 
+  const [userLatitude, setUserLatitude] = useState('');
+  const [userLongitude, setUserLongitude] = useState('');
 
   const mapRef = useRef(null);
 
   const [markerPosition, setMarkerPosition] = useState({
-    lat: 24.928973407134215,
-    lng: 67.05344430109362,
+    // lat: 24.928973407134215,
+    // lng: 67.05344430109362,
+
+    lat:currPosition.lat,
+    lng:currPosition.lng
+ 
   });
   const [placeName, setPlaceName] = useState("");
+
+  useEffect(()=>{
+    console.log("latidudeee: ", userLatitude);
+    console.log("longidudeee: ", userLongitude);
+  },[ userLatitude, userLongitude])
 
   const mapInit = async () => {
     const loader = new Loader({
@@ -22,11 +30,35 @@ export default function Map(props) {
       version: "weekly",
     });
 
-    const position = {
-      lat: 24.928973407134215,
-      lng: 67.05344430109362,
-    };
+    loader.load().then((google) => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const {latitude, longitude} = position.coords;
+            setUserLatitude(Number(latitude));
+            setUserLongitude(Number(longitude));
+          },
+          (error) => {
+            console.error('Error getting user location:', error);
+          }
+        );
+      } else {
+        console.error('Geolocation is not supported by this browser.');
+      }
+    });
+  
 
+    // useEffect(() => {
+    //     navigator.geolocation.getCurrentPosition(function (position) {
+    //       setCurrPosition({
+    //         latitude: position.coords.latitude,
+    //         longitude: position.coords.longitude,
+    //       });
+    //     });
+    // }, []);
+
+
+    
     const { Map } = await loader.importLibrary("maps");
     const { Marker } = await loader.importLibrary("marker");
     const { Geocoder } = await loader.importLibrary("geocoding");
@@ -46,16 +78,17 @@ export default function Map(props) {
 
     // Update marker position on map click
     map.addListener("click", (event) => {
-      console.log(event);
+      
       const newPosition = {
         lat: event.latLng.lat(),
         lng: event.latLng.lng(),
       };
+      
       setMarkerPosition(newPosition);
       setLat(newPosition.lat);
       setLng(newPosition.lng);
       marker.setPosition(newPosition);
-      console.log("New Marker Position:", newPosition);
+      // console.log("New Marker Position:", newPosition);
 
       // Perform reverse geocoding to get the place name
       geocoder.geocode({ location: newPosition }, (results, status) => {
@@ -63,7 +96,7 @@ export default function Map(props) {
           if (results[0]) {
             setPlaceName(results[0].formatted_address);
             setOrigin(results[0].formatted_address);
-            console.log("Place Name:", results[0].formatted_address);
+            // console.log("Place Name:", results[0].formatted_address);
           } else {
             console.log("No results found");
           }
@@ -78,8 +111,6 @@ export default function Map(props) {
     const { SearchBox } = await loader.importLibrary("places");
     var searchBox = new SearchBox(input);
 
-
-    console.log(searchBox);
 
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
     // Bias the SearchBox results towards current map's viewport.

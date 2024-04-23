@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import "../styles/custom.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -15,14 +15,14 @@ import { useToast } from "@/components/ui/use-toast";
 import Map from "@/components/Map";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { useSelector } from "react-redux";
+import { Loader  } from "@googlemaps/js-api-loader"
 
 export default function page() {
-
   const { toast } = useToast()
 
-  const userData = useSelector((state) => state.user.userData)
-  console.log(userData)
+  const userData = useSelector((state) => state.user.userData) 
 
+  const [distance, setDistance] = useState('')
 
   const [bookaRide, setRide] = useState({
     user_id: userData.user.id,
@@ -37,23 +37,82 @@ export default function page() {
   });
 
   const [origin, setOrigin] = useState('')
-  const [pickupLat, setPickupLat] = useState(0)
-  const [pickupLng, setPickupLng] = useState(0)
+  const [pickupLat, setPickupLat] = useState()
+  const [pickupLng, setPickupLng] = useState();
+
 
   const [destination, setDestination] = useState('')
-  const [dropoffLat, setDropoffLat] = useState(0)
-  const [dropoffLng, setDropoffLng] = useState(0)
+  const [dropoffLat, setDropoffLat] = useState()
+  const [dropoffLng, setDropoffLng] = useState();
 
+
+  useEffect(()=>{   
+    setRide((prev)=>({
+      ...prev,
+      origin:origin
+    }))
+    setRide((prev)=>({
+      ...prev,
+      destination:destination
+    }))
+
+  },[origin, destination])
+
+
+  useEffect(() => { 
+    const calculateDistance = (lat1, lon1, lat2, lon2) => {
+      return () => {
+        const R = 6371; // Radius of the Earth in kilometers
+        const deg2rad = (deg) => deg * (Math.PI / 180);
+
+        const dLat = deg2rad(lat2 - lat1);
+        const dLon = deg2rad(lon2 - lon1);
+
+        const a = 
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+          Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
+        return R * c ; // Distance in kilometers
+      };
+    };
+
+    const distanceResult = calculateDistance(pickupLat, pickupLng, dropoffLat, dropoffLng)();
+    if(distanceResult){ 
+      setDistance(distanceResult.toFixed(2));
+      setRide((prev)=>({
+        ...prev,
+         total_km: distanceResult.toFixed(2)
+      }))
+    }
+  }, [pickupLat,pickupLng, dropoffLat, dropoffLng]);
+
+  
+ 
+
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  useEffect(()=>{
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition((position)=>{ 
+         setLatitude(position.coords.latitude)
+         setLongitude(position.coords.longitude)
+      })
+    }else{
+      console.log("geolocation api is not supported by this browser")
+    }
+  },[])
+     
   const [vehicleTypes, setVehicleTypes] = useState({
     data: [],
     loading: true,
   });
 
   const fetchVehicleType = async () => {
-    const url =
-      process.env.NEXT_PUBLIC_SERVER_BASE_URL +
+    const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + 
       "/api/setting/vehicle_type/get_by_transportation_type/1";
-    setVehicleTypes((prev) => ({
+     setVehicleTypes((prev) => ({
       ...prev,
       loading: true,
     }));
@@ -63,7 +122,7 @@ export default function page() {
         headers: {
           // "Accept": "application/json",
           "Content-Type": "application/json",
-          "Api-Token": "N5ORjSS300F4fcZ3eq69rLShvgwnjchQg7Vmt5N753Sy",
+          "Api-Token": process.env.NEXT_PUBLIC_API_TOKEN,
         },
       });
 
@@ -73,8 +132,7 @@ export default function page() {
         ...prev,
         data: data.result.vehicle_types,
       }));
-
-      console.log(data);
+ 
       setVehicleTypes((prev) => ({
         ...prev,
         loading: false,
@@ -86,8 +144,7 @@ export default function page() {
   };
 
   const handleRide = async (e) => {
-    e.preventDefault();
-    console.log(bookaRide);
+    e.preventDefault(); 
 
     setRide((prev) => ({
       ...prev,
@@ -95,6 +152,7 @@ export default function page() {
       user_pickup_lng: pickupLng
     }))
 
+    console.log("pick up lat: ",pickupLat)
     setRide((prev) => ({
       ...prev,
       user_dropoff_lat: dropoffLat,
@@ -113,7 +171,7 @@ export default function page() {
       process.env.NEXT_PUBLIC_SERVER_BASE_URL +
       "/api/customer/booking_rides/search_driver";
 
-    try {
+    try { 
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -125,8 +183,8 @@ export default function page() {
       });
 
       const data = await response.json();
-      console.log(data);
-      console.log(bodyData)
+    
+      
 
       data.response.response_id == 1 ?
         toast({
@@ -157,7 +215,7 @@ export default function page() {
         <div className="mx-auto w-full sm:max-w-sm lg:max-w-full mb-5">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             BOOK A RIDE
-          </h2>
+          </h2> 
         </div>
         <form onSubmit={handleRide} className="pt-3 px-2 text-gray-400">
           <Card className="w-full py-6 bg-gray-50 rounded-xl">
@@ -173,7 +231,7 @@ export default function page() {
                       type="number"
                       required
                       className="lg:w-[250px] xl:w-[300px] sm:ms-4 border-[2px] rounded border-blue-300  "
-                      placeholder="Name of your project"
+                      placeholder="no.of person"
                       onChange={(e) => {
                         console.log(e.target.value);
                         setRide((prev) => ({
@@ -192,7 +250,7 @@ export default function page() {
                     }))}>
                       <SelectTrigger className="lg:w-[250px] xl:w-[300px] sm:ms-6 border-[2px] rounded border-blue-300 ">
                         <SelectValue
-                          placeholder="Select a timezone"
+                          placeholder="Select Car"
                           className="text-black"
                         />
                       </SelectTrigger>
@@ -222,9 +280,8 @@ export default function page() {
                       type="text"
                       required
                       className="lg:w-[250px] xl:w-[300px] max-lg:ms-7 sm:ms-7 max-sm:ms-2 border-[2px] rounded border-blue-300 "
-                      placeholder="Name of your project"
-                      onChange={(e) => {
-                        console.log(e.target.value);
+                      placeholder="Contact info"
+                      onChange={(e) => { 
                         setRide((prev) => ({
                           ...prev,
                           contact_info: e.target.value,
@@ -238,10 +295,12 @@ export default function page() {
                     </Label>
                     <Input
                       id="total_km"
-                      type="number"
+                      type="text"
                       required
                       className="lg:w-[250px] xl:w-[300px] sm:ms-14 max-sm:ms-3 border-[2px] rounded border-blue-300 "
-                      placeholder="Name of your project"
+                      placeholder="Total distance (auto calculate)"
+                      value={bookaRide?.total_km ? `${bookaRide.total_km} km` : ''}
+                      readOnly
                       onChange={(e) => {
                         console.log(e.target.value);
                         setRide((prev) => ({
@@ -275,11 +334,12 @@ export default function page() {
                           d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
                         />
                       </svg>
-                    </span>
+                    </span> 
+
                     <Label htmlFor="persons" className="text-base sm:me-6">
                       Origin
                     </Label>
-                    <Dialog className=" w-[120%]">
+                    <Dialog className="w-[120%]">
                       <DialogTrigger asChild>
                         <Input
                           id="origin"
@@ -287,7 +347,7 @@ export default function page() {
                           readOnly
                           required
                           className="  max-lg:ms-7 sm:ms-7 max-sm:ms-2 border-[2px] rounded border-blue-300 "
-                          placeholder="Name of your project"
+                          placeholder="Select Origin"
                           value={origin}
                         />
                       </DialogTrigger>
@@ -302,7 +362,7 @@ export default function page() {
                             placeholder="search origin"
                           />
                         </DialogHeader>
-                        <Map setOrigin={setOrigin} lat={pickupLat} setLat={setPickupLat} lng={pickupLng} setLng={setPickupLng} />
+                        <Map setOrigin={setOrigin} currPosition={{lat:latitude, lng:longitude}} lat={pickupLat} setLat={setPickupLat} lng={pickupLng} setLng={setPickupLng} />
                         <DialogFooter>
                           <DialogClose asChild>
                             <Button type="button" className="bg-white text-black hover:text-white hover:border-white border-2">
@@ -362,7 +422,7 @@ export default function page() {
                             placeholder="search origin"
                           />
                         </DialogHeader>
-                        <Map setOrigin={setDestination} lat={dropoffLat} setLat={setDropoffLat} lng={dropoffLng} setLng={setDropoffLng} />
+                        <Map setOrigin={setDestination}  currPosition={{lat:latitude, lng:longitude}} lat={dropoffLat} setLat={setDropoffLat} lng={dropoffLng} setLng={setDropoffLng} />
                         <DialogFooter>
                           <DialogClose asChild>
                             <Button type="button" className="bg-white text-black hover:text-white hover:border-white border-2">
