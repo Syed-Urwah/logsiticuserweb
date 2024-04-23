@@ -152,7 +152,7 @@ export default function page() {
       user_pickup_lng: pickupLng
     }))
 
-    console.log("pick up lat: ",pickupLat)
+    
     setRide((prev) => ({
       ...prev,
       user_dropoff_lat: dropoffLat,

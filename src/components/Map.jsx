@@ -16,47 +16,15 @@ export default function Map(props) {
     lat:currPosition.lat,
     lng:currPosition.lng
  
+ 
   });
   const [placeName, setPlaceName] = useState("");
-
-  useEffect(()=>{
-    console.log("latidudeee: ", userLatitude);
-    console.log("longidudeee: ", userLongitude);
-  },[ userLatitude, userLongitude])
 
   const mapInit = async () => {
     const loader = new Loader({
       apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY,
       version: "weekly",
     });
-
-    loader.load().then((google) => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const {latitude, longitude} = position.coords;
-            setUserLatitude(Number(latitude));
-            setUserLongitude(Number(longitude));
-          },
-          (error) => {
-            console.error('Error getting user location:', error);
-          }
-        );
-      } else {
-        console.error('Geolocation is not supported by this browser.');
-      }
-    });
-  
-
-    // useEffect(() => {
-    //     navigator.geolocation.getCurrentPosition(function (position) {
-    //       setCurrPosition({
-    //         latitude: position.coords.latitude,
-    //         longitude: position.coords.longitude,
-    //       });
-    //     });
-    // }, []);
-
 
     
     const { Map } = await loader.importLibrary("maps");
@@ -177,9 +145,7 @@ export default function Map(props) {
 
   return (
     <>
-      <div>
-        
-      </div>
+ 
       <div ref={mapRef} className="h-96 py-4">
         Map
       </div>
