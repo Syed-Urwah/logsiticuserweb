@@ -19,10 +19,20 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 import Map from "@/components/Map";
 import { DialogClose } from "@radix-ui/react-dialog";
 import ViewOrder from '@/components/ViewOrder';
+import AcceptedDriverOrder from "@/components/AcceptedDriverOrder";
+import { useToast } from "@/components/ui/use-toast";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+
+
 
 
 
 export default function page() {
+  const { toast } = useToast();
+  const router = useRouter();
+
+  const userData = useSelector((state) => state.user.userData) 
 
   const [orderPlacement, setOrder] = useState({
     type_of_good_id: "",
@@ -40,7 +50,7 @@ export default function page() {
     amount: "",
     photo: "",
     special_instruction: "",
-    customer_id: "1",
+    customer_id: userData.user.id,
 
   });
 const [goodType, setGoodType] = useState('')
@@ -69,6 +79,9 @@ const [vehicleType, setVehicleType] = useState('')
     }))
 
   }, [origin, destination])
+
+  const [acceptedDrivers, setAcceptedDriversOrders] = useState(null)
+
 
   // get user current location
   const [latitude, setLatitude] = useState(null);
@@ -119,7 +132,7 @@ const [vehicleType, setVehicleType] = useState('')
   const fetchVehicleType = async () => {
     const url =
       process.env.NEXT_PUBLIC_SERVER_BASE_URL +
-      "/api/setting/vehicle_type/get_by_transportation_type/1";
+      "/api/setting/vehicle_type/get_by_transportation_type/2";
     setVehicleTypes((prev) => ({
       ...prev,
       loading: true,
@@ -247,7 +260,41 @@ const [vehicleType, setVehicleType] = useState('')
       });
 
       const data = await response.json();
+      console.log(data)
 
+      if(data.response.response_desc){
+        const drivers_url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + 
+        `/api/customer/order/get_accepted_drivers/${data.result.order.id}`;
+
+         let drivers_data ={};
+        const intervalId = setInterval(async()=>{
+          const order_res = await fetch(drivers_url,{
+            method:"GET",
+            headers:{
+              "Accept": "application/json",
+              "Content-Type": "application/json",
+              "Api-Token": process.env.NEXT_PUBLIC_API_TOKEN,
+            }
+          });
+
+          drivers_data = await order_res.json();
+          console.log(drivers_data)
+         
+     
+          setAcceptedDriversOrders([...drivers_data.result.accepted_drivers]);
+
+          if(drivers_data.result.accepted_drivers.length > 2){
+            clearInterval(intervalId)
+            toast({
+             title: "Scheduled: Catch up",
+             description: data.response.response_desc,
+             variant: "success"
+           })
+          }
+        
+        },5000);
+ 
+      }
 
     } catch (error) {
       console.log(error);
@@ -262,6 +309,38 @@ const [vehicleType, setVehicleType] = useState('')
   React.useEffect(() => {
     fetchGoodsType();
   }, []);
+
+  const accept_order_driver=async(driverData)=>{
+  
+    try {
+      const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + "/api/customer/order/accept_ride";
+
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Api-Token": "N5ORjSS300F4fcZ3eq69rLShvgwnjchQg7Vmt5N753Sy",
+        },
+        body: JSON.stringify({
+          order_id:driverData.order_id,
+          driver_id:driverData.driver_id,
+          customer_id:driverData.get_order.customer_id
+        }),
+      });
+
+      const acceptOrderRes = await res.json();
+      // console.log(acceptOrderRes);
+      console.log("accept order request: ",acceptOrderRes.response.response_desc )
+      if(acceptOrderRes.response.response_desc === "Success"){
+        clearInterval()
+        router.push('/track-shipment')
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div>
@@ -580,6 +659,7 @@ const [vehicleType, setVehicleType] = useState('')
         )
         }
        </div>
+        <AcceptedDriverOrder acceptedDrivers={acceptedDrivers} acceptDriverOrder={accept_order_driver}/>
 
       <CallUs />
     </div>
