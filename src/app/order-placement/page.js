@@ -31,7 +31,7 @@ import { useRouter } from "next/navigation";
 export default function page() {
   const { toast } = useToast();
   const router = useRouter();
-
+  const [loading, setLoading] = useState(false);
   const userData = useSelector((state) => state.user.userData) 
 
   const [orderPlacement, setOrder] = useState({
@@ -226,6 +226,7 @@ const [vehicleType, setVehicleType] = useState('')
   const handleOrder = async (e) => {
     e.preventDefault();
     console.log(orderPlacement);
+    setLoading(true);
 
     setOrder((prev) => ({
       ...prev,
@@ -293,12 +294,13 @@ const [vehicleType, setVehicleType] = useState('')
           }
         
         },5000);
- 
+        
+        setLoading(false);
       }
 
     } catch (error) {
       console.log(error);
-
+      setLoading(false);
     }
   };
 
@@ -649,7 +651,7 @@ const [vehicleType, setVehicleType] = useState('')
             </button>
           </DialogTrigger>
           <DialogContent className="bg-white sm:w-[80%] scroll md:w-[70%] lg:w-[60%] xl:w-1/2 h-[90vh] overflow-y-auto !rounded-xl">
-            <ViewOrder orderDetails={orderPlacement} vehicleType={vehicleType} goodType={goodType} handleSubmit={handleOrder} />
+            <ViewOrder orderDetails={orderPlacement} vehicleType={vehicleType} goodType={goodType} handleSubmit={handleOrder} loading={loading} />
           </DialogContent>
         </Dialog> :
         (
