@@ -25,37 +25,36 @@ export default function page() {
                         <div className='flex items-center my-4'>
                             <span className='z-10'><img src="images/delivery.png" /></span>
                             <div className='line-1'></div>
-                            <div className='ms-5 text-[#6C63FF] font-medium'>Antony driver takes the trip</div>
-                            <div className='text-gray-400 flex ms-5 text-[12px] '>
+                            <div className='ms-5 text-[#6C63FF] font-medium'>Driver Start Ride</div>
+                            {/* <div className='text-gray-400 flex ms-5 text-[12px] '>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
                                 </svg>
                                 <p>2020/03/21 - 09:00</p>
 
-                            </div>
+                            </div> */}
                         </div>
                         <div className='flex items-center my-4'>
                             <span className='z-10'><img src="images/driver-finished.png" /></span>
                             <div className='line-1'></div>
-                            <div className='ms-5 text-[#6C63FF] font-medium'>Driver finished taking goods</div>
-                            <div className='text-gray-400 flex ms-5 text-[12px]'>
+                            <div className='ms-5 text-[#6C63FF] font-medium'>Driver Arrive at pickup Location</div>
+                            {/* <div className='text-gray-400 flex ms-5 text-[12px]'>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
                                 </svg>
                                 <p>2020/03/21 - 09:10</p>
 
-                            </div>
+                            </div> */}
                         </div>
                         <div className='flex items-center my-4'>
                             <span className='z-10'><img src="images/onthejourney.png" /></span>
                             <div className='line-1'></div>
-                            <div className='ms-5 text-[#6C63FF] font-medium'>On the journey</div>
+                            <div className='ms-5 text-[#6C63FF] font-medium'>Driver Pickup Ride</div>
 
                         </div>
                         <div className='flex items-center my-4'>
                             <span className='z-10'><img src="images/delivery-complete.png" /></span>
-                            <div className='ms-5 text-[#B7B4B4] font-medium'>Delivery completed</div>
-
+                            <div className='ms-5 text-[#B7B4B4] font-medium'>Ride Completed</div>
                         </div>
 
                     </div>

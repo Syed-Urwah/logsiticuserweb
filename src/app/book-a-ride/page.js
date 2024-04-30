@@ -16,13 +16,17 @@ import Map from "@/components/Map";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { useSelector } from "react-redux";
 import { Loader  } from "@googlemaps/js-api-loader"
+import AcceptedDriver from "@/components/AcceptedDriver";
+import { useRouter } from "next/navigation";
 
 export default function page() {
-  const { toast } = useToast()
+  const { toast } = useToast();
+  const router = useRouter();
 
   const userData = useSelector((state) => state.user.userData) 
 
-  const [distance, setDistance] = useState('')
+  const [distance, setDistance] = useState('');
+  const [acceptedDrivers, setAcceptedDrivers] = useState(null)
 
   const [bookaRide, setRide] = useState({
     user_id: userData.user.id,
@@ -117,6 +121,7 @@ export default function page() {
       loading: true,
     }));
     try {
+      
       const response = await fetch(url, {
         method: "GET",
         headers: {
@@ -167,8 +172,7 @@ export default function page() {
 
 
 
-    const url =
-      process.env.NEXT_PUBLIC_SERVER_BASE_URL +
+    const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL +
       "/api/customer/booking_rides/search_driver";
 
     try { 
@@ -182,10 +186,42 @@ export default function page() {
         body: JSON.stringify(bodyData),
       });
 
-      const data = await response.json();
-    
-      
+      const data = await response.json(); 
 
+      if(data.response.response_desc){
+        const drivers_url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + 
+        `/api/customer/booking_rides/get_accepted_drivers/${data.result.booking_ride.id}`;
+
+         let drivers_data ={};
+        const intervalId = setInterval(async()=>{
+          const ride_res = await fetch(drivers_url,{
+            method:"GET",
+            headers:{
+              "Accept": "application/json",
+              "Content-Type": "application/json",
+              "Api-Token": process.env.NEXT_PUBLIC_API_TOKEN,
+            }
+          });
+
+          drivers_data = await ride_res.json();
+         
+     
+          setAcceptedDrivers([...drivers_data.result.accepted_drivers]);
+
+          if(drivers_data.result.accepted_drivers.length > 2){
+            clearInterval(intervalId)
+            toast({
+             title: "Scheduled: Catch up",
+             description: data.response.response_desc,
+             variant: "success"
+           })
+          }
+        
+        },5000);
+ 
+      }
+       
+    
       data.response.response_id == 1 ?
         toast({
           title: "Scheduled: Catch up",
@@ -209,6 +245,39 @@ export default function page() {
     fetchVehicleType();
   }, []);
 
+ 
+  const accept_ride_driver=async(driverData)=>{
+  
+    try {
+      const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + "/api/customer/booking_rides/accept_ride";
+
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Api-Token": "N5ORjSS300F4fcZ3eq69rLShvgwnjchQg7Vmt5N753Sy",
+        },
+        body: JSON.stringify({
+          ride_id:driverData.booking_ride_id,
+          driver_id:driverData.driver_id,
+          customer_id:driverData.get_ride.customer_id
+        }),
+      });
+
+      const acceptRideRes = await res.json()
+      console.log("accept ride request: ",acceptRideRes.response.response_desc )
+      if(acceptRideRes.response.response_desc === "Success"){
+        clearInterval()
+        router.push('/track-shipment')
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+ 
   return (
     <div>
       <div className="2xl:px-[320px] xl:px-[120px] max-xl:px-[100px] my-7">
@@ -354,7 +423,7 @@ export default function page() {
                       <div className="w-[130wv]">
                       <DialogContent className=" w-[90vw] bg-black text-white">
                         <DialogHeader>
-                          <DialogTitle>Edit profile</DialogTitle>
+                          <DialogTitle>Add Origin</DialogTitle>
                           <Input
                             id="input"
                             type="search"
@@ -414,7 +483,7 @@ export default function page() {
                       </DialogTrigger>
                       <DialogContent className=" w-[90vw] bg-black text-white">
                         <DialogHeader>
-                          <DialogTitle>Destination</DialogTitle>
+                          <DialogTitle>Add Destination</DialogTitle>
                           <Input
                             id="input"
                             type="search"
@@ -444,10 +513,14 @@ export default function page() {
               className="py-3 px-4 rounded-xl bg-[#6C63FF] text-white"
             >
               Confirm Ride
-            </button>
+            </button> 
+
+ 
+
           </div>
         </form>
       </div>
+      <AcceptedDriver acceptedDrivers={acceptedDrivers} acceptDriverRide={accept_ride_driver}/>
 
       <CallUs />
     </div>

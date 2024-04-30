@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
@@ -19,6 +18,7 @@ import {
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Map from "@/components/Map";
 import { DialogClose } from "@radix-ui/react-dialog";
+import ViewOrder from '@/components/ViewOrder';
 
 
 
@@ -42,8 +42,9 @@ export default function page() {
     special_instruction: "",
     customer_id: "1",
 
-  }); 
-
+  });
+const [goodType, setGoodType] = useState('')
+const [vehicleType, setVehicleType] = useState('')
   const [origin, setOrigin] = useState('')
   const [pickupLat, setPickupLat] = useState(0)
   const [pickupLng, setPickupLng] = useState(0)
@@ -57,34 +58,34 @@ export default function page() {
     loading: true,
   });
 
-  useEffect(()=>{
-    setOrder((prev)=>({
+  useEffect(() => {
+    setOrder((prev) => ({
       ...prev,
-      origin:origin
+      origin: origin
     }))
-    setOrder((prev)=>({
+    setOrder((prev) => ({
       ...prev,
-      destination:destination
+      destination: destination
     }))
 
-  },[origin, destination])
+  }, [origin, destination])
 
   // get user current location
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
-  useEffect(()=>{
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition((position)=>{ 
-         setLatitude(position.coords.latitude)
-         setLongitude(position.coords.longitude)
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setLatitude(position.coords.latitude)
+        setLongitude(position.coords.longitude)
       })
-    }else{
+    } else {
       console.log("geolocation api is not supported by this browser")
     }
-  },[])
+  }, [])
 
   // calculate distance btn origin and destination
-  useEffect(() => { 
+  useEffect(() => {
     const calculateDistance = (lat1, lon1, lat2, lon2) => {
       return () => {
         const R = 6371; // Radius of the Earth in kilometers
@@ -93,20 +94,20 @@ export default function page() {
         const dLat = deg2rad(lat2 - lat1);
         const dLon = deg2rad(lon2 - lon1);
 
-        const a = 
+        const a =
           Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-          Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+          Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
           Math.sin(dLon / 2) * Math.sin(dLon / 2);
 
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
-        return R * c ; // Distance in kilometers
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c; // Distance in kilometers
       };
     };
 
-    if(pickupLat, pickupLng, dropoffLat, dropoffLng){
-      const distanceResult = calculateDistance(pickupLat, pickupLng, dropoffLat, dropoffLng)(); 
+    if (pickupLat, pickupLng, dropoffLat, dropoffLng) {
+      const distanceResult = calculateDistance(pickupLat, pickupLng, dropoffLat, dropoffLng)();
 
-      if (distanceResult) { 
+      if (distanceResult) {
         setOrder((prev) => ({
           ...prev,
           total_km: distanceResult.toFixed(2)
@@ -139,7 +140,7 @@ export default function page() {
         ...prev,
         data: data.result.vehicle_types,
       }));
- 
+
       setVehicleTypes((prev) => ({
         ...prev,
         loading: false,
@@ -179,7 +180,7 @@ export default function page() {
         ...prev,
         data: data.result.type_of_goods,
       }));
- 
+
       setGoodsTypes((prev) => ({
         ...prev,
         loading: false,
@@ -190,6 +191,23 @@ export default function page() {
     }
   };
 
+  useEffect(()=>{
+    !vehicleTypes.loading && 
+    vehicleTypes.data.map((e)=>{
+      if(e.id.toString()== orderPlacement.vehicle_type_id){
+        setVehicleType(e.name)
+      }
+    })
+  },[orderPlacement.vehicle_type_id])
+
+  useEffect(()=>{
+    !goodsTypes.loading &&
+    goodsTypes.data.map((e)=>{
+      if(e.id.toString()== orderPlacement.vehicle_type_id){
+        setGoodType(e.name)
+      }
+    })
+  },[orderPlacement.vehicle_type_id])
 
 
   const handleOrder = async (e) => {
@@ -216,7 +234,7 @@ export default function page() {
 
     const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + '/api/customer/order/search_driver'
 
-    try { 
+    try {
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -228,7 +246,8 @@ export default function page() {
         body: JSON.stringify(bodyData)
       });
 
-      const data = await response.json(); 
+      const data = await response.json();
+
 
     } catch (error) {
       console.log(error);
@@ -269,7 +288,7 @@ export default function page() {
                 <SelectContent className="bg-white">
                   {goodsTypes.loading
                     ? "loading"
-                    : goodsTypes.data.map((e) => {
+                    : goodsTypes.data.map((e) => { 
                       return (
                         <SelectItem key={e.id} value={e.id.toString()}>
                           {e.name}
@@ -285,7 +304,7 @@ export default function page() {
                 required
                 className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white  placeholder:text-gray-400'
                 placeholder="Temperature"
-                onChange={(e) => { 
+                onChange={(e) => {
                   setOrder((prev) => ({
                     ...prev,
                     temperature: e.target.value,
@@ -309,7 +328,7 @@ export default function page() {
                 <SelectContent className="bg-white">
                   {vehicleTypes.loading
                     ? "loading"
-                    : vehicleTypes.data.map((e) => {
+                    : vehicleTypes?.data?.map((e) => { 
                       return (
                         <SelectItem key={e.id} value={e.id.toString()}>
                           {e.name}
@@ -370,7 +389,7 @@ export default function page() {
                       placeholder="search origin"
                     />
                   </DialogHeader>
-                  <Map setOrigin={setOrigin} currPosition={{lat:latitude, lng:longitude}} lat={pickupLat} setLat={setPickupLat} lng={pickupLng} setLng={setPickupLng} />
+                  <Map setOrigin={setOrigin} currPosition={{ lat: latitude, lng: longitude }} lat={pickupLat} setLat={setPickupLat} lng={pickupLng} setLng={setPickupLng} />
                   <DialogFooter>
                     <DialogClose asChild>
                       <Button type="button" className="bg-white text-black hover:text-white hover:border-white border-2">
@@ -415,7 +434,7 @@ export default function page() {
                       placeholder="search destination"
                     />
                   </DialogHeader>
-                  <Map setOrigin={setDestination} currPosition={{lat:latitude, lng:longitude}} lat={dropoffLat} setLat={setDropoffLat} lng={dropoffLng}  setLng={setDropoffLng} />
+                  <Map setOrigin={setDestination} currPosition={{ lat: latitude, lng: longitude }} lat={dropoffLat} setLat={setDropoffLat} lng={dropoffLng} setLng={setDropoffLng} />
                   <DialogFooter>
                     <DialogClose asChild>
                       <Button type="button" className="bg-white text-black hover:text-white hover:border-white border-2">
@@ -453,7 +472,7 @@ export default function page() {
                 required
                 className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white  placeholder:text-gray-400'
                 placeholder="100"
-                onChange={(e) => { 
+                onChange={(e) => {
                   setOrder((prev) => ({
                     ...prev,
                     no_of_labours: e.target.value,
@@ -466,7 +485,7 @@ export default function page() {
             <div className="relative p-4 w-full lg:w-4/12 flex lg:ml-5">
               <span className="flex items-center whitespace-nowrap text-black rounded-s border bg-white border-e-0 border-solid border-blue-300 px-3 text-center text-base font-normal leading-[1.6] text-surface dark:border-white/10 dark:text-white">KG</span>
               <input type="text" id='volume_of_good_kg' className="lg:w-1/2 relative m-0 block flex-auto border rounded-e border-solid border-blue-300 bg-white bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
-                onChange={(e) => { 
+                onChange={(e) => {
                   setOrder((prev) => ({
                     ...prev,
                     volume_of_good_kg: e.target.value,
@@ -480,7 +499,7 @@ export default function page() {
                 required
                 className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white  placeholder:text-gray-400'
                 placeholder="100"
-                onChange={(e) => { 
+                onChange={(e) => {
                   setOrder((prev) => ({
                     ...prev,
                     no_of_vehicles: e.target.value,
@@ -496,7 +515,7 @@ export default function page() {
                 required
                 className='lg:w-[250px] xl:w-[300px] border-[1px] rounded border-blue-300 bg-white  placeholder:text-gray-400'
                 placeholder="100"
-                onChange={(e) => { 
+                onChange={(e) => {
                   setOrder((prev) => ({
                     ...prev,
                     amount: e.target.value,
@@ -513,7 +532,7 @@ export default function page() {
                 name="photo"
                 accept="image/*"
                 className="lg:ml-1 -ml-4 w-full h-full rounded border-[1px] py-1.5 text-gray-900 shadow-sm bg-white border-blue-300 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-blue-300 sm:text-sm sm:leading-6 pl-2 opacity-1"
-                onChange={(e) => { 
+                onChange={(e) => {
                   setOrder((prev) => ({
                     ...prev,
                     photo: e.target.value,
@@ -529,7 +548,7 @@ export default function page() {
               required
               className='ml-4 lg:ml-16 w-11/12 mt-2 lg:mr-20 rounded border-1 py-1.5 text-gray-900 bg-white ring-1 ring-inset ring-blue-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:leading-6 pl-2'
               placeholder="Special Instructions About Goods (If Any)"
-              onChange={(e) => { 
+              onChange={(e) => {
                 setOrder((prev) => ({
                   ...prev,
                   special_instruction: e.target.value,
@@ -538,13 +557,30 @@ export default function page() {
           </div>
 
         </div>
-        <div className="flex justify-center py-6">
-          <button type='submit' className="py-3 px-4 rounded border-[1px] border-blue-300 bg-[#6C63FF] text-white text-sm font-sans font-semibold leading-6 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-            View Order
-          </button>
-        </div>
+
 
       </form>
+      <div className="flex flex-col gap-5 items-center justify-center py-6">
+      {
+        orderPlacement.total_km ? 
+        <Dialog className="bg-white text-black rounded-xl  ">
+          <DialogTrigger>
+            <button className="py-3 px-4  rounded border-[1px]  bg-[#6C63FF] text-white text-sm font-sans font-semibold leading-6 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ">
+              view Order
+            </button>
+          </DialogTrigger>
+          <DialogContent className="bg-white sm:w-[80%] scroll md:w-[70%] lg:w-[60%] xl:w-1/2 h-[90vh] overflow-y-auto !rounded-xl">
+            <ViewOrder orderDetails={orderPlacement} vehicleType={vehicleType} goodType={goodType} handleSubmit={handleOrder} />
+          </DialogContent>
+        </Dialog> :
+        (
+          <button className="py-3 px-4  rounded border-[1px]  bg-[#6C63FF] text-white text-sm font-sans font-semibold leading-6 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ">
+          view Order
+        </button>
+        )
+        }
+       </div>
+
       <CallUs />
     </div>
   )
