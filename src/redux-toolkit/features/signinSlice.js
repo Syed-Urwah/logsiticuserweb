@@ -17,14 +17,9 @@ export const loginUser = createAsyncThunk(
             });
             console.log(response);
                 return response.data;
-                
         }catch (error){
             return error.response.data 
-        }
-        
-        
-            
-        
+        }   
     }
 );
 

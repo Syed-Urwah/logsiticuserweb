@@ -14,22 +14,24 @@ import CallUs from "@/components/CallUs";
 import { useToast } from "@/components/ui/use-toast";
 import Map from "@/components/Map";
 import { DialogClose } from "@radix-ui/react-dialog";
-import { useSelector } from "react-redux";
-import { Loader  } from "@googlemaps/js-api-loader"
+import { useDispatch, useSelector } from "react-redux"; 
 import AcceptedDriver from "@/components/AcceptedDriver";
-import { useRouter } from "next/navigation";
+import { ResetDriverslist, setAcceptDriver, setDriverslist } from "@/redux-toolkit/features/driverSlice";
+import { useRouter } from "next/navigation"; 
 
 export default function page() {
   const { toast } = useToast();
   const router = useRouter();
+  const dispatch = useDispatch();
+  const [acceptRide, setAcceptRide] = useState(false);
 
-  const userData = useSelector((state) => state.user.userData) 
-
-  const [distance, setDistance] = useState('');
+  const userData = useSelector((state) => state.root.user.userData);
+  const confirmDriver = useSelector((state) => state.root.driverData.confirmDriver)
+ 
   const [acceptedDrivers, setAcceptedDrivers] = useState(null)
 
   const [bookaRide, setRide] = useState({
-    user_id: userData.user.id,
+    user_id: userData?.user?.id,
     // user_dropoff_lat: "34.0363243",
     // user_dropoff_lng: "71.528077",
     no_of_persons: 0,
@@ -83,8 +85,7 @@ export default function page() {
     };
 
     const distanceResult = calculateDistance(pickupLat, pickupLng, dropoffLat, dropoffLng)();
-    if(distanceResult){ 
-      setDistance(distanceResult.toFixed(2));
+    if(distanceResult){  
       setRide((prev)=>({
         ...prev,
          total_km: distanceResult.toFixed(2)
@@ -147,7 +148,8 @@ export default function page() {
 
     }
   };
-
+ 
+  
   const handleRide = async (e) => {
     e.preventDefault(); 
 
@@ -172,8 +174,7 @@ export default function page() {
 
 
 
-    const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL +
-      "/api/customer/booking_rides/search_driver";
+    const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + "/api/customer/booking_rides/search_driver";
 
     try { 
       const response = await fetch(url, {
@@ -204,24 +205,24 @@ export default function page() {
           });
 
           drivers_data = await ride_res.json();
-         
      
-          setAcceptedDrivers([...drivers_data.result.accepted_drivers]);
+          setAcceptedDrivers([...drivers_data?.result?.accepted_drivers]);
+          dispatch(setDriverslist([...drivers_data?.result?.accepted_drivers]))
 
-          if(drivers_data.result.accepted_drivers.length > 2){
-            clearInterval(intervalId)
-            toast({
-             title: "Scheduled: Catch up",
-             description: data.response.response_desc,
-             variant: "success"
-           })
+          
+          if(confirmDriver && Object.keys(confirmDriver).length !== 0){ 
+            clearInterval(intervalId); 
           }
+          
+          //   toast({
+          //    title: "Scheduled: Catch up",
+          //    description: data.response.response_desc,
+          //    variant: "success"
+          //  }) 
         
         },5000);
- 
       }
        
-    
       data.response.response_id == 1 ?
         toast({
           title: "Scheduled: Catch up",
@@ -246,8 +247,8 @@ export default function page() {
   }, []);
 
  
-  const accept_ride_driver=async(driverData)=>{
-  
+ 
+  const accept_ride_driver=async(driverData)=>{ 
     try {
       const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + "/api/customer/booking_rides/accept_ride";
 
@@ -256,7 +257,7 @@ export default function page() {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          "Api-Token": "N5ORjSS300F4fcZ3eq69rLShvgwnjchQg7Vmt5N753Sy",
+          "Api-Token": process.env.NEXT_PUBLIC_API_TOKEN,
         },
         body: JSON.stringify({
           ride_id:driverData.booking_ride_id,
@@ -264,12 +265,20 @@ export default function page() {
           customer_id:driverData.get_ride.customer_id
         }),
       });
+      
 
-      const acceptRideRes = await res.json()
-      console.log("accept ride request: ",acceptRideRes.response.response_desc )
-      if(acceptRideRes.response.response_desc === "Success"){
-        clearInterval()
-        router.push('/track-shipment')
+      const acceptRideRes = await res.json();
+      
+      if(acceptRideRes?.response?.response_desc === 'Success'){  
+        setAcceptDriver([])
+        dispatch(setAcceptDriver(driverData))
+        dispatch(ResetDriverslist())
+        router.push('/track-shipment') 
+      }else{
+        toast({
+          title: "Driver is not Available ",
+          description: "accept free driver ", 
+        })
       }
 
     } catch (error) {
@@ -302,7 +311,6 @@ export default function page() {
                       className="lg:w-[250px] xl:w-[300px] sm:ms-4 border-[2px] rounded border-blue-300  "
                       placeholder="no.of person"
                       onChange={(e) => {
-                        console.log(e.target.value);
                         setRide((prev) => ({
                           ...prev,
                           no_of_persons: e.target.value,

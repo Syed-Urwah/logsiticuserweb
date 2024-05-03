@@ -36,7 +36,7 @@ export default function LoginPage() {
 
         try {
             const userData = await dispatch(loginUser(credentials));
-            console.log(userData);
+            
             if (userData.payload.response.response_status == 200) {
                 toast({
                     title: userData.payload.response.response_desc,
