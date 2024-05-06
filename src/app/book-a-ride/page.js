@@ -271,8 +271,8 @@ export default function page() {
       
       if(acceptRideRes?.response?.response_desc === 'Success'){  
         setAcceptDriver([])
-        dispatch(setAcceptDriver(driverData))
         dispatch(ResetDriverslist())
+        dispatch(setAcceptDriver(driverData))
         router.push('/track-shipment') 
       }else{
         toast({
