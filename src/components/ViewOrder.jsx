@@ -1,15 +1,15 @@
-"use client"
-import Image from 'next/image'
-import React from 'react'
+"use client" 
+import React from 'react' 
+ 
 
-const ViewOrder = ({ orderDetails, handleSubmit, loading , vehicleType, goodType }) => {
-    console.log("orderDetails: ", orderDetails)
+const ViewOrder = ({ orderDetails, handleSubmit, vehicleType, goodType }) => {
+
     const { origin, destination, total_km, volume_of_good_kg, loading_date_time, no_of_vehicles,no_of_labours, type_of_good_id, vehicle_type_id, temperature } = orderDetails
 
 
     return (
         <div className='p-4'>
-            <h1 className='text-2xl sm:text-3xl  text-center font-sans font-bold mb-4'>Order Placement</h1>
+            <h1 className='text-2xl sm:text-3xl  text-center font-sans font-bold mb-4'>Order Placement</h1> 
             <div className="flex flex-col gap-5">
                 <div>
                     <h1 className='text-xl text-gray-400 font-sans font-semibold pl-7'>Address of Order</h1>
@@ -125,12 +125,8 @@ const ViewOrder = ({ orderDetails, handleSubmit, loading , vehicleType, goodType
                 </div>
             </div>
 
-            <button
-                onClick={handleSubmit}
-                disabled={loading}
-                className="py-3 px-4 mt-14 w-1/4 mx-auto block rounded   bg-[#564dff] text-white text-sm font-sans font-semibold leading-6 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-             >
-                {loading ? 'Loading...' : 'Confirm Order'}
+            <button onClick={handleSubmit} className="py-3 px-4 mt-20 w-1/4 mx-auto block rounded   bg-[#564dff] text-white text-sm font-sans font-semibold leading-6 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ">
+                Confirm Order
             </button>
 
         </div>

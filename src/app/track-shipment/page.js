@@ -34,11 +34,11 @@ export default function page() {
             //  vehicleTypeId = driverData.get_driver.get_vehicle.get_vehicle_type.id;
             //  transportationTypeId = driverData.get_driver.get_vehicle.transportation_type_id;
             //  userTypeId = driverData.get_driver.user_type_id;
-            //  vehicleNo = driverData.get_driver.get_vehicle.vehicle_number;      
+            //  vehicleNo = driverData.get_driver.get_vehicle.vehicle_number;   
         }
         
         const intervalId = setInterval(()=>{ 
-           const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + `/api/supplier/driver/get_single_ride/${rideId}`
+           const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + `/api/supplier/driver/get_single_ride/${rideId}` 
 
             const getDriverData = async() =>{
         
@@ -63,12 +63,12 @@ export default function page() {
         
                   const driverRes = await res.json();
                    
-                  if( driverRes.result.ride.status_id == 3 || driverRes.result.ride.status_id == 4){
+                  if( driverRes?.result?.ride?.status_id == 3 || driverRes?.result?.ride?.status_id == 4){
                     clearInterval(intervalId);
                     dispatch(ResetAcceptDriver()); 
                   }
         
-                  if(driverRes?.response?.response_desc === "success" && driverData){
+                  if(driverRes?.response?.response_desc === "success" && driverData){ 
                     setDriverLat(driverRes.result.ride.get_driver.driver_location.latitude);
                     setDriverLong(driverRes.result.ride.get_driver.driver_location.longitude);
                     setDriverStatus(driverRes.result.ride.status_id);  
@@ -162,7 +162,8 @@ export default function page() {
                     <DialogTrigger asChild>
 
                         <div className='flex justify-center mt-5'>
-                            <button className='py-3 px-8 rounded-xl bg-[#6C63FF] text-white'>Done</button>
+                            <button onClick={()=>{  
+                    dispatch(ResetAcceptDriver()); }} className='py-3 px-8 rounded-xl bg-[#6C63FF] text-white'>Done</button>
                         </div>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px] bg-white">

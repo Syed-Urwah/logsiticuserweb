@@ -21,8 +21,9 @@ import { DialogClose } from "@radix-ui/react-dialog";
 import ViewOrder from '@/components/ViewOrder';
 import AcceptedDriverOrder from "@/components/AcceptedDriverOrder";
 import { useToast } from "@/components/ui/use-toast";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
+import { ResetDriverslist, setAcceptDriver, setDriverslist } from "@/redux-toolkit/features/driverSlice"; 
 
 
 
@@ -31,8 +32,12 @@ import { useRouter } from "next/navigation";
 export default function page() {
   const { toast } = useToast();
   const router = useRouter();
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const userData = useSelector((state) => state.user.userData) 
+  const userData = useSelector((state) => state.root.user.userData);
+  const confirmDriver = useSelector((state) => state.root.driverData.confirmDriver);
+
+  
 
   const [orderPlacement, setOrder] = useState({
     type_of_good_id: "",
@@ -50,7 +55,7 @@ export default function page() {
     amount: "",
     photo: "",
     special_instruction: "",
-    customer_id: userData.user.id,
+    customer_id: userData?.user?.id,
 
   });
 const [goodType, setGoodType] = useState('')
@@ -260,12 +265,12 @@ const [vehicleType, setVehicleType] = useState('')
         body: JSON.stringify(bodyData)
       });
 
-      const data = await response.json();
-      console.log(data)
+      const Orderdata = await response.json();
+      console.log(Orderdata)
 
-      if(data.response.response_desc){
+      if(Orderdata.response.response_desc){
         const drivers_url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + 
-        `/api/customer/order/get_accepted_drivers/${data.result.order.id}`;
+        `/api/customer/order/get_accepted_drivers/${Orderdata.result.order.id}`;
 
          let drivers_data ={};
         const intervalId = setInterval(async()=>{
@@ -332,11 +337,20 @@ const [vehicleType, setVehicleType] = useState('')
       });
 
       const acceptOrderRes = await res.json();
-      // console.log(acceptOrderRes);
+      console.log(driverData);
       console.log("accept order request: ",acceptOrderRes.response.response_desc )
-      if(acceptOrderRes.response.response_desc === "Success"){
-        clearInterval()
-        router.push('/track-shipment')
+
+      if(acceptOrderRes?.response?.response_desc === 'Success'){  
+        setAcceptDriver([])
+        dispatch(setAcceptDriver(driverData))
+        dispatch(ResetDriverslist())
+        router.push('/order-list'); 
+      }else{
+        toast({
+          title: "Driver is not Available ",
+          description: "accept free driver ", 
+          variant: "error"
+        })
       }
 
     } catch (error) {
@@ -416,7 +430,7 @@ const [vehicleType, setVehicleType] = useState('')
                         </SelectItem>
                       );
                     })}
-                </SelectContent>
+                </SelectContent>  
               </Select>
             </div>
             <label htmlFor="total_km" className='mt-5 block text-sm font-medium leading-6 text-gray-900 ml-5 lg:ml-12'> Total Km</label>
@@ -667,3 +681,4 @@ const [vehicleType, setVehicleType] = useState('')
     </div>
   )
 }
+
