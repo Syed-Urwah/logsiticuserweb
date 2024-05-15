@@ -1,19 +1,21 @@
 "use client"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const DEFAULT_COUNT = 5;
 const DEFAULT_ICON = "★";
-const DEFAULT_UNSELECTED_COLOR = "grey";
+const DEFAULT_UNSELECTED_COLOR = "#b3d9ff";
 const DEFAULT_COLOR = "#6C63FF";
 
-export default function Stars({ count, defaultRating, icon, color, iconSize }) {
-  const [rating, setRating] = useState(defaultRating);
+export default function Stars({ count,  icon, color, iconSize, setRat }) {
+  const [rating, setRating] = useState(0);
   const [temporaryRating, setTemporaryRating] = useState(0);
 
+   
   let stars = Array(count || DEFAULT_COUNT).fill(icon || DEFAULT_ICON);
 
   const handleClick = (rating) => {
     setRating(rating);
+    setRat(rating)
     localStorage.setItem("starRating", rating);
   };
 

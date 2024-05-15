@@ -2,22 +2,22 @@
 
 import * as React from "react";
 import "../styles/custom.css";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue} from "@/components/ui/select";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog"
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import CallUs from "@/components/CallUs";
 import { useToast } from "@/components/ui/use-toast";
 import Map from "@/components/Map";
 import { DialogClose } from "@radix-ui/react-dialog";
-import { useDispatch, useSelector } from "react-redux"; 
+import { useDispatch, useSelector } from "react-redux";
 import AcceptedDriver from "@/components/AcceptedDriver";
-import { ResetDriverslist, setAcceptDriver, setDriverslist } from "@/redux-toolkit/features/driverSlice";
-import { useRouter } from "next/navigation"; 
+import { ResetDriverslist, setConfirmDriver, setDriverslist } from "@/redux-toolkit/features/driverSlice";
+import { useRouter } from "next/navigation";
 
 export default function page() {
   const { toast } = useToast();
@@ -27,7 +27,7 @@ export default function page() {
 
   const userData = useSelector((state) => state.root.user.userData);
   const confirmDriver = useSelector((state) => state.root.driverData.confirmDriver)
- 
+
   const [acceptedDrivers, setAcceptedDrivers] = useState(null)
 
   const [bookaRide, setRide] = useState({
@@ -52,20 +52,20 @@ export default function page() {
   const [dropoffLng, setDropoffLng] = useState();
 
 
-  useEffect(()=>{   
-    setRide((prev)=>({
+  useEffect(() => {
+    setRide((prev) => ({
       ...prev,
-      origin:origin
+      origin: origin
     }))
-    setRide((prev)=>({
+    setRide((prev) => ({
       ...prev,
-      destination:destination
+      destination: destination
     }))
 
-  },[origin, destination])
+  }, [origin, destination])
 
 
-  useEffect(() => { 
+  useEffect(() => {
     const calculateDistance = (lat1, lon1, lat2, lon2) => {
       return () => {
         const R = 6371; // Radius of the Earth in kilometers
@@ -74,55 +74,55 @@ export default function page() {
         const dLat = deg2rad(lat2 - lat1);
         const dLon = deg2rad(lon2 - lon1);
 
-        const a = 
+        const a =
           Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-          Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+          Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
           Math.sin(dLon / 2) * Math.sin(dLon / 2);
 
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
-        return R * c ; // Distance in kilometers
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c; // Distance in kilometers
       };
     };
 
     const distanceResult = calculateDistance(pickupLat, pickupLng, dropoffLat, dropoffLng)();
-    if(distanceResult){  
-      setRide((prev)=>({
+    if (distanceResult) {
+      setRide((prev) => ({
         ...prev,
-         total_km: distanceResult.toFixed(2)
+        total_km: distanceResult.toFixed(2)
       }))
     }
-  }, [pickupLat,pickupLng, dropoffLat, dropoffLng]);
+  }, [pickupLat, pickupLng, dropoffLat, dropoffLng]);
 
-  
- 
+
+
 
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
-  useEffect(()=>{
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition((position)=>{ 
-         setLatitude(position.coords.latitude)
-         setLongitude(position.coords.longitude)
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setLatitude(position.coords.latitude)
+        setLongitude(position.coords.longitude)
       })
-    }else{
+    } else {
       console.log("geolocation api is not supported by this browser")
     }
-  },[])
-     
+  }, [])
+
   const [vehicleTypes, setVehicleTypes] = useState({
     data: [],
     loading: true,
   });
 
   const fetchVehicleType = async () => {
-    const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + 
+    const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL +
       "/api/setting/vehicle_type/get_by_transportation_type/1";
-     setVehicleTypes((prev) => ({
+    setVehicleTypes((prev) => ({
       ...prev,
       loading: true,
     }));
     try {
-      
+
       const response = await fetch(url, {
         method: "GET",
         headers: {
@@ -138,7 +138,7 @@ export default function page() {
         ...prev,
         data: data.result.vehicle_types,
       }));
- 
+
       setVehicleTypes((prev) => ({
         ...prev,
         loading: false,
@@ -148,10 +148,10 @@ export default function page() {
 
     }
   };
- 
-  
+
+
   const handleRide = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     setRide((prev) => ({
       ...prev,
@@ -159,7 +159,7 @@ export default function page() {
       user_pickup_lng: pickupLng
     }))
 
-    
+
     setRide((prev) => ({
       ...prev,
       user_dropoff_lat: dropoffLat,
@@ -176,7 +176,7 @@ export default function page() {
 
     const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + "/api/customer/booking_rides/search_driver";
 
-    try { 
+    try {
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -187,17 +187,17 @@ export default function page() {
         body: JSON.stringify(bodyData),
       });
 
-      const data = await response.json(); 
+      const data = await response.json();
 
-      if(data.response.response_desc){
-        const drivers_url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + 
-        `/api/customer/booking_rides/get_accepted_drivers/${data.result.booking_ride.id}`;
+      if (data.response.response_desc) {
+        const drivers_url = process.env.NEXT_PUBLIC_SERVER_BASE_URL +
+          `/api/customer/booking_rides/get_accepted_drivers/${data.result.booking_ride.id}`;
 
-         let drivers_data ={};
-        const intervalId = setInterval(async()=>{
-          const ride_res = await fetch(drivers_url,{
-            method:"GET",
-            headers:{
+        let drivers_data = {};
+        const intervalId = setInterval(async () => {
+          const ride_res = await fetch(drivers_url, {
+            method: "GET",
+            headers: {
               "Accept": "application/json",
               "Content-Type": "application/json",
               "Api-Token": process.env.NEXT_PUBLIC_API_TOKEN,
@@ -205,24 +205,24 @@ export default function page() {
           });
 
           drivers_data = await ride_res.json();
-     
+
           setAcceptedDrivers([...drivers_data?.result?.accepted_drivers]);
           dispatch(setDriverslist([...drivers_data?.result?.accepted_drivers]))
 
-          
-          if(confirmDriver && Object.keys(confirmDriver).length !== 0){ 
-            clearInterval(intervalId); 
+
+          if (confirmDriver && Object.keys(confirmDriver).length !== 0) {
+            clearInterval(intervalId);
           }
-          
+
           //   toast({
           //    title: "Scheduled: Catch up",
           //    description: data.response.response_desc,
           //    variant: "success"
           //  }) 
-        
-        },5000);
+
+        }, 5000);
       }
-       
+
       data.response.response_id == 1 ?
         toast({
           title: "Scheduled: Catch up",
@@ -246,9 +246,9 @@ export default function page() {
     fetchVehicleType();
   }, []);
 
- 
- 
-  const accept_ride_driver=async(driverData)=>{ 
+
+
+  const accept_ride_driver = async (driverData) => {
     try {
       const url = process.env.NEXT_PUBLIC_SERVER_BASE_URL + "/api/customer/booking_rides/accept_ride";
 
@@ -260,40 +260,44 @@ export default function page() {
           "Api-Token": process.env.NEXT_PUBLIC_API_TOKEN,
         },
         body: JSON.stringify({
-          ride_id:driverData.booking_ride_id,
-          driver_id:driverData.driver_id,
-          customer_id:driverData.get_ride.customer_id
+          ride_id: driverData.booking_ride_id,
+          driver_id: driverData.driver_id,
+          customer_id: driverData.get_ride.customer_id
         }),
       });
-      
+
+
+
 
       const acceptRideRes = await res.json();
-      
-      if(acceptRideRes?.response?.response_desc === 'Success'){  
-        setAcceptDriver([])
+
+      if (res.ok) {
+
+        //  setDriverslist([])
         dispatch(ResetDriverslist())
-        dispatch(setAcceptDriver(driverData))
-        router.push('/track-shipment') 
-      }else{
-        toast({
-          title: "Driver is not Available ",
-          description: "accept free driver ", 
-        })
+        dispatch(setConfirmDriver(driverData))
+        router.push('/track-shipment')
       }
+      // } else {
+      //   toast({
+      //     title: "Driver is not Available ",
+      //     description: "accept free driver ",
+      //   })
+      // }
 
     } catch (error) {
       console.log(error)
     }
   }
 
- 
+
   return (
     <div>
       <div className="2xl:px-[320px] xl:px-[120px] max-xl:px-[100px] my-7">
         <div className="mx-auto w-full sm:max-w-sm lg:max-w-full mb-5">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             BOOK A RIDE
-          </h2> 
+          </h2>
         </div>
         <form onSubmit={handleRide} className="pt-3 px-2 text-gray-400">
           <Card className="w-full py-6 bg-gray-50 rounded-xl">
@@ -358,7 +362,7 @@ export default function page() {
                       required
                       className="lg:w-[250px] xl:w-[300px] max-lg:ms-7 sm:ms-7 max-sm:ms-2 border-[2px] rounded border-blue-300 "
                       placeholder="Contact info"
-                      onChange={(e) => { 
+                      onChange={(e) => {
                         setRide((prev) => ({
                           ...prev,
                           contact_info: e.target.value,
@@ -395,7 +399,7 @@ export default function page() {
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
-                        viewBox="0 0 24 24" 
+                        viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
                         className="w-6 h-6"
@@ -411,7 +415,7 @@ export default function page() {
                           d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
                         />
                       </svg>
-                    </span> 
+                    </span>
 
                     <Label htmlFor="persons" className="text-base sm:me-6">
                       Origin
@@ -429,25 +433,25 @@ export default function page() {
                         />
                       </DialogTrigger>
                       <div className="w-[130wv]">
-                      <DialogContent className=" w-[90vw] bg-black text-white">
-                        <DialogHeader>
-                          <DialogTitle>Add Origin</DialogTitle>
-                          <Input
-                            id="input"
-                            type="search"
-                            className="border-[3px] border-black mb-5 z-10 sm:w-[70%] mt-2 bg-white text-black"
-                            placeholder="search origin"
-                          />
-                        </DialogHeader>
-                        <Map setOrigin={setOrigin} currPosition={{lat:latitude, lng:longitude}} lat={pickupLat} setLat={setPickupLat} lng={pickupLng} setLng={setPickupLng} />
-                        <DialogFooter>
-                          <DialogClose asChild>
-                            <Button type="button" className="bg-white text-black hover:text-white hover:border-white border-2">
-                              Close
-                            </Button>
-                          </DialogClose>
-                        </DialogFooter>
-                      </DialogContent>
+                        <DialogContent className=" w-[90vw] bg-black text-white">
+                          <DialogHeader>
+                            <DialogTitle>Add Origin</DialogTitle>
+                            <Input
+                              id="input"
+                              type="search"
+                              className="border-[3px] border-black mb-5 z-10 sm:w-[70%] mt-2 bg-white text-black"
+                              placeholder="search origin"
+                            />
+                          </DialogHeader>
+                          <Map setOrigin={setOrigin} currPosition={{ lat: latitude, lng: longitude }} lat={pickupLat} setLat={setPickupLat} lng={pickupLng} setLng={setPickupLng} />
+                          <DialogFooter>
+                            <DialogClose asChild>
+                              <Button type="button" className="bg-white text-black hover:text-white hover:border-white border-2">
+                                Close
+                              </Button>
+                            </DialogClose>
+                          </DialogFooter>
+                        </DialogContent>
                       </div>
                     </Dialog>
 
@@ -499,7 +503,7 @@ export default function page() {
                             placeholder="search origin"
                           />
                         </DialogHeader>
-                        <Map setOrigin={setDestination}  currPosition={{lat:latitude, lng:longitude}} lat={dropoffLat} setLat={setDropoffLat} lng={dropoffLng} setLng={setDropoffLng} />
+                        <Map setOrigin={setDestination} currPosition={{ lat: latitude, lng: longitude }} lat={dropoffLat} setLat={setDropoffLat} lng={dropoffLng} setLng={setDropoffLng} />
                         <DialogFooter>
                           <DialogClose asChild>
                             <Button type="button" className="bg-white text-black hover:text-white hover:border-white border-2">
@@ -521,14 +525,14 @@ export default function page() {
               className="py-3 px-4 rounded-xl bg-[#6C63FF] text-white"
             >
               Confirm Ride
-            </button> 
+            </button>
 
- 
+
 
           </div>
         </form>
       </div>
-      <AcceptedDriver acceptedDrivers={acceptedDrivers} acceptDriverRide={accept_ride_driver}/>
+      <AcceptedDriver acceptedDrivers={acceptedDrivers} acceptDriverRide={accept_ride_driver} />
 
       <CallUs />
     </div>

@@ -4,6 +4,8 @@ import React from 'react'
 
 const ViewOrder = ({ orderDetails, handleSubmit, vehicleType, goodType }) => {
 
+    console.log("good type: ", goodType);
+
     const { origin, destination, total_km, volume_of_good_kg, loading_date_time, no_of_vehicles,no_of_labours, type_of_good_id, vehicle_type_id, temperature } = orderDetails
 
 
@@ -81,27 +83,7 @@ const ViewOrder = ({ orderDetails, handleSubmit, vehicleType, goodType }) => {
 
                 </div>
 
-                {/* loading time and goods */}
-                <div className='flex items-center'>
-                    <div className="flex w-1/2 items-start gap-2">
-                        <img src="/icons/search-content.png" className='object-contain pt-1.5' alt="search" />
-                        <div>
-                            <h3 className='font-semibold'>
-                                Loading Time
-                            </h3>
-                            <p className='text-gray-600'>{loading_date_time}</p>
-                        </div>
-                    </div>
-                    <div className="flex items-start gap-2">
-                        <img src="/icons/search-content.png" className='object-contain pt-1.5' alt="search" />
-                        <div>
-                            <h3 className='font-semibold'>
-                                No of Labours
-                            </h3>
-                            <p className='text-gray-600'>{no_of_labours}</p>
-                        </div>
-                    </div>
-                </div>
+              
                 {/* Goods types and no.of vehicles */}
                 <div className="flex items-center">
                     <div className="flex items-start w-1/2 gap-2">
@@ -122,6 +104,28 @@ const ViewOrder = ({ orderDetails, handleSubmit, vehicleType, goodType }) => {
                             <p className='text-gray-600'>{no_of_vehicles}</p>
                         </div>
                     </div>
+                </div>
+
+                  {/* loading time and goods */}
+                  <div className='flex items-center'>
+                    <div className="flex w-1/2 items-start gap-2">
+                        <img src="/icons/search-content.png" className='object-contain pt-1.5' alt="search" />
+                        <div>
+                            <h3 className='font-semibold'>
+                                Loading Time
+                            </h3>
+                            <p className='text-gray-600'>{loading_date_time}</p>
+                        </div>
+                    </div>
+                    {/* <div className="flex items-start gap-2">
+                        <img src="/icons/search-content.png" className='object-contain pt-1.5' alt="search" />
+                        <div>
+                            <h3 className='font-semibold'>
+                                No of Labours
+                            </h3>
+                            <p className='text-gray-600'>{no_of_labours}</p>
+                        </div>
+                    </div> */}
                 </div>
             </div>
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
 import CallUs from '@/components/CallUs';
+import Link from 'next/link';
 
 export default function page() {
   return (
@@ -13,40 +14,48 @@ export default function page() {
             <h4 className='mb-6 font-semibold text-4xl mx-auto lg:text-7xl mt-4 ps-24 lg:ps-11'>Offering top-tier</h4>
             <h4 className='mb-6 font-semibold text-4xl mx-auto lg:text-7xl ps-24 lg:ps-14'>freight services.</h4>
             <div className='sm:container mt-20'>
-              <button
-                type="button"
-                className='relative object-cover ml-20 lg:ml-2 w-1/3 h-40 lg:w-[314px] lg:h-[166px] lg:rounded-3xl rounded-xl border-2 lg:border-0 uppercase text-lg lg:text-4xl px-7 pb-[8px] pt-[10px] font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
-                style={{ backgroundImage: "url('/images/ride.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-                data-twe-ripple-init
-                data-twe-ripple-color="light">
-                Ride
-              </button>
-              <button
-                type="button"
-                className='relative object-cover ml-20 w-1/3 h-40 lg:w-[314px] lg:h-[166px] lg:rounded-3xl rounded-xl border-2 lg:border-0 uppercase text-lg lg:text-4xl px-7 pb-[8px] pt-[10px] font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
-                style={{ backgroundImage: "url('/images/goods.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-                data-twe-ripple-init
-                data-twe-ripple-color="light">
-                Goods
-              </button>
+              <Link href='/book-a-ride'>
+                <button
+                  type="button"
+                  className='relative object-cover ml-20 lg:ml-2 w-1/3 h-40 lg:w-[314px] lg:h-[166px] lg:rounded-3xl rounded-xl border-2 lg:border-0 uppercase text-lg lg:text-4xl px-7 pb-[8px] pt-[10px] font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
+                  style={{ backgroundImage: "url('/images/ride.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
+                  data-twe-ripple-init
+                  data-twe-ripple-color="light">
+                  Ride
+                </button>
+              </Link>
+              <Link href='/order-placement'>
+                <button
+                  type="button"
+                  className='relative object-cover ml-20 w-1/3 h-40 lg:w-[314px] lg:h-[166px] lg:rounded-3xl rounded-xl border-2 lg:border-0 uppercase text-lg lg:text-4xl px-7 pb-[8px] pt-[10px] font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
+                  style={{ backgroundImage: "url('/images/goods.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
+                  data-twe-ripple-init
+                  data-twe-ripple-color="light">
+                  Goods
+                </button>
+              </Link>
             </div>
             <div className='sm:container mt-5 '>
-              <button
-                type="button"
-                className='relative object-cover ml-20 lg:ml-2 w-1/3 h-40 lg:w-[314px] lg:h-[166px] lg:rounded-3xl rounded-xl border-2 lg:border-0 uppercase text-lg lg:text-4xl px-3 pb-[8px] pt-[10px] font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
-                style={{ backgroundImage: "url('/images/fragile.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-                data-twe-ripple-init
-                data-twe-ripple-color="light">
-                Fragile Items
-              </button>
-              <button
-                type="button"
-                className='relative object-cover ml-20 w-1/3 h-40 lg:w-[314px] lg:h-[166px] lg:rounded-3xl rounded-xl border-2 lg:border-0 uppercase text-lg lg:text-4xl px-7 pb-[8px] pt-[10px]  font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
-                style={{ backgroundImage: "url('/images/doc.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-                data-twe-ripple-init
-                data-twe-ripple-color="light">
-                Documents
-              </button>
+              <Link href='/order-placement'>
+                <button
+                  type="button"
+                  className='relative object-cover ml-20 lg:ml-2 w-1/3 h-40 lg:w-[314px] lg:h-[166px] lg:rounded-3xl rounded-xl border-2 lg:border-0 uppercase text-lg lg:text-4xl px-3 pb-[8px] pt-[10px] font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
+                  style={{ backgroundImage: "url('/images/fragile.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
+                  data-twe-ripple-init
+                  data-twe-ripple-color="light">
+                  Fragile Items
+                </button>
+              </Link>
+              <Link href='/order-placement'>
+                <button
+                  type="button"
+                  className='relative object-cover ml-20 w-1/3 h-40 lg:w-[314px] lg:h-[166px] lg:rounded-3xl rounded-xl border-2 lg:border-0 uppercase text-lg lg:text-4xl px-7 pb-[8px] pt-[10px]  font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
+                  style={{ backgroundImage: "url('/images/doc.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
+                  data-twe-ripple-init
+                  data-twe-ripple-color="light">
+                  Documents
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -241,10 +250,10 @@ export default function page() {
               <li>Door to Door</li>
               <li>Store to Door Short & Long term Warehouse Storage Facility at Affordable rates</li>
               <div className="flex justify-center py-5">
-        <button className="py-2 px-4 rounded bg-[#6C63FF] text-white">
-        View Order
-        </button>
-      </div>
+                <button className="py-2 px-4 rounded bg-[#6C63FF] text-white">
+                  View Order
+                </button>
+              </div>
             </div>
             <div className='bg-white p-3 border-2 ring-gray-200 px-4 h-1/2 mt-8'>
               <h2 className='tracking-widest font-semibold text-lg font-sans uppercase text-indigo-500 p-3'>No Interchange of LCL cargo on trucks during the delivery Process</h2>
@@ -272,7 +281,7 @@ export default function page() {
           </div>
         </div>
       </div>
-      <CallUs/>
+      <CallUs />
     </div>
   )
 }

@@ -12,15 +12,19 @@ import Map from '@/components/Map';
 import Stars from '@/components/Rating';
 import ReadOnlyMap from '@/components/ReadOnlyMap';
 import { useDispatch, useSelector } from 'react-redux';
-import { ResetAcceptDriver } from '@/redux-toolkit/features/driverSlice';
+import { ResetConfirmDriver, ResetDriverslist } from '@/redux-toolkit/features/driverSlice';
+import { useRouter } from 'next/navigation';
+import RideRating from '@/components/RideRating';
 
 
 export default function page() {
     const [driverStatus, setDriverStatus] = useState(-1);
     const [driverLat, setDriverLat] = useState('');
     const [driverLong, setDriverLong] = useState('');
+    const [rideDriver, setRideDriver] = useState();
     const dispatch = useDispatch();
     const driverData = useSelector((state)=> state.root.driverData.confirmDriver); 
+    const router = useRouter();
 
     let rideId='';
     // let vehicleTypeId;
@@ -62,15 +66,25 @@ export default function page() {
                   });
         
                   const driverRes = await res.json();
+
+                  if(res.ok){
+                    setRideDriver(driverRes?.result?.ride)
+                  }
                    
                   if( driverRes?.result?.ride?.status_id == 3 || driverRes?.result?.ride?.status_id == 4){
                     clearInterval(intervalId);
-                    dispatch(ResetAcceptDriver()); 
+                    dispatch(ResetConfirmDriver()); 
+                    driverRes?.result?.ride?.status_id==4 && router.push("/");
+                    driverRes?.result?.ride?.status_id==4 &&  toast({
+                        title: "Ride completed Successfully", 
+                        variant: "success"
+                      })
+                    
                   }
         
                   if(driverRes?.response?.response_desc === "success" && driverData){ 
-                    setDriverLat(driverRes.result.ride.get_driver.driver_location.latitude);
-                    setDriverLong(driverRes.result.ride.get_driver.driver_location.longitude);
+                    setDriverLat(driverRes.result.ride.get_driver.driver_location?.latitude);
+                    setDriverLong(driverRes.result.ride.get_driver.driver_location?.longitude);
                     setDriverStatus(driverRes.result.ride.status_id);  
                   }
               }
@@ -115,8 +129,7 @@ export default function page() {
                                     <img src="images/1-2.png" className='w-10' />
                                     :
                                     <img src="images/1.png" className='w-10' />
-
-                                }
+                                } 
                             </span>
                             <div className='line-1'></div>
                             <div className={`ms-5 text-[#6C63FF] font-medium ${driverStatus>=1 && driverStatus<=4?'text-[#6C63FF]':'text-[#B7B4B4]'}`}>Driver Arrive at pickup Location</div>
@@ -158,64 +171,8 @@ export default function page() {
                     </div>
                 </div>
 
-                <Dialog>
-                    <DialogTrigger asChild>
-
-                        <div className='flex justify-center mt-5'>
-                            <button onClick={()=>{  
-                    dispatch(ResetAcceptDriver()); }} className='py-3 px-8 rounded-xl bg-[#6C63FF] text-white'>Done</button>
-                        </div>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-[425px] bg-white">
-                        <DialogHeader>
-                            <DialogTitle className='flex justify-center text-gray-400'>Order # 30528</DialogTitle>
-                        </DialogHeader>
-
-                        <div className='flex gap-3 bg-gray-300 px-2 py-3 w-full'>
-                            <div className='flex flex-col justify-center items-center'>
-                                <img src="/images/circle.png" className="w-4 h-4 ms-[2px] z-10" />
-                                <span className='text-xl my-[-4px]'>|</span>
-                                <img src="/images/tracking.png" className='w-5 h-5 z-10	' />
-                            </div>
-                            <div className='flex flex-col font-semibold'>
-                                <span className='ms-2 mb-1'>Origin Location</span>
-                                <span className='border-b-[2px] border-black w-[320px] max-sm:w-[400px]'></span>
-                                <span className='ms-2 mt-1'>Destination Location</span>
-                            </div>
-                        </div>
-
-                        <div className='flex flex-col'>
-                            <div className='flex justify-between'>
-                                <span>Sub-Total</span>
-                                <span>295 SAR</span>
-                            </div>
-                            <div className='flex justify-between'>
-                                <span>Platform Fee</span>
-                                <span>25 SAR</span>
-                            </div>
-                        </div>
-
-                        <div className='border-b-[2px] border-[#83b2f0]'></div>
-
-                        <div className='flex flex-col'>
-                            <div className='flex justify-between font-semibold'>
-                                <span>Cash Payable</span>
-                                <span>320 SAR</span>
-                            </div>
-                        </div>
-
-                        
-                        <Stars iconSize={50} defaultRating={3.5} />
-
-                        <div className="flex justify-center">
-                            <button type="submit" className="py-3 px-4 rounded bg-[#6C63FF] text-white text-sm font-sans font-semibold leading-6">
-                                Go Now
-                            </button>
-                        </div>
-
-                    </DialogContent>
-                </Dialog>
-
+                        <RideRating driver={rideDriver} statusId={rideDriver?.status_id} />
+       
 
             </div>
             <CallUs />
