@@ -86,7 +86,7 @@ export default function page() {
                     setDriverLat(driverRes.result.ride.get_driver.driver_location?.latitude);
                     setDriverLong(driverRes.result.ride.get_driver.driver_location?.longitude);
                     setDriverStatus(driverRes.result.ride.status_id);  
-                  }
+                  } 
               }
             }
             getDriverData();

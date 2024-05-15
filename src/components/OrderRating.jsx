@@ -42,13 +42,13 @@ const OrderRating = ({ driver, statusId }) => {
 
         const data = await res.json();
 
-        console.log("review Response", data);
-
-        router.push('/');
-        toast({
-            title: "Order Completed",
-            variant: "success"
-        })
+        if(res.ok){   
+            router.push('/');
+            toast({
+                title: "Order Completed",
+                variant: "success"
+            })
+        }
       
     }
 

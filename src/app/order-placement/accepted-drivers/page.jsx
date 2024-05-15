@@ -68,11 +68,9 @@ const AcceptedDriversList = () => {
         }
 
  
-        console.log(noOfVehicles, " == ", confirmLength)
-        console.log("updated: ");
-        console.log(noOfVehicles, " == ", confirmLength + 1)
-
-
+        // console.log(noOfVehicles, " == ", confirmLength)
+        // console.log("updated: ");
+        // console.log(noOfVehicles, " == ", confirmLength + 1)
 
         if (noOfVehicles == confirmLength) {
             router.push('/order-drivers-list');
@@ -80,9 +78,6 @@ const AcceptedDriversList = () => {
         }
     }
 
-    const resetconfirm = () => {
-        dispatch(ResetConfirmOrderDrivers());
-    };
 
     return (
         <div className='min-h-[60vh] py-5'>
@@ -92,8 +87,6 @@ const AcceptedDriversList = () => {
                 )
             }
             <div className='w-1/3 h-full mx-auto flex flex-col gap-3'>
-                <button onClick={resetconfirm} className='bg-blue-700 text-white p-2 rounded-md '>reset driver</button>
-
                 {
                     !!noOfVehicles && acceptedDrivers && acceptedDrivers?.length > 0 ? acceptedDrivers.map((driver) => (
                         <div key={driver.id} className="shadow-md w-full rounded-xl flex items-center justify-between p-2 border">

@@ -11,8 +11,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function page() {
-    const confirmDrivers = useSelector((state) => state.root.driverData.confirmOrderDrivers);
-    const [rideComplete, setRideComplete] = useState(false);
+    const confirmDrivers = useSelector((state) => state.root.driverData.confirmOrderDrivers); 
     const router = useRouter()
 
 
@@ -181,7 +180,6 @@ export default function page() {
                                                         <img src="images/2-3.png" className='w-10' />
                                                         :
                                                         <img src="images/2.png" className='w-10' />
-
                                                 }
                                             </span>
                                             <div className='line-1'></div>
@@ -196,7 +194,6 @@ export default function page() {
                                                         <img src="images/3-4.png" className='w-10' />
                                                         :
                                                         <img src="images/3.png" className='w-10' />
-
                                                 }
                                             </span>
                                             <div className={`ms-5 font-medium  ${driver?.status_id >= 3 && driver?.status_id <= 4 ? 'text-[#6C63FF]' : 'text-[#B7B4B4]'}`}>Ride Completed</div>

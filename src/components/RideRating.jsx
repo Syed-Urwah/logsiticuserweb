@@ -47,7 +47,7 @@ const RideRating = ({ driver, statusId }) => {
         if(res.ok){
             router.push('/');
             toast({
-                title: "Order Completed",
+                title: "Ride Completed",
                 variant: "success"
             })
         }
